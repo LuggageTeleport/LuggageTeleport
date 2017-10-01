@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22E7498E1F807CE00047B8ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E7498D1F807CE00047B8ED /* AppDelegate.m */; };
+		22E749911F807CE00047B8ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E749901F807CE00047B8ED /* ViewController.m */; };
+		22E749941F807CE00047B8ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E749921F807CE00047B8ED /* Main.storyboard */; };
+		22E749961F807CE00047B8ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E749951F807CE00047B8ED /* Assets.xcassets */; };
+		22E749991F807CE00047B8ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E749971F807CE00047B8ED /* LaunchScreen.storyboard */; };
+		22E7499C1F807CE00047B8ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E7499B1F807CE00047B8ED /* main.m */; };
+		22E749A61F807CE00047B8ED /* Luggage_TelepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E749A51F807CE00047B8ED /* Luggage_TelepTests.m */; };
+		22E749B11F807CE00047B8ED /* Luggage_TelepUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E749B01F807CE00047B8ED /* Luggage_TelepUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22E749A21F807CE00047B8ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22E749811F807CE00047B8ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22E749881F807CE00047B8ED;
+			remoteInfo = "Luggage Telep";
+		};
+		22E749AD1F807CE00047B8ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22E749811F807CE00047B8ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22E749881F807CE00047B8ED;
+			remoteInfo = "Luggage Telep";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22E749891F807CE00047B8ED /* Luggage Telep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Luggage Telep.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22E7498C1F807CE00047B8ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		22E7498D1F807CE00047B8ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		22E7498F1F807CE00047B8ED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		22E749901F807CE00047B8ED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		22E749931F807CE00047B8ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22E749951F807CE00047B8ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22E749981F807CE00047B8ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22E7499A1F807CE00047B8ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22E7499B1F807CE00047B8ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22E749A11F807CE00047B8ED /* Luggage TelepTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Luggage TelepTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22E749A51F807CE00047B8ED /* Luggage_TelepTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Luggage_TelepTests.m; sourceTree = "<group>"; };
+		22E749A71F807CE00047B8ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22E749AC1F807CE00047B8ED /* Luggage TelepUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Luggage TelepUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22E749B01F807CE00047B8ED /* Luggage_TelepUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Luggage_TelepUITests.m; sourceTree = "<group>"; };
+		22E749B21F807CE00047B8ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22E749861F807CE00047B8ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22E7499E1F807CE00047B8ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22E749A91F807CE00047B8ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22E749801F807CE00047B8ED = {
+			isa = PBXGroup;
+			children = (
+				22E7498B1F807CE00047B8ED /* Luggage Telep */,
+				22E749A41F807CE00047B8ED /* Luggage TelepTests */,
+				22E749AF1F807CE00047B8ED /* Luggage TelepUITests */,
+				22E7498A1F807CE00047B8ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22E7498A1F807CE00047B8ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22E749891F807CE00047B8ED /* Luggage Telep.app */,
+				22E749A11F807CE00047B8ED /* Luggage TelepTests.xctest */,
+				22E749AC1F807CE00047B8ED /* Luggage TelepUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22E7498B1F807CE00047B8ED /* Luggage Telep */ = {
+			isa = PBXGroup;
+			children = (
+				22E7498C1F807CE00047B8ED /* AppDelegate.h */,
+				22E7498D1F807CE00047B8ED /* AppDelegate.m */,
+				22E7498F1F807CE00047B8ED /* ViewController.h */,
+				22E749901F807CE00047B8ED /* ViewController.m */,
+				22E749921F807CE00047B8ED /* Main.storyboard */,
+				22E749951F807CE00047B8ED /* Assets.xcassets */,
+				22E749971F807CE00047B8ED /* LaunchScreen.storyboard */,
+				22E7499A1F807CE00047B8ED /* Info.plist */,
+				22E7499B1F807CE00047B8ED /* main.m */,
+			);
+			path = "Luggage Telep";
+			sourceTree = "<group>";
+		};
+		22E749A41F807CE00047B8ED /* Luggage TelepTests */ = {
+			isa = PBXGroup;
+			children = (
+				22E749A51F807CE00047B8ED /* Luggage_TelepTests.m */,
+				22E749A71F807CE00047B8ED /* Info.plist */,
+			);
+			path = "Luggage TelepTests";
+			sourceTree = "<group>";
+		};
+		22E749AF1F807CE00047B8ED /* Luggage TelepUITests */ = {
+			isa = PBXGroup;
+			children = (
+				22E749B01F807CE00047B8ED /* Luggage_TelepUITests.m */,
+				22E749B21F807CE00047B8ED /* Info.plist */,
+			);
+			path = "Luggage TelepUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22E749881F807CE00047B8ED /* Luggage Telep */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22E749B51F807CE00047B8ED /* Build configuration list for PBXNativeTarget "Luggage Telep" */;
+			buildPhases = (
+				22E749851F807CE00047B8ED /* Sources */,
+				22E749861F807CE00047B8ED /* Frameworks */,
+				22E749871F807CE00047B8ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Luggage Telep";
+			productName = "Luggage Telep";
+			productReference = 22E749891F807CE00047B8ED /* Luggage Telep.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22E749A01F807CE00047B8ED /* Luggage TelepTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22E749B81F807CE00047B8ED /* Build configuration list for PBXNativeTarget "Luggage TelepTests" */;
+			buildPhases = (
+				22E7499D1F807CE00047B8ED /* Sources */,
+				22E7499E1F807CE00047B8ED /* Frameworks */,
+				22E7499F1F807CE00047B8ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22E749A31F807CE00047B8ED /* PBXTargetDependency */,
+			);
+			name = "Luggage TelepTests";
+			productName = "Luggage TelepTests";
+			productReference = 22E749A11F807CE00047B8ED /* Luggage TelepTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		22E749AB1F807CE00047B8ED /* Luggage TelepUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22E749BB1F807CE00047B8ED /* Build configuration list for PBXNativeTarget "Luggage TelepUITests" */;
+			buildPhases = (
+				22E749A81F807CE00047B8ED /* Sources */,
+				22E749A91F807CE00047B8ED /* Frameworks */,
+				22E749AA1F807CE00047B8ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22E749AE1F807CE00047B8ED /* PBXTargetDependency */,
+			);
+			name = "Luggage TelepUITests";
+			productName = "Luggage TelepUITests";
+			productReference = 22E749AC1F807CE00047B8ED /* Luggage TelepUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22E749811F807CE00047B8ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = MacOS;
+				TargetAttributes = {
+					22E749881F807CE00047B8ED = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					22E749A01F807CE00047B8ED = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 22E749881F807CE00047B8ED;
+					};
+					22E749AB1F807CE00047B8ED = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 22E749881F807CE00047B8ED;
+					};
+				};
+			};
+			buildConfigurationList = 22E749841F807CE00047B8ED /* Build configuration list for PBXProject "Luggage Telep" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22E749801F807CE00047B8ED;
+			productRefGroup = 22E7498A1F807CE00047B8ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22E749881F807CE00047B8ED /* Luggage Telep */,
+				22E749A01F807CE00047B8ED /* Luggage TelepTests */,
+				22E749AB1F807CE00047B8ED /* Luggage TelepUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22E749871F807CE00047B8ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22E749991F807CE00047B8ED /* LaunchScreen.storyboard in Resources */,
+				22E749961F807CE00047B8ED /* Assets.xcassets in Resources */,
+				22E749941F807CE00047B8ED /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22E7499F1F807CE00047B8ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22E749AA1F807CE00047B8ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22E749851F807CE00047B8ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22E749911F807CE00047B8ED /* ViewController.m in Sources */,
+				22E7499C1F807CE00047B8ED /* main.m in Sources */,
+				22E7498E1F807CE00047B8ED /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22E7499D1F807CE00047B8ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22E749A61F807CE00047B8ED /* Luggage_TelepTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22E749A81F807CE00047B8ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22E749B11F807CE00047B8ED /* Luggage_TelepUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22E749A31F807CE00047B8ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22E749881F807CE00047B8ED /* Luggage Telep */;
+			targetProxy = 22E749A21F807CE00047B8ED /* PBXContainerItemProxy */;
+		};
+		22E749AE1F807CE00047B8ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22E749881F807CE00047B8ED /* Luggage Telep */;
+			targetProxy = 22E749AD1F807CE00047B8ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		22E749921F807CE00047B8ED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E749931F807CE00047B8ED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22E749971F807CE00047B8ED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E749981F807CE00047B8ED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22E749B31F807CE00047B8ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		22E749B41F807CE00047B8ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22E749B61F807CE00047B8ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Luggage Telep/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep.Luggage-Telep";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22E749B71F807CE00047B8ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Luggage Telep/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep.Luggage-Telep";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		22E749B91F807CE00047B8ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Luggage TelepTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep.Luggage-TelepTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Luggage Telep.app/Luggage Telep";
+			};
+			name = Debug;
+		};
+		22E749BA1F807CE00047B8ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Luggage TelepTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep.Luggage-TelepTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Luggage Telep.app/Luggage Telep";
+			};
+			name = Release;
+		};
+		22E749BC1F807CE00047B8ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Luggage TelepUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep.Luggage-TelepUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Luggage Telep";
+			};
+			name = Debug;
+		};
+		22E749BD1F807CE00047B8ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Luggage TelepUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep.Luggage-TelepUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Luggage Telep";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22E749841F807CE00047B8ED /* Build configuration list for PBXProject "Luggage Telep" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22E749B31F807CE00047B8ED /* Debug */,
+				22E749B41F807CE00047B8ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22E749B51F807CE00047B8ED /* Build configuration list for PBXNativeTarget "Luggage Telep" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22E749B61F807CE00047B8ED /* Debug */,
+				22E749B71F807CE00047B8ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22E749B81F807CE00047B8ED /* Build configuration list for PBXNativeTarget "Luggage TelepTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22E749B91F807CE00047B8ED /* Debug */,
+				22E749BA1F807CE00047B8ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22E749BB1F807CE00047B8ED /* Build configuration list for PBXNativeTarget "Luggage TelepUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22E749BC1F807CE00047B8ED /* Debug */,
+				22E749BD1F807CE00047B8ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22E749811F807CE00047B8ED /* Project object */;
+}
