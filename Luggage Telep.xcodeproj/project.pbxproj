@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041D16D91F8AB87E007E96BC /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D16D81F8AB87E007E96BC /* PaymentViewController.m */; };
+		041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D16DB1F8AB952007E96BC /* AddPaymentViewController.m */; };
+		041D16DE1F8ABB0B007E96BC /* ic_visa_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 041D16DD1F8ABB08007E96BC /* ic_visa_card.png */; };
+		041D16E01F8ABD95007E96BC /* ic_light_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 041D16DF1F8ABD92007E96BC /* ic_light_bg.png */; };
+		041F0CBD1F8B094E0020DEC4 /* ic_signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CBB1F8B094A0020DEC4 /* ic_signature.png */; };
+		041F0CBE1F8B094E0020DEC4 /* ic_trait_status_bar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CBC1F8B094A0020DEC4 /* ic_trait_status_bar1.png */; };
+		041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */; };
+		041F0CC31F8B2F890020DEC4 /* ic_red_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */; };
+		0472C5371F8B904E00B8C516 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C5361F8B904E00B8C516 /* Constant.m */; };
+		0472C53A1F8BBFE800B8C516 /* APIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C5391F8BBFE800B8C516 /* APIs.m */; };
+		0472C53E1F8BEF4200B8C516 /* AccountUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */; };
+		04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA7C1F8AB0D000A76FDA /* ic_check_box.jpg */; };
+		04B8EA7F1F8AB0F400A76FDA /* ic_uncheck_box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA7D1F8AB0E000A76FDA /* ic_uncheck_box.jpg */; };
+		04B8EA831F8AB54F00A76FDA /* ic_credit_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */; };
+		04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA811F8AB4FC00A76FDA /* ic_next.png */; };
+		04B8EA851F8AB54F00A76FDA /* ic_paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA821F8AB52400A76FDA /* ic_paypal.png */; };
 		22269B8E1F880E0000D9D21C /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22269B8D1F880E0000D9D21C /* TermsViewController.m */; };
 		22269B981F88266100D9D21C /* ic_plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 22269B8F1F88265200D9D21C /* ic_plane.png */; };
 		22269B991F88266100D9D21C /* ic_airport.png in Resources */ = {isa = PBXBuildFile; fileRef = 22269B901F88265300D9D21C /* ic_airport.png */; };
@@ -27,7 +43,6 @@
 		2266FEE51F82B17300897673 /* ic_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE11F82B16F00897673 /* ic_star.png */; };
 		2266FEE61F82B17300897673 /* two_dots.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE21F82B17000897673 /* two_dots.png */; };
 		2266FEE71F82B17300897673 /* ic_blue_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE31F82B17100897673 /* ic_blue_bubble.png */; };
-		2266FEE81F82B17300897673 /* ic_red_bubble in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE41F82B17200897673 /* ic_red_bubble */; };
 		2266FEEB1F82B35500897673 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2266FEEA1F82B35500897673 /* HistoryViewController.m */; };
 		2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2266FEEE1F82B5A900897673 /* HistoryTableViewCell.m */; };
 		2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2266FEF11F82E1DE00897673 /* SupportViewController.m */; };
@@ -96,6 +111,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041D16D71F8AB87E007E96BC /* PaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		041D16D81F8AB87E007E96BC /* PaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		041D16DA1F8AB952007E96BC /* AddPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPaymentViewController.h; sourceTree = "<group>"; };
+		041D16DB1F8AB952007E96BC /* AddPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPaymentViewController.m; sourceTree = "<group>"; };
+		041D16DD1F8ABB08007E96BC /* ic_visa_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_visa_card.png; sourceTree = "<group>"; };
+		041D16DF1F8ABD92007E96BC /* ic_light_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_light_bg.png; sourceTree = "<group>"; };
+		041F0CBB1F8B094A0020DEC4 /* ic_signature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_signature.png; sourceTree = "<group>"; };
+		041F0CBC1F8B094A0020DEC4 /* ic_trait_status_bar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_trait_status_bar1.png; sourceTree = "<group>"; };
+		041F0CBF1F8B12AA0020DEC4 /* MyOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderViewController.h; sourceTree = "<group>"; };
+		041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
+		041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_red_bubble.png; sourceTree = "<group>"; };
+		0472C5351F8B904E00B8C516 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		0472C5361F8B904E00B8C516 /* Constant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
+		0472C5381F8BBFE800B8C516 /* APIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIs.h; sourceTree = "<group>"; };
+		0472C5391F8BBFE800B8C516 /* APIs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIs.m; sourceTree = "<group>"; };
+		0472C53C1F8BEF4200B8C516 /* AccountUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountUtilities.h; sourceTree = "<group>"; };
+		0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountUtilities.m; sourceTree = "<group>"; };
+		04B8EA7C1F8AB0D000A76FDA /* ic_check_box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_check_box.jpg; sourceTree = "<group>"; };
+		04B8EA7D1F8AB0E000A76FDA /* ic_uncheck_box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_uncheck_box.jpg; sourceTree = "<group>"; };
+		04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_credit_card.png; sourceTree = "<group>"; };
+		04B8EA811F8AB4FC00A76FDA /* ic_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_next.png; sourceTree = "<group>"; };
+		04B8EA821F8AB52400A76FDA /* ic_paypal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_paypal.png; sourceTree = "<group>"; };
 		05F8D2F9BC6D200ABE1C4BEC /* Pods-Luggage Telep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luggage Telep.release.xcconfig"; path = "Pods/Target Support Files/Pods-Luggage Telep/Pods-Luggage Telep.release.xcconfig"; sourceTree = "<group>"; };
 		22269B8C1F880E0000D9D21C /* TermsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		22269B8D1F880E0000D9D21C /* TermsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
@@ -121,7 +158,6 @@
 		2266FEE11F82B16F00897673 /* ic_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star.png; sourceTree = "<group>"; };
 		2266FEE21F82B17000897673 /* two_dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = two_dots.png; sourceTree = "<group>"; };
 		2266FEE31F82B17100897673 /* ic_blue_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_blue_bubble.png; sourceTree = "<group>"; };
-		2266FEE41F82B17200897673 /* ic_red_bubble */ = {isa = PBXFileReference; lastKnownFileType = file; path = ic_red_bubble; sourceTree = "<group>"; };
 		2266FEE91F82B35500897673 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		2266FEEA1F82B35500897673 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		2266FEED1F82B5A900897673 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
@@ -217,6 +253,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0472C5341F8B902B00B8C516 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0472C5351F8B904E00B8C516 /* Constant.h */,
+				0472C5361F8B904E00B8C516 /* Constant.m */,
+				0472C5381F8BBFE800B8C516 /* APIs.h */,
+				0472C5391F8BBFE800B8C516 /* APIs.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0472C53B1F8BEF1D00B8C516 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0472C53C1F8BEF4200B8C516 /* AccountUtilities.h */,
+				0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		0502CF1A81B4AFC69E4E0512 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +352,16 @@
 		22E749C01F80C7300047B8ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */,
+				041F0CBB1F8B094A0020DEC4 /* ic_signature.png */,
+				041F0CBC1F8B094A0020DEC4 /* ic_trait_status_bar1.png */,
+				041D16DF1F8ABD92007E96BC /* ic_light_bg.png */,
+				041D16DD1F8ABB08007E96BC /* ic_visa_card.png */,
+				04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */,
+				04B8EA811F8AB4FC00A76FDA /* ic_next.png */,
+				04B8EA821F8AB52400A76FDA /* ic_paypal.png */,
+				04B8EA7C1F8AB0D000A76FDA /* ic_check_box.jpg */,
+				04B8EA7D1F8AB0E000A76FDA /* ic_uncheck_box.jpg */,
 				223664A31F8A743B0017809C /* ic_hotel_blue.jpg */,
 				223664A21F8A74030017809C /* ic_user_blue1.jpg */,
 				223664991F88396E0017809C /* ic_bags_bg.png */,
@@ -315,7 +381,6 @@
 				22D3304A1F87A214009EE8EE /* ic_user_blue.png */,
 				2266FEF31F82E2FD00897673 /* bg.png */,
 				2266FEE31F82B17100897673 /* ic_blue_bubble.png */,
-				2266FEE41F82B17200897673 /* ic_red_bubble */,
 				2266FEE11F82B16F00897673 /* ic_star.png */,
 				2266FEE21F82B17000897673 /* two_dots.png */,
 				22E74A071F8293D80047B8ED /* textinput.png */,
@@ -348,6 +413,8 @@
 		22E749DF1F81F94F0047B8ED /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0472C53B1F8BEF1D00B8C516 /* Managers */,
+				0472C5341F8B902B00B8C516 /* Common */,
 				22E749E01F81F94F0047B8ED /* ViewControllers */,
 			);
 			path = Classes;
@@ -398,6 +465,12 @@
 				2236649D1F883E200017809C /* NumberOfBagsViewController.m */,
 				2236649F1F8843480017809C /* BookingSummaryViewController.h */,
 				223664A01F8843480017809C /* BookingSummaryViewController.m */,
+				041D16D71F8AB87E007E96BC /* PaymentViewController.h */,
+				041D16D81F8AB87E007E96BC /* PaymentViewController.m */,
+				041D16DA1F8AB952007E96BC /* AddPaymentViewController.h */,
+				041D16DB1F8AB952007E96BC /* AddPaymentViewController.m */,
+				041F0CBF1F8B12AA0020DEC4 /* MyOrderViewController.h */,
+				041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -531,17 +604,21 @@
 			files = (
 				2236649B1F8839710017809C /* ic_bags_bg.png in Resources */,
 				2266FEE61F82B17300897673 /* two_dots.png in Resources */,
+				04B8EA851F8AB54F00A76FDA /* ic_paypal.png in Resources */,
 				22E749991F807CE00047B8ED /* LaunchScreen.storyboard in Resources */,
 				2266FEF41F82E2FE00897673 /* bg.png in Resources */,
+				041F0CBD1F8B094E0020DEC4 /* ic_signature.png in Resources */,
+				041D16E01F8ABD95007E96BC /* ic_light_bg.png in Resources */,
 				22E749BF1F80AA5F0047B8ED /* Images.xcassets in Resources */,
 				22E749D31F80C7300047B8ED /* hotel-hotel.png in Resources */,
 				22D3304D1F87A21E009EE8EE /* ic_phone_blue.png in Resources */,
+				04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */,
 				22E749CF1F80C7300047B8ED /* air-hotel.png in Resources */,
+				04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */,
 				22E749D91F80C7300047B8ED /* ic_support.png in Resources */,
 				22D3304E1F87A21E009EE8EE /* ic_user_blue.png in Resources */,
 				22E749DB1F80C7300047B8ED /* logo.png in Resources */,
 				22E749DA1F80C7300047B8ED /* ic_terms.png in Resources */,
-				2266FEE81F82B17300897673 /* ic_red_bubble in Resources */,
 				2266FEE51F82B17300897673 /* ic_star.png in Resources */,
 				22E749D41F80C7300047B8ED /* ic_history.png in Resources */,
 				22D3304F1F87A21E009EE8EE /* ic_lock_blue.png in Resources */,
@@ -551,6 +628,8 @@
 				22E74A061F8286840047B8ED /* ic_user_background.png in Resources */,
 				22E749D01F80C7300047B8ED /* airport-airport.png in Resources */,
 				22E74A001F8286840047B8ED /* ic_name.png in Resources */,
+				04B8EA7F1F8AB0F400A76FDA /* ic_uncheck_box.jpg in Resources */,
+				04B8EA831F8AB54F00A76FDA /* ic_credit_card.png in Resources */,
 				22269B981F88266100D9D21C /* ic_plane.png in Resources */,
 				22269B9F1F88266100D9D21C /* ic_downarrow.png in Resources */,
 				22E749D61F80C7300047B8ED /* ic_myorder.png in Resources */,
@@ -568,15 +647,18 @@
 				2266FEE71F82B17300897673 /* ic_blue_bubble.png in Resources */,
 				22E749D11F80C7300047B8ED /* home_top_bar.png in Resources */,
 				22269B9A1F88266100D9D21C /* booking_bg.png in Resources */,
+				041D16DE1F8ABB0B007E96BC /* ic_visa_card.png in Resources */,
 				22D330501F87A21E009EE8EE /* ic_address_blue.png in Resources */,
 				22E749DC1F80C7300047B8ED /* menu-lines.png in Resources */,
 				22269B9E1F88266100D9D21C /* ic_clock.png in Resources */,
+				041F0CC31F8B2F890020DEC4 /* ic_red_bubble.png in Resources */,
 				2236649A1F8839710017809C /* ic_bagsimage_bg.png in Resources */,
 				22E74A021F8286840047B8ED /* ic_email.png in Resources */,
 				22E749D51F80C7300047B8ED /* ic_logout.png in Resources */,
 				22269B9D1F88266100D9D21C /* ic_dropdownBox.png in Resources */,
 				22E74A041F8286840047B8ED /* ic_userphoto.png in Resources */,
 				22E74A081F8293DB0047B8ED /* textinput.png in Resources */,
+				041F0CBE1F8B094E0020DEC4 /* ic_trait_status_bar1.png in Resources */,
 				22269B9C1F88266100D9D21C /* ic_underline.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,13 +686,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Luggage Telep-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66200428AE41D75760AED590 /* [CP] Copy Pods Resources */ = {
@@ -634,9 +719,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Luggage Telep/Pods-Luggage Telep-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -654,15 +746,21 @@
 				2236649E1F883E200017809C /* NumberOfBagsViewController.m in Sources */,
 				22E749E71F81F98D0047B8ED /* SigninViewController.m in Sources */,
 				22E749F81F8281ED0047B8ED /* MyProfileViewController.m in Sources */,
+				0472C53A1F8BBFE800B8C516 /* APIs.m in Sources */,
 				223664A11F8843480017809C /* BookingSummaryViewController.m in Sources */,
 				22E749E41F81F9790047B8ED /* StartViewController.m in Sources */,
 				2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */,
+				041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */,
+				041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */,
 				2266FEEB1F82B35500897673 /* HistoryViewController.m in Sources */,
 				22E7499C1F807CE00047B8ED /* main.m in Sources */,
+				0472C53E1F8BEF4200B8C516 /* AccountUtilities.m in Sources */,
+				041D16D91F8AB87E007E96BC /* PaymentViewController.m in Sources */,
 				22E749EB1F81FA1F0047B8ED /* MainViewController.m in Sources */,
 				22E749F21F8248910047B8ED /* LeftViewController.m in Sources */,
 				22269BA31F88305000D9D21C /* AirPortToHotelViewController.m in Sources */,
 				22E749F51F824FB10047B8ED /* NavigationController.m in Sources */,
+				0472C5371F8B904E00B8C516 /* Constant.m in Sources */,
 				22D330531F87A9D2009EE8EE /* RegisterViewController.m in Sources */,
 				22E7498E1F807CE00047B8ED /* AppDelegate.m in Sources */,
 				2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */,

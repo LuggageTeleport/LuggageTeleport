@@ -8,8 +8,19 @@
 
 #import "RegisterViewController.h"
 #import "MainViewController.h"
+#import <AFNetworking/AFNetworking.h>
+#import "Constant.h"
+#import "AccountUtilities.h"
 
-@interface RegisterViewController ()<UITextFieldDelegate>
+@interface RegisterViewController ()<UITextFieldDelegate>{
+    Boolean isFirstName;
+    Boolean isLastName;
+    Boolean isEmail;
+    Boolean isMobile;
+    Boolean isAddress;
+    Boolean isPassword;
+    Boolean isConfirm;
+}
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *txt_firstName;
 @property (weak, nonatomic) IBOutlet UITextField *txt_lastName;
@@ -28,6 +39,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    isFirstName = false;
+    isLastName = false;
+    isEmail = false;
+    isMobile = false;
+    isAddress = false;
+    isPassword = false;
+    isConfirm = false;
     self.registerBtn.layer.cornerRadius = self.registerBtn.layer.frame.size.height/2;
 }
 
@@ -39,11 +57,181 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)clicked_Signin:(UIButton *)sender {
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navigationController = [story instantiateViewControllerWithIdentifier:@"NavigationController"];
-    [navigationController setViewControllers:@[[story instantiateViewControllerWithIdentifier:@"HomeViewController"]]];
+- (IBAction)clicked_Register:(id)sender {
+    [self checkInputs];
+    if(isFirstName && isLastName && isEmail && isMobile && isAddress && isPassword){
+        
+        [kACCOUNT_UTILS showWorking:self.view string:@"Creating Account"];
+        
+        NSDictionary *params = @{@"username"     : _txt_email.text,
+                                 @"password"     : _txt_password.text,
+                                 @"firstname"    : _txt_firstName.text,
+                                 @"lastname"     : _txt_lastName.text,
+                                 @"mobileNumber" : _txt_mobile.text,
+                                 @"address"      : _txt_address.text};
+        
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        
+        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:REGISTER_URL parameters:params error:nil];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error);
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid Create" andBlock:nil];
+            } else {
+                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+                NSLog(@"%@", responseObject);
+                NSNumber *number = [responseObject objectForKey:@"success"];
+                if( [number intValue] == 1){
+                    
+                    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+                    [self.navigationController pushViewController:mainVC animated:YES];
+                }else{
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                             message:@"Username alredy exists"
+                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                       style:UIAlertActionStyleDefault
+                                                                     handler:nil];
+                    [alertController addAction:actionOk];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+            }
+        }];
+        [dataTask resume];
+    }
 }
+
+- (void) checkInputs{
+    if(_txt_firstName.text.length == 0){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                 message:@"Please input your first name"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        isFirstName = true;
+    }
+    
+    if(_txt_lastName.text.length == 0){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                 message:@"Please input your last name"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        isLastName = true;
+    }
+    
+    if(_txt_email.text.length == 0){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                 message:@"Please input your last name"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        if([self validateEmailWithString:_txt_email.text]){
+            isEmail = true;
+        }else{
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                     message:@"Not valid email address"
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:nil];
+            [alertController addAction:actionOk];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }
+    
+    if(_txt_mobile.text.length == 0){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                 message:@"Please input your mobile number"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        isMobile = true;
+    }
+    
+    if(_txt_address.text.length == 0){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                 message:@"Please input your address"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        isAddress = true;
+    }
+    
+    if(_txt_password.text.length == 0){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                 message:@"Please input your password"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        if(_txt_password.text.length < 6){
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                     message:@"Password must be at least 6 characters"
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:nil];
+            [alertController addAction:actionOk];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }else{
+            isPassword = true;
+        }
+    }
+    
+    if(_txt_password.text.length == 0){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                 message:@"Please input your confirm password"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:actionOk];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        if([_txt_password.text isEqualToString:_txt_confirm.text]){
+            isConfirm = true;
+        }
+        else{
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                     message:@"Not matched password and confirm"
+                                                                              preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:nil];
+            [alertController addAction:actionOk];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }
+}
+
+
 
 #pragma mark - TextFieldDelegate
 
