@@ -7,6 +7,7 @@
 //
 
 #import "HistoryViewController.h"
+#import "BookingIDViewController.h"
 
 #define kActivityCellHeight 160
 
@@ -32,7 +33,7 @@
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return 4;
 }
 
 #pragma mark - UITableView Delegate
@@ -43,6 +44,13 @@
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath
 {
     return kActivityCellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    BookingIDViewController *bookingIDVC = [story instantiateViewControllerWithIdentifier:@"BookingIDViewController"];
+    [self.navigationController pushViewController:bookingIDVC animated:YES];
 }
 
 

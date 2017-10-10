@@ -8,5 +8,7 @@ target 'Luggage Telep' do
   pod ‘LGSideMenuController’
   pod 'AFNetworking', '~> 3.0'
   pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'MKDropdownMenu'
+  pod 'CNPPopupController'
 
 end

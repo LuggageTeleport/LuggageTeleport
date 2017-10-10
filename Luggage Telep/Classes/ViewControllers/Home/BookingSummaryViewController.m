@@ -10,6 +10,7 @@
 
 @interface BookingSummaryViewController ()
 @property (weak, nonatomic) IBOutlet UIView *bookView;
+@property (weak, nonatomic) IBOutlet UIButton *btn_book;
 
 @end
 
@@ -19,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.bookView.layer.cornerRadius = self.bookView.frame.size.height/2;
+    self.btn_book.layer.cornerRadius = self.btn_book.frame.size.height/2;
 }
 
 - (void)didReceiveMemoryWarning {

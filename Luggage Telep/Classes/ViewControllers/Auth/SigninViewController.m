@@ -46,7 +46,7 @@
 - (IBAction)clicked_Signin:(UIButton *)sender {
     [self checkInputs];
     if(isEmail && isPassword){
-        [kACCOUNT_UTILS showWorking:self.view string:@"Logging In ..."];
+        [kACCOUNT_UTILS showWorking:self.view string:@"Logging In..."];
         NSDictionary *params = @{@"username"     : _txt_username.text,
                                  @"password"     : _txt_password.text,};
         

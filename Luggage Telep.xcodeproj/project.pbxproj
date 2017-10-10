@@ -11,10 +11,20 @@
 		041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D16DB1F8AB952007E96BC /* AddPaymentViewController.m */; };
 		041D16DE1F8ABB0B007E96BC /* ic_visa_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 041D16DD1F8ABB08007E96BC /* ic_visa_card.png */; };
 		041D16E01F8ABD95007E96BC /* ic_light_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 041D16DF1F8ABD92007E96BC /* ic_light_bg.png */; };
+		041EB45A1F8D50880055AAEB /* theX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041EB4581F8D50820055AAEB /* theX@2x.png */; };
+		041EB45B1F8D50880055AAEB /* user_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 041EB4591F8D50820055AAEB /* user_placeholder.png */; };
+		041EB45E1F8D6A260055AAEB /* ic_star_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 041EB45C1F8D69FD0055AAEB /* ic_star_full.png */; };
+		041EB45F1F8D6A260055AAEB /* ic_star_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 041EB45D1F8D6A110055AAEB /* ic_star_empty.png */; };
+		041EB4621F8D73200055AAEB /* BookingIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EB4611F8D73200055AAEB /* BookingIDViewController.m */; };
+		041EB4641F8D76E40055AAEB /* ic_feedback_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 041EB4631F8D76C20055AAEB /* ic_feedback_bg.png */; };
+		041EB4671F8D76F10055AAEB /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EB4661F8D76F10055AAEB /* FeedbackViewController.m */; };
 		041F0CBD1F8B094E0020DEC4 /* ic_signature.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CBB1F8B094A0020DEC4 /* ic_signature.png */; };
 		041F0CBE1F8B094E0020DEC4 /* ic_trait_status_bar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CBC1F8B094A0020DEC4 /* ic_trait_status_bar1.png */; };
 		041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */; };
 		041F0CC31F8B2F890020DEC4 /* ic_red_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */; };
+		043C7AE21F8D2C940021A88E /* AirlineSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C7AE11F8D2C940021A88E /* AirlineSelectView.m */; };
+		043C7AE41F8D2CCF0021A88E /* AirlineSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */; };
+		043C7AE71F8D4C4B0021A88E /* BookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C7AE61F8D4C4B0021A88E /* BookingDetailViewController.m */; };
 		0472C5371F8B904E00B8C516 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C5361F8B904E00B8C516 /* Constant.m */; };
 		0472C53A1F8BBFE800B8C516 /* APIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C5391F8BBFE800B8C516 /* APIs.m */; };
 		0472C53E1F8BEF4200B8C516 /* AccountUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */; };
@@ -117,11 +127,25 @@
 		041D16DB1F8AB952007E96BC /* AddPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPaymentViewController.m; sourceTree = "<group>"; };
 		041D16DD1F8ABB08007E96BC /* ic_visa_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_visa_card.png; sourceTree = "<group>"; };
 		041D16DF1F8ABD92007E96BC /* ic_light_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_light_bg.png; sourceTree = "<group>"; };
+		041EB4581F8D50820055AAEB /* theX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theX@2x.png"; sourceTree = "<group>"; };
+		041EB4591F8D50820055AAEB /* user_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_placeholder.png; sourceTree = "<group>"; };
+		041EB45C1F8D69FD0055AAEB /* ic_star_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star_full.png; sourceTree = "<group>"; };
+		041EB45D1F8D6A110055AAEB /* ic_star_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star_empty.png; sourceTree = "<group>"; };
+		041EB4601F8D73200055AAEB /* BookingIDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookingIDViewController.h; sourceTree = "<group>"; };
+		041EB4611F8D73200055AAEB /* BookingIDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingIDViewController.m; sourceTree = "<group>"; };
+		041EB4631F8D76C20055AAEB /* ic_feedback_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_feedback_bg.png; sourceTree = "<group>"; };
+		041EB4651F8D76F10055AAEB /* FeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		041EB4661F8D76F10055AAEB /* FeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		041F0CBB1F8B094A0020DEC4 /* ic_signature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_signature.png; sourceTree = "<group>"; };
 		041F0CBC1F8B094A0020DEC4 /* ic_trait_status_bar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_trait_status_bar1.png; sourceTree = "<group>"; };
 		041F0CBF1F8B12AA0020DEC4 /* MyOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderViewController.h; sourceTree = "<group>"; };
 		041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
 		041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_red_bubble.png; sourceTree = "<group>"; };
+		043C7AE01F8D2C940021A88E /* AirlineSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirlineSelectView.h; sourceTree = "<group>"; };
+		043C7AE11F8D2C940021A88E /* AirlineSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirlineSelectView.m; sourceTree = "<group>"; };
+		043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirlineSelectView.xib; sourceTree = "<group>"; };
+		043C7AE51F8D4C4B0021A88E /* BookingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookingDetailViewController.h; sourceTree = "<group>"; };
+		043C7AE61F8D4C4B0021A88E /* BookingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingDetailViewController.m; sourceTree = "<group>"; };
 		0472C5351F8B904E00B8C516 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		0472C5361F8B904E00B8C516 /* Constant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
 		0472C5381F8BBFE800B8C516 /* APIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIs.h; sourceTree = "<group>"; };
@@ -288,6 +312,9 @@
 				2266FEEE1F82B5A900897673 /* HistoryTableViewCell.m */,
 				22269B8C1F880E0000D9D21C /* TermsViewController.h */,
 				22269B8D1F880E0000D9D21C /* TermsViewController.m */,
+				043C7AE01F8D2C940021A88E /* AirlineSelectView.h */,
+				043C7AE11F8D2C940021A88E /* AirlineSelectView.m */,
+				043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */,
 			);
 			path = HistoryTableViewCell;
 			sourceTree = "<group>";
@@ -352,6 +379,11 @@
 		22E749C01F80C7300047B8ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				041EB4631F8D76C20055AAEB /* ic_feedback_bg.png */,
+				041EB45D1F8D6A110055AAEB /* ic_star_empty.png */,
+				041EB45C1F8D69FD0055AAEB /* ic_star_full.png */,
+				041EB4581F8D50820055AAEB /* theX@2x.png */,
+				041EB4591F8D50820055AAEB /* user_placeholder.png */,
 				041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */,
 				041F0CBB1F8B094A0020DEC4 /* ic_signature.png */,
 				041F0CBC1F8B094A0020DEC4 /* ic_trait_status_bar1.png */,
@@ -471,6 +503,12 @@
 				041D16DB1F8AB952007E96BC /* AddPaymentViewController.m */,
 				041F0CBF1F8B12AA0020DEC4 /* MyOrderViewController.h */,
 				041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */,
+				043C7AE51F8D4C4B0021A88E /* BookingDetailViewController.h */,
+				043C7AE61F8D4C4B0021A88E /* BookingDetailViewController.m */,
+				041EB4601F8D73200055AAEB /* BookingIDViewController.h */,
+				041EB4611F8D73200055AAEB /* BookingIDViewController.m */,
+				041EB4651F8D76F10055AAEB /* FeedbackViewController.h */,
+				041EB4661F8D76F10055AAEB /* FeedbackViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -615,6 +653,7 @@
 				04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */,
 				22E749CF1F80C7300047B8ED /* air-hotel.png in Resources */,
 				04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */,
+				041EB45B1F8D50880055AAEB /* user_placeholder.png in Resources */,
 				22E749D91F80C7300047B8ED /* ic_support.png in Resources */,
 				22D3304E1F87A21E009EE8EE /* ic_user_blue.png in Resources */,
 				22E749DB1F80C7300047B8ED /* logo.png in Resources */,
@@ -625,12 +664,15 @@
 				22E749D81F80C7300047B8ED /* ic_profile.png in Resources */,
 				22E74A051F8286840047B8ED /* ic_user_white.png in Resources */,
 				22269BA01F88266100D9D21C /* ic_calendar.png in Resources */,
+				041EB45F1F8D6A260055AAEB /* ic_star_empty.png in Resources */,
 				22E74A061F8286840047B8ED /* ic_user_background.png in Resources */,
 				22E749D01F80C7300047B8ED /* airport-airport.png in Resources */,
 				22E74A001F8286840047B8ED /* ic_name.png in Resources */,
 				04B8EA7F1F8AB0F400A76FDA /* ic_uncheck_box.jpg in Resources */,
 				04B8EA831F8AB54F00A76FDA /* ic_credit_card.png in Resources */,
 				22269B981F88266100D9D21C /* ic_plane.png in Resources */,
+				041EB45E1F8D6A260055AAEB /* ic_star_full.png in Resources */,
+				041EB45A1F8D50880055AAEB /* theX@2x.png in Resources */,
 				22269B9F1F88266100D9D21C /* ic_downarrow.png in Resources */,
 				22E749D61F80C7300047B8ED /* ic_myorder.png in Resources */,
 				22E749961F807CE00047B8ED /* Assets.xcassets in Resources */,
@@ -658,6 +700,8 @@
 				22269B9D1F88266100D9D21C /* ic_dropdownBox.png in Resources */,
 				22E74A041F8286840047B8ED /* ic_userphoto.png in Resources */,
 				22E74A081F8293DB0047B8ED /* textinput.png in Resources */,
+				043C7AE41F8D2CCF0021A88E /* AirlineSelectView.xib in Resources */,
+				041EB4641F8D76E40055AAEB /* ic_feedback_bg.png in Resources */,
 				041F0CBE1F8B094E0020DEC4 /* ic_trait_status_bar1.png in Resources */,
 				22269B9C1F88266100D9D21C /* ic_underline.png in Resources */,
 			);
@@ -721,14 +765,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Luggage Telep/Pods-Luggage Telep-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CNPPopupController/CNPPopupController.framework",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MKDropdownMenu/MKDropdownMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNPPopupController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKDropdownMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -747,8 +795,10 @@
 				22E749E71F81F98D0047B8ED /* SigninViewController.m in Sources */,
 				22E749F81F8281ED0047B8ED /* MyProfileViewController.m in Sources */,
 				0472C53A1F8BBFE800B8C516 /* APIs.m in Sources */,
+				043C7AE21F8D2C940021A88E /* AirlineSelectView.m in Sources */,
 				223664A11F8843480017809C /* BookingSummaryViewController.m in Sources */,
 				22E749E41F81F9790047B8ED /* StartViewController.m in Sources */,
+				041EB4671F8D76F10055AAEB /* FeedbackViewController.m in Sources */,
 				2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */,
 				041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */,
 				041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */,
@@ -764,6 +814,8 @@
 				22D330531F87A9D2009EE8EE /* RegisterViewController.m in Sources */,
 				22E7498E1F807CE00047B8ED /* AppDelegate.m in Sources */,
 				2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */,
+				041EB4621F8D73200055AAEB /* BookingIDViewController.m in Sources */,
+				043C7AE71F8D4C4B0021A88E /* BookingDetailViewController.m in Sources */,
 				22E749EE1F8247930047B8ED /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
