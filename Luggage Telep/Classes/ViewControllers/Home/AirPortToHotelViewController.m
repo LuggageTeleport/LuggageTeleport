@@ -23,10 +23,10 @@
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropAirportMenu;
 @property (weak, nonatomic) IBOutlet UILabel *airlineName;
+@property (weak, nonatomic) IBOutlet UILabel *txt_airportName;
 
 @property (weak, nonatomic) IBOutlet UIView *nextButView;
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
-@property (weak, nonatomic) IBOutlet UITextField *txt_airportName;
 @property (weak, nonatomic) IBOutlet UITextField *txt_fightNumber;
 @property (weak, nonatomic) IBOutlet UITextField *txt_arrivalTime;
 @property (weak, nonatomic) IBOutlet UITextField *txt_hotelName;

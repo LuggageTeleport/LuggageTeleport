@@ -13,21 +13,18 @@
 #import "AccountUtilities.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>{
-    Boolean isFirstName;
-    Boolean isLastName;
+    Boolean isuserName;
     Boolean isEmail;
-    Boolean isMobile;
     Boolean isPassword;
-    Boolean isConfirm;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
-@property (weak, nonatomic) IBOutlet UITextField *txt_firstName;
-@property (weak, nonatomic) IBOutlet UITextField *txt_lastName;
+@property (weak, nonatomic) IBOutlet UITextField *txt_name;
 @property (weak, nonatomic) IBOutlet UITextField *txt_email;
-@property (weak, nonatomic) IBOutlet UITextField *txt_mobile;
 @property (weak, nonatomic) IBOutlet UITextField *txt_password;
-@property (weak, nonatomic) IBOutlet UITextField *txt_confirm;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+@property (weak, nonatomic) IBOutlet UIView *nameView;
+@property (weak, nonatomic) IBOutlet UIView *emailView;
+@property (weak, nonatomic) IBOutlet UIView *passwordView;
 
 @end
 
@@ -37,13 +34,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    isFirstName = false;
-    isLastName = false;
+    isuserName = false;
     isEmail = false;
-    isMobile = false;
     isPassword = false;
-    isConfirm = false;
     self.registerBtn.layer.cornerRadius = self.registerBtn.layer.frame.size.height/2;
+    self.nameView.layer.cornerRadius = self.nameView.layer.frame.size.height/2;
+    self.emailView.layer.cornerRadius = self.emailView.layer.frame.size.height/2;
+    self.passwordView.layer.cornerRadius = self.passwordView.layer.frame.size.height/2;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,55 +52,54 @@
 }
 
 - (IBAction)clicked_Register:(id)sender {
-    [self checkInputs];
-    if(isFirstName && isLastName && isEmail && isMobile && isPassword){
-        
-        [kACCOUNT_UTILS showWorking:self.view string:@"Creating Account"];
-        
-        NSDictionary *params = @{@"username"     : _txt_email.text,
-                                 @"password"     : _txt_password.text,
-                                 @"firstname"    : _txt_firstName.text,
-                                 @"lastname"     : _txt_lastName.text,
-                                 @"mobileNumber" : _txt_mobile.text};
-        
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-        
-        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:REGISTER_URL parameters:params error:nil];
-        
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"Error: %@", error);
-                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid Create" andBlock:nil];
-            } else {
-                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-                NSLog(@"%@", responseObject);
-                NSNumber *number = [responseObject objectForKey:@"success"];
-                if( [number intValue] == 1){
-                    
+//    [self checkInputs];
+//    if(isuserName && isEmail && isPassword){
+//
+//        [kACCOUNT_UTILS showWorking:self.view string:@"Creating Account"];
+//
+//        NSDictionary *params = @{@"username"    : _txt_name.text,
+//                                 @"email"       : _txt_email.text,
+//                                 @"password"    : _txt_password.text
+//                                 };
+//
+//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//
+//        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:REGISTER_URL parameters:params error:nil];
+//
+//        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"Error: %@", error);
+//                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid Create" andBlock:nil];
+//            } else {
+//                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+//                NSLog(@"%@", responseObject);
+//                NSNumber *number = [responseObject objectForKey:@"success"];
+//                if( [number intValue] == 1){
+    
                     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
                     [self.navigationController pushViewController:mainVC animated:YES];
-                }else{
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-                                                                                             message:@"Username alredy exists"
-                                                                                      preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                                       style:UIAlertActionStyleDefault
-                                                                     handler:nil];
-                    [alertController addAction:actionOk];
-                    [self presentViewController:alertController animated:YES completion:nil];
-                }
-            }
-        }];
-        [dataTask resume];
-    }
+//                }else{
+//                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+//                                                                                             message:@"Username alredy exists"
+//                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+//                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+//                                                                       style:UIAlertActionStyleDefault
+//                                                                     handler:nil];
+//                    [alertController addAction:actionOk];
+//                    [self presentViewController:alertController animated:YES completion:nil];
+//                }
+//            }
+//        }];
+//        [dataTask resume];
+//    }
 }
 
 - (void) checkInputs{
-    if(_txt_firstName.text.length == 0){
+    if(_txt_name.text.length == 0){
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-                                                                                 message:@"Please input your first name"
+                                                                                 message:@"Please input your username"
                                                                           preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
                                                            style:UIAlertActionStyleDefault
@@ -111,21 +107,10 @@
         [alertController addAction:actionOk];
         [self presentViewController:alertController animated:YES completion:nil];
     }else{
-        isFirstName = true;
+        isuserName = true;
     }
     
-    if(_txt_lastName.text.length == 0){
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-                                                                                 message:@"Please input your last name"
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:nil];
-        [alertController addAction:actionOk];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }else{
-        isLastName = true;
-    }
+
     
     if(_txt_email.text.length == 0){
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
@@ -151,18 +136,6 @@
         }
     }
     
-    if(_txt_mobile.text.length == 0){
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-                                                                                 message:@"Please input your mobile number"
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:nil];
-        [alertController addAction:actionOk];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }else{
-        isMobile = true;
-    }
     
     if(_txt_password.text.length == 0){
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
@@ -187,31 +160,6 @@
             isPassword = true;
         }
     }
-    
-    if(_txt_password.text.length == 0){
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-                                                                                 message:@"Please input your confirm password"
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:nil];
-        [alertController addAction:actionOk];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }else{
-        if([_txt_password.text isEqualToString:_txt_confirm.text]){
-            isConfirm = true;
-        }
-        else{
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-                                                                                     message:@"Not matched password and confirm"
-                                                                              preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:nil];
-            [alertController addAction:actionOk];
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
-    }
 }
 
 
@@ -220,20 +168,14 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSInteger nextTag = textField.tag + 1;
-    if (nextTag == 7) {
+    if (nextTag == 4) {
         [self.mScrollView setContentOffset:CGPointMake(0, -20) animated:true];
     }
     
-    if (textField == self.txt_firstName) {
-        [self.txt_lastName becomeFirstResponder];
-    }else if(textField == self.txt_lastName) {
+    if (textField == self.txt_name) {
         [self.txt_email becomeFirstResponder];
     }else if(textField == self.txt_email) {
-        [self.txt_mobile becomeFirstResponder];
-    }else if(textField == self.txt_mobile) {
         [self.txt_password becomeFirstResponder];
-    }else if(textField == self.txt_password) {
-        [self.txt_confirm becomeFirstResponder];
     }else {
         [textField resignFirstResponder];
     }
@@ -246,15 +188,6 @@
     }
     else if (textField.tag == 2) {
         [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
-    }
-    else if (textField.tag == 3) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
-    }
-    else if (textField.tag == 4) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
-    }
-    else if (textField.tag == 5) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 30) animated:true];
     }
     else{
         [self.mScrollView setContentOffset:CGPointMake(0, 60) animated:true];

@@ -44,47 +44,43 @@
 }
 
 - (IBAction)clicked_Signin:(UIButton *)sender {
-    [self checkInputs];
-    if(isEmail && isPassword){
-        [kACCOUNT_UTILS showWorking:self.view string:@"Logging In..."];
-        NSDictionary *params = @{@"username"     : _txt_username.text,
-                                 @"password"     : _txt_password.text,};
-
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-
-        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:LOGIN_URL parameters:params error:nil];
-
-        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"Error: %@", error);
-                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid account" andBlock:nil];
-            } else {
-                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-                NSLog(@"%@", responseObject);
-                NSNumber *number = [responseObject objectForKey:@"success"];
-                if( [number intValue] == 1){
+//    [self checkInputs];
+//    if(isEmail && isPassword){
+//        [kACCOUNT_UTILS showWorking:self.view string:@"Logging In..."];
+//        NSDictionary *params = @{@"usernameOrEmail"     : _txt_username.text,
+//                                 @"password"     : _txt_password.text,};
+//
+//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//
+//        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:LOGIN_URL parameters:params error:nil];
+//
+//        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"Error: %@", error);
+//                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid account" andBlock:nil];
+//            } else {
+//                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+//                NSLog(@"%@", responseObject);
+//                NSNumber *number = [responseObject objectForKey:@"success"];
+//                if( [number intValue] == 1){
                     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
                     [self.navigationController pushViewController:mainVC animated:YES];
-                }else{
-                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Authenication failed. User not found" dismiss:@"OK" sender:self];
-                }
-            }
-        }];
-        [dataTask resume];
-    }
+//                }else{
+//                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Authenication failed. User not found" dismiss:@"OK" sender:self];
+//                }
+//            }
+//        }];
+//        [dataTask resume];
+//    }
 }
 
 - (void) checkInputs{
     if(_txt_username.text.length == 0){
         [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your email" dismiss:@"OK" sender:self];
     }else{
-        if([kACCOUNT_UTILS verifyEmail:self.txt_username.text]){
-            isEmail = true;
-        }else{
-            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please enter valid email" dismiss:@"OK" sender:self];
-        }
+        isEmail = true;
     }
     
     if(_txt_password.text.length == 0){
@@ -112,10 +108,10 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 80) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 30) animated:true];
     }
     else if (textField.tag == 2) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 130) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 50) animated:true];
     }
 }
 

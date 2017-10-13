@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_email;
 @property (weak, nonatomic) IBOutlet UITextField *txt_password;
 @property (weak, nonatomic) IBOutlet UIButton *editBtn;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
 
 @end
 
@@ -26,6 +27,7 @@
     // Do any additional setup after loading the view.
     
     _editBtn.layer.cornerRadius = _editBtn.layer.frame.size.height/2;
+    _saveBtn.layer.cornerRadius = _saveBtn.layer.frame.size.height/2;
 }
 
 - (void)didReceiveMemoryWarning {
