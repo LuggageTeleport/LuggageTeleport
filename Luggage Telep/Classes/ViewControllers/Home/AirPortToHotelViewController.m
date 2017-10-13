@@ -10,13 +10,18 @@
 #import "Constant.h"
 #import "MKDropdownMenu.h"
 #import "AirlineSelectView.h"
+#import "CNPPopupController.h"
+#import "BookingDetailViewController.h"
+#import "MainViewController.h"
 
-@interface AirPortToHotelViewController ()<UITextFieldDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate>{
+@interface AirPortToHotelViewController ()<UITextFieldDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate, CNPPopupControllerDelegate>{
     Boolean isYes;
     Boolean isNo;
 }
+@property (nonatomic, strong) CNPPopupController *popupController;
 
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
+@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropAirportMenu;
 @property (weak, nonatomic) IBOutlet UILabel *airlineName;
 
 @property (weak, nonatomic) IBOutlet UIView *nextButView;
@@ -32,7 +37,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image_YES;
 @property (weak, nonatomic) IBOutlet UIImageView *imageNO;
 
-@property (strong, nonatomic) NSArray<NSString *> *airLineTitles;
+@property (strong, nonatomic) NSArray<NSString *> *airLineList;
+@property (strong, nonatomic) NSArray<NSString *> *airPortList;
 @end
 
 @implementation AirPortToHotelViewController
@@ -44,16 +50,86 @@
     isYes = false;
     isNo = true;
     self.nextButView.layer.cornerRadius = self.nextButView.frame.size.height/2;
-    self.airLineTitles = @[@"San Francisco Airport Terminal 1",
-                             @"San Francisco Airport Terminal 2",
-                             @"San Francisco Airport Terminal 3",
-                             @"San Francisco Airport International Terminal",];
+    
+    self.airLineList = @[@"Cathy",
+                         @"Qatar",
+                         @"Singapore"];
+    self.airPortList = @[@"San Francisco Airport Terminal 1",
+                         @"San Francisco Airport Terminal 2",
+                         @"San Francisco Airport Terminal 3",
+                         @"San Francisco Airport International Terminal",];
     
     self.dropdownMenu.dropdownShowsTopRowSeparator = NO;
     self.dropdownMenu.dropdownShowsBottomRowSeparator = NO;
     self.dropdownMenu.dropdownShowsBorder = YES;
-    
+    self.dropdownMenu.disclosureIndicatorImage.accessibilityElementsHidden = true;
     self.dropdownMenu.backgroundDimmingOpacity = 0.0;
+    
+    self.dropAirportMenu.dropdownShowsTopRowSeparator = NO;
+    self.dropAirportMenu.dropdownShowsBottomRowSeparator = NO;
+    self.dropAirportMenu.dropdownShowsBorder = YES;
+    self.dropAirportMenu.disclosureIndicatorImage.accessibilityElementsHidden = true;
+    self.dropAirportMenu.backgroundDimmingOpacity = 0.0;
+    
+    if(self.isBookingNow){
+        [self showPopupWithStyle:CNPPopupStyleActionSheet];
+    }
+}
+
+- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
+    
+    NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Edward" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle}];
+    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"LuggageTeleport Truck" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12], NSForegroundColorAttributeName : [UIColor darkGrayColor], NSParagraphStyleAttributeName : paragraphStyle}];
+    
+    UILabel *customLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
+    customLabel.numberOfLines = 0;
+    customLabel.attributedText = title;
+    
+    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [button setTitle:@"Edward" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor clearColor];
+    button.selectionHandler = ^(CNPPopupButton *button){
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        BookingDetailViewController *bookVC = [story instantiateViewControllerWithIdentifier:@"BookingDetailViewController"];
+        [self.navigationController pushViewController:bookVC animated:YES];
+        [self.popupController dismissPopupControllerAnimated:YES];
+        NSLog(@"Block for button: %@", button.titleLabel.text);
+    };
+    
+    UILabel *companyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 150, 20)];
+    companyLabel.numberOfLines = 0;
+    companyLabel.attributedText = lineOne;
+    
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 55)];
+    UIImageView *userPhoto = [[UIImageView alloc] initWithImage:IMAGE(@"user_placeholder.png")];
+    userPhoto.frame = CGRectMake(5, 7, 40, 40);
+    
+    UIView *nameView =  [[UIView alloc] initWithFrame:CGRectMake(65, 7, 150, 40)];
+  
+    UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(220, 17, 65, 25)];
+    textFied.borderStyle = UITextBorderStyleNone;
+    textFied.text = @"";
+    textFied.borderStyle = UITextBorderStyleBezel;
+
+    
+    [nameView addSubview:button];
+    [nameView addSubview:companyLabel];
+    
+    [customView addSubview:userPhoto];
+    [customView addSubview:nameView];
+    [customView addSubview:textFied];
+    
+    self.popupController = [[CNPPopupController alloc] initWithContents:@[customView]];
+    self.popupController.theme = [CNPPopupTheme defaultTheme];
+    self.popupController.theme.popupStyle = popupStyle;
+    self.popupController.delegate = self;
+    [self.popupController presentPopupControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,7 +160,12 @@
     }
 }
 - (IBAction)clicked_Back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.dropdownMenu closeAllComponentsAnimated:NO];
+    [self.dropAirportMenu closeAllComponentsAnimated:NO];
+//    [self.navigationController popViewControllerAnimated:YES];
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+    [self.navigationController pushViewController:mainVC animated:NO];
 }
 
 #pragma mark - TextFieldDelegate
@@ -149,7 +230,12 @@
 }
 
 - (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component {
-    return self.airLineTitles.count;
+    if(dropdownMenu.tag == 2){
+        return self.airLineList.count;
+    }else{
+        return self.airPortList.count;
+    }
+    
 }
 
 #pragma mark - MKDropdownMenuDelegate
@@ -167,14 +253,24 @@
 }
 
 - (UIView *)dropdownMenu:(MKDropdownMenu *)dropdownMenu viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
-
+    if(dropdownMenu.tag == 2){
         AirlineSelectView *shapeSelectView = (AirlineSelectView *)view;
         if (shapeSelectView == nil || ![shapeSelectView isKindOfClass:[AirlineSelectView class]]) {
             shapeSelectView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AirlineSelectView class]) owner:nil options:nil] firstObject];
         }
-        shapeSelectView.textLabel.text = self.airLineTitles[row];
-
+        shapeSelectView.textLabel.text = self.airLineList[row];
+        
         return shapeSelectView;
+    }else{
+        AirlineSelectView *shapeSelectView = (AirlineSelectView *)view;
+        if (shapeSelectView == nil || ![shapeSelectView isKindOfClass:[AirlineSelectView class]]) {
+            shapeSelectView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AirlineSelectView class]) owner:nil options:nil] firstObject];
+        }
+        shapeSelectView.textLabel.text = self.airPortList[row];
+        
+        return shapeSelectView;
+    }
+    
 
 }
 
@@ -184,9 +280,16 @@
 }
 
 - (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-
-        self.airlineName.text = self.airLineTitles[row];
-        [dropdownMenu reloadComponent:component];
+    if (dropdownMenu.tag == 2) {
+        self.airlineName.text = self.airLineList[row];
+        [self.dropdownMenu closeAllComponentsAnimated:NO];
+    }else{
+        self.txt_airportName.text = self.airPortList[row];
+        [self.dropAirportMenu closeAllComponentsAnimated:NO];
+    }
+    
+    [dropdownMenu reloadComponent:component];
+    
 
 }
 

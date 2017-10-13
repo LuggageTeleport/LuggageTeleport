@@ -7,6 +7,7 @@
 //
 
 #import "BookingSummaryViewController.h"
+#import "AirPortToHotelViewController.h"
 
 @interface BookingSummaryViewController ()
 @property (weak, nonatomic) IBOutlet UIView *bookView;
@@ -32,4 +33,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)clicked_bookNow:(id)sender {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AirPortToHotelViewController *airportVC = [story instantiateViewControllerWithIdentifier:@"AirPortToHotelViewController"];
+    airportVC.isBookingNow = YES;
+    [self.navigationController pushViewController:airportVC animated:YES];
+}
 @end

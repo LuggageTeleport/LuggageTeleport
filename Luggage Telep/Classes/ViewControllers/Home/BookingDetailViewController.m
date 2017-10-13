@@ -96,6 +96,7 @@
     self.popupController.delegate = self;
     [self.popupController presentPopupControllerAnimated:YES];
 }
+
 #pragma mark - CNPPopupController Delegate
 
 - (void)popupController:(CNPPopupController *)controller didDismissWithButtonTitle:(NSString *)title {

@@ -10,4 +10,6 @@
 
 @interface AirPortToHotelViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isBookingNow;
+
 @end

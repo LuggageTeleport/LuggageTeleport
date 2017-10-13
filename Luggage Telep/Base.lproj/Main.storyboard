@@ -218,7 +218,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYW-ab-TZ2">
-                                                <rect key="frame" x="47" y="540" width="280" height="46"/>
+                                                <rect key="frame" x="47" y="520" width="280" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.84705882349999995" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -227,6 +227,14 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="clicked_Register:" destination="WyZ-tY-GD4" eventType="touchUpInside" id="PZg-rT-6pY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggn-CU-W8b">
+                                                <rect key="frame" x="15" y="10" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button" image="back.png"/>
+                                                <connections>
+                                                    <action selector="clicked_Back:" destination="WyZ-tY-GD4" eventType="touchUpInside" id="FIj-Gp-Ri0"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hX4-EA-KSN">
@@ -272,7 +280,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TjI-K2-ztg">
-                                                <rect key="frame" x="24" y="245" width="326" height="40"/>
+                                                <rect key="frame" x="24" y="250" width="326" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username/Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g8K-4Y-p0Z">
@@ -292,16 +300,8 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggn-CU-W8b">
-                                                <rect key="frame" x="15" y="10" width="20" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button" image="back.png"/>
-                                                <connections>
-                                                    <action selector="clicked_Back:" destination="WyZ-tY-GD4" eventType="touchUpInside" id="FIj-Gp-Ri0"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JzR-Pb-vGX">
-                                                <rect key="frame" x="24" y="295" width="326" height="40"/>
+                                                <rect key="frame" x="24" y="305" width="326" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <textField opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kIu-s9-CET">
@@ -321,32 +321,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U71-Ir-Xdu">
-                                                <rect key="frame" x="24" y="345" width="326" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <textField opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jIk-PZ-e5D">
-                                                        <rect key="frame" x="45" y="5" width="272" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="WyZ-tY-GD4" id="VHV-yn-eHK"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_address_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="nW6-2a-6wa">
-                                                        <rect key="frame" x="13" y="10" width="20" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4FZ-5z-JdG">
-                                                <rect key="frame" x="24" y="395" width="326" height="40"/>
+                                                <rect key="frame" x="24" y="360" width="326" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1RO-9Y-weS">
+                                                    <textField opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1RO-9Y-weS">
                                                         <rect key="frame" x="45" y="5" width="272" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <nil key="textColor"/>
@@ -364,10 +343,10 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Aa-Gn-BpS">
-                                                <rect key="frame" x="24" y="445" width="326" height="40"/>
+                                                <rect key="frame" x="24" y="415" width="326" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <textField opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUW-25-g9M">
+                                                    <textField opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rUW-25-g9M">
                                                         <rect key="frame" x="45" y="5" width="272" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <nil key="textColor"/>
@@ -397,7 +376,6 @@
                     <connections>
                         <outlet property="mScrollView" destination="kzU-3p-5jH" id="l8e-ti-Kgn"/>
                         <outlet property="registerBtn" destination="GYW-ab-TZ2" id="VsA-43-Cy0"/>
-                        <outlet property="txt_address" destination="jIk-PZ-e5D" id="gXy-lE-GZS"/>
                         <outlet property="txt_confirm" destination="rUW-25-g9M" id="dlT-Oz-lKL"/>
                         <outlet property="txt_email" destination="g8K-4Y-p0Z" id="WxE-fk-hDW"/>
                         <outlet property="txt_firstName" destination="9Lt-5V-XOE" id="lVz-mL-JBg"/>
@@ -491,7 +469,7 @@
                                                 <rect key="frame" x="18" y="11" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVJ-Cv-bPC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Active Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVJ-Cv-bPC">
                                                 <rect key="frame" x="53" y="11" width="139" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -502,7 +480,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <connections>
-                                                    <segue destination="gw0-yf-d8E" kind="push" id="g4K-kd-io8"/>
+                                                    <segue destination="gw0-yf-d8E" kind="push" id="Vxb-Xw-6Cw"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -694,7 +672,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="330" height="85"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <connections>
-                                                    <segue destination="Ddt-rH-xQc" kind="push" id="LhU-6e-ndx"/>
+                                                    <action selector="clicked_airport_hotel:" destination="xxt-zx-n1l" eventType="touchUpInside" id="OJg-9J-OXs"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -841,7 +819,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g8G-Rb-NgD">
+                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g8G-Rb-NgD" customClass="MKDropdownMenu">
                                                 <rect key="frame" x="35" y="10" width="306" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
@@ -861,13 +839,18 @@
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Ddt-rH-xQc" id="jDO-Kv-WWt"/>
+                                                    <outlet property="delegate" destination="Ddt-rH-xQc" id="ZYW-Ds-ecY"/>
+                                                </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-PG-SAL" customClass="MKDropdownMenu">
+                                            <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gb4-PG-SAL" customClass="MKDropdownMenu">
                                                 <rect key="frame" x="35" y="62" width="306" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
@@ -1202,6 +1185,7 @@
                     <navigationItem key="navigationItem" id="xA9-NJ-Px8"/>
                     <connections>
                         <outlet property="airlineName" destination="bsd-ZA-LXX" id="e9M-nK-9on"/>
+                        <outlet property="dropAirportMenu" destination="g8G-Rb-NgD" id="hZI-01-x6y"/>
                         <outlet property="dropdownMenu" destination="gb4-PG-SAL" id="rDJ-4h-GWD"/>
                         <outlet property="imageNO" destination="umJ-mJ-ahM" id="aa2-Rg-sTS"/>
                         <outlet property="image_YES" destination="1OV-Xf-I9F" id="NCM-OA-TM7"/>
@@ -1579,7 +1563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o4t-3A-5iB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6241" y="75"/>
+            <point key="canvasLocation" x="6316" y="-700"/>
         </scene>
         <!--Booking Summary View Controller-->
         <scene sceneID="a7V-OM-nYg">
@@ -1816,7 +1800,7 @@
                                             <color key="titleColor" red="0.1137254902" green="0.1450980392" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="aBS-ej-Fqn" kind="push" id="Bax-Q0-cx9"/>
+                                            <action selector="clicked_bookNow:" destination="5QC-Cn-JqU" eventType="touchUpInside" id="nAt-Sz-i7E"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1833,7 +1817,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsH-Mx-D51" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6240.8000000000002" y="757.87106446776613"/>
+            <point key="canvasLocation" x="6289" y="74"/>
         </scene>
         <!--Booking Detail View Controller-->
         <scene sceneID="0I9-mR-bL0">
@@ -2004,7 +1988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVF-yR-vEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7117.6000000000004" y="757.87106446776613"/>
+            <point key="canvasLocation" x="4670" y="-700"/>
         </scene>
         <!--My Profile View Controller-->
         <scene sceneID="8WX-mb-I37">
@@ -3677,7 +3661,6 @@
         <image name="home_top_bar.png" width="480" height="280"/>
         <image name="hotel-airport.png" width="45" height="82"/>
         <image name="hotel-hotel.png" width="71" height="71"/>
-        <image name="ic_address_blue.png" width="11" height="18"/>
         <image name="ic_airport.png" width="29" height="29"/>
         <image name="ic_bags_bg.png" width="480" height="280"/>
         <image name="ic_bagsimage_bg.png" width="460" height="462"/>

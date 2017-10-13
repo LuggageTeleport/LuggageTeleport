@@ -17,7 +17,6 @@
     Boolean isLastName;
     Boolean isEmail;
     Boolean isMobile;
-    Boolean isAddress;
     Boolean isPassword;
     Boolean isConfirm;
 }
@@ -26,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_lastName;
 @property (weak, nonatomic) IBOutlet UITextField *txt_email;
 @property (weak, nonatomic) IBOutlet UITextField *txt_mobile;
-@property (weak, nonatomic) IBOutlet UITextField *txt_address;
 @property (weak, nonatomic) IBOutlet UITextField *txt_password;
 @property (weak, nonatomic) IBOutlet UITextField *txt_confirm;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
@@ -43,7 +41,6 @@
     isLastName = false;
     isEmail = false;
     isMobile = false;
-    isAddress = false;
     isPassword = false;
     isConfirm = false;
     self.registerBtn.layer.cornerRadius = self.registerBtn.layer.frame.size.height/2;
@@ -59,7 +56,7 @@
 
 - (IBAction)clicked_Register:(id)sender {
     [self checkInputs];
-    if(isFirstName && isLastName && isEmail && isMobile && isAddress && isPassword){
+    if(isFirstName && isLastName && isEmail && isMobile && isPassword){
         
         [kACCOUNT_UTILS showWorking:self.view string:@"Creating Account"];
         
@@ -67,8 +64,7 @@
                                  @"password"     : _txt_password.text,
                                  @"firstname"    : _txt_firstName.text,
                                  @"lastname"     : _txt_lastName.text,
-                                 @"mobileNumber" : _txt_mobile.text,
-                                 @"address"      : _txt_address.text};
+                                 @"mobileNumber" : _txt_mobile.text};
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
@@ -168,19 +164,6 @@
         isMobile = true;
     }
     
-    if(_txt_address.text.length == 0){
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-                                                                                 message:@"Please input your address"
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:nil];
-        [alertController addAction:actionOk];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }else{
-        isAddress = true;
-    }
-    
     if(_txt_password.text.length == 0){
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
                                                                                  message:@"Please input your password"
@@ -237,7 +220,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSInteger nextTag = textField.tag + 1;
-    if (nextTag == 8) {
+    if (nextTag == 7) {
         [self.mScrollView setContentOffset:CGPointMake(0, -20) animated:true];
     }
     
@@ -248,8 +231,6 @@
     }else if(textField == self.txt_email) {
         [self.txt_mobile becomeFirstResponder];
     }else if(textField == self.txt_mobile) {
-        [self.txt_address becomeFirstResponder];
-    }else if(textField == self.txt_address) {
         [self.txt_password becomeFirstResponder];
     }else if(textField == self.txt_password) {
         [self.txt_confirm becomeFirstResponder];
@@ -273,13 +254,10 @@
         [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
     }
     else if (textField.tag == 5) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 40) animated:true];
-    }
-    else if (textField.tag == 6) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 70) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 30) animated:true];
     }
     else{
-        [self.mScrollView setContentOffset:CGPointMake(0, 90) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 60) animated:true];
     }
 }
 
