@@ -50,6 +50,7 @@
     _giftView.hidden = NO;
     _lightBG.hidden = NO;
 }
+
 - (IBAction)clicked_canel:(id)sender {
     [self.txt_promo resignFirstResponder];
     [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
