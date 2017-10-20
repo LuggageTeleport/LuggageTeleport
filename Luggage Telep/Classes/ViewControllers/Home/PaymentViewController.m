@@ -12,7 +12,6 @@
     Boolean *isGiftView;
     
 }
-
 @property (weak, nonatomic) IBOutlet UIButton *btn_cancel;
 @property (weak, nonatomic) IBOutlet UIButton *btn_add;
 @property (weak, nonatomic) IBOutlet UIView *giftView;
@@ -51,7 +50,6 @@
     _giftView.hidden = NO;
     _lightBG.hidden = NO;
 }
-
 - (IBAction)clicked_canel:(id)sender {
     [self.txt_promo resignFirstResponder];
     [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
@@ -70,19 +68,18 @@
 
 #pragma mark - TextViewDelegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSInteger nextTag = textField.tag + 1;
     if (nextTag == 2) {
         [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
     }
+    
     [textField resignFirstResponder];
 
     return NO;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField.tag == 1) {
         [self.mScrollView setContentOffset:CGPointMake(0, 200) animated:true];
     }

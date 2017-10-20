@@ -10,5 +10,6 @@ target 'Luggage Telep' do
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'MKDropdownMenu'
   pod 'CNPPopupController'
+  pod 'ActionSheetPicker-3.0'
 
 end

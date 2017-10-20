@@ -52,48 +52,48 @@
 }
 
 - (IBAction)clicked_Register:(id)sender {
-//    [self checkInputs];
-//    if(isuserName && isEmail && isPassword){
-//
-//        [kACCOUNT_UTILS showWorking:self.view string:@"Creating Account"];
-//
-//        NSDictionary *params = @{@"username"    : _txt_name.text,
-//                                 @"email"       : _txt_email.text,
-//                                 @"password"    : _txt_password.text
-//                                 };
-//
-//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-//
-//        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:REGISTER_URL parameters:params error:nil];
-//
-//        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//            if (error) {
-//                NSLog(@"Error: %@", error);
-//                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid Create" andBlock:nil];
-//            } else {
-//                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-//                NSLog(@"%@", responseObject);
-//                NSNumber *number = [responseObject objectForKey:@"success"];
-//                if( [number intValue] == 1){
+    [self checkInputs];
+    if(isuserName && isEmail && isPassword){
+        
+        [kACCOUNT_UTILS showWorking:self.view string:@"Creating Account"];
+
+        NSDictionary *params = @{@"username"    : _txt_name.text,
+                                 @"email"       : _txt_email.text,
+                                 @"password"    : _txt_password.text
+                                 };
+
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+
+        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:REGISTER_URL parameters:params error:nil];
+
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error);
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid Create" andBlock:nil];
+            } else {
+                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+                NSLog(@"%@", responseObject);
+                NSNumber *number = [responseObject objectForKey:@"success"];
+                if( [number intValue] == 1){
     
                     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
                     [self.navigationController pushViewController:mainVC animated:YES];
-//                }else{
-//                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
-//                                                                                             message:@"Username alredy exists"
-//                                                                                      preferredStyle:UIAlertControllerStyleAlert];
-//                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
-//                                                                       style:UIAlertActionStyleDefault
-//                                                                     handler:nil];
-//                    [alertController addAction:actionOk];
-//                    [self presentViewController:alertController animated:YES completion:nil];
-//                }
-//            }
-//        }];
-//        [dataTask resume];
-//    }
+                }else{
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Luggage Teleport"
+                                                                                             message:@"Username alredy exists"
+                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Ok"
+                                                                       style:UIAlertActionStyleDefault
+                                                                     handler:nil];
+                    [alertController addAction:actionOk];
+                    [self presentViewController:alertController animated:YES completion:nil];
+                }
+            }
+        }];
+        [dataTask resume];
+    }
 }
 
 - (void) checkInputs{

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BookingAuth.h"
 @interface BookingSummaryViewController : UIViewController
 
+@property BookingAuth *booking;
+@property (assign) NSInteger count_bags;
+
+- (void) initBooking:(BookingAuth *)booking;
+- (void) set_count_bags: (NSInteger) count;
 @end

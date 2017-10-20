@@ -33,6 +33,7 @@
 		04B8EA831F8AB54F00A76FDA /* ic_credit_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */; };
 		04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA811F8AB4FC00A76FDA /* ic_next.png */; };
 		04B8EA851F8AB54F00A76FDA /* ic_paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA821F8AB52400A76FDA /* ic_paypal.png */; };
+		04F8608A1F93D5A400325170 /* BookingAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F860891F93D5A400325170 /* BookingAuth.m */; };
 		22269B8E1F880E0000D9D21C /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22269B8D1F880E0000D9D21C /* TermsViewController.m */; };
 		22269B981F88266100D9D21C /* ic_plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 22269B8F1F88265200D9D21C /* ic_plane.png */; };
 		22269B991F88266100D9D21C /* ic_airport.png in Resources */ = {isa = PBXBuildFile; fileRef = 22269B901F88265300D9D21C /* ic_airport.png */; };
@@ -157,6 +158,8 @@
 		04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_credit_card.png; sourceTree = "<group>"; };
 		04B8EA811F8AB4FC00A76FDA /* ic_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_next.png; sourceTree = "<group>"; };
 		04B8EA821F8AB52400A76FDA /* ic_paypal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_paypal.png; sourceTree = "<group>"; };
+		04F860881F93D5A400325170 /* BookingAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookingAuth.h; sourceTree = "<group>"; };
+		04F860891F93D5A400325170 /* BookingAuth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingAuth.m; sourceTree = "<group>"; };
 		05F8D2F9BC6D200ABE1C4BEC /* Pods-Luggage Telep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luggage Telep.release.xcconfig"; path = "Pods/Target Support Files/Pods-Luggage Telep/Pods-Luggage Telep.release.xcconfig"; sourceTree = "<group>"; };
 		22269B8C1F880E0000D9D21C /* TermsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
 		22269B8D1F880E0000D9D21C /* TermsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				0472C5361F8B904E00B8C516 /* Constant.m */,
 				0472C5381F8BBFE800B8C516 /* APIs.h */,
 				0472C5391F8BBFE800B8C516 /* APIs.m */,
+				04F860881F93D5A400325170 /* BookingAuth.h */,
+				04F860891F93D5A400325170 /* BookingAuth.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -739,7 +744,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		66200428AE41D75760AED590 /* [CP] Copy Pods Resources */ = {
@@ -805,6 +810,7 @@
 				2266FEEB1F82B35500897673 /* HistoryViewController.m in Sources */,
 				22E7499C1F807CE00047B8ED /* main.m in Sources */,
 				0472C53E1F8BEF4200B8C516 /* AccountUtilities.m in Sources */,
+				04F8608A1F93D5A400325170 /* BookingAuth.m in Sources */,
 				041D16D91F8AB87E007E96BC /* PaymentViewController.m in Sources */,
 				22E749EB1F81FA1F0047B8ED /* MainViewController.m in Sources */,
 				22E749F21F8248910047B8ED /* LeftViewController.m in Sources */,

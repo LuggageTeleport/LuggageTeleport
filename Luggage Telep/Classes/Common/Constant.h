@@ -27,7 +27,8 @@
 
 //URL
 #define REGISTER_URL        @"https://infinite-garden-74421.herokuapp.com/user/signup"
-#define LOGIN_URL            @"https://infinite-garden-74421.herokuapp.com/user/signIN"
+#define LOGIN_URL           @"https://infinite-garden-74421.herokuapp.com/user/signIN"
+#define BOOKING_URL         @"https://infinite-garden-74421.herokuapp.com/api/sendmail"
 
 @interface Constant : NSObject
 

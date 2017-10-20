@@ -13,6 +13,8 @@
 #import "CNPPopupController.h"
 #import "BookingDetailViewController.h"
 #import "MainViewController.h"
+#import "BookingAuth.h"
+#import "NumberOfBagsViewController.h"
 
 @interface AirPortToHotelViewController ()<UITextFieldDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate, CNPPopupControllerDelegate>{
     Boolean isYes;
@@ -22,14 +24,15 @@
 
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropAirportMenu;
+@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropHotelMenu;
 @property (weak, nonatomic) IBOutlet UILabel *airlineName;
 @property (weak, nonatomic) IBOutlet UILabel *txt_airportName;
+@property (weak, nonatomic) IBOutlet UILabel *hotelName;
 
 @property (weak, nonatomic) IBOutlet UIView *nextButView;
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
-@property (weak, nonatomic) IBOutlet UITextField *txt_fightNumber;
-@property (weak, nonatomic) IBOutlet UITextField *txt_arrivalTime;
-@property (weak, nonatomic) IBOutlet UITextField *txt_hotelName;
+@property (weak, nonatomic) IBOutlet UITextField *txt_flightNumber;
+@property (weak, nonatomic) IBOutlet UITextField *txt_estimatedTime;
 @property (weak, nonatomic) IBOutlet UITextField *txt_guestName;
 @property (weak, nonatomic) IBOutlet UITextField *txt_hotelConfirmNumber;
 @property (weak, nonatomic) IBOutlet UITextField *txt_pickDate;
@@ -39,6 +42,7 @@
 
 @property (strong, nonatomic) NSArray<NSString *> *airLineList;
 @property (strong, nonatomic) NSArray<NSString *> *airPortList;
+@property (strong, nonatomic) NSArray<NSString *> *hotelList;
 @end
 
 @implementation AirPortToHotelViewController
@@ -51,13 +55,121 @@
     isNo = true;
     self.nextButView.layer.cornerRadius = self.nextButView.frame.size.height/2;
     
-    self.airLineList = @[@"Cathy",
-                         @"Qatar",
-                         @"Singapore"];
+    self.airLineList = @[@"Aer Lingus",
+                         @"Aeroméxico",
+                         @"Air Canada",
+                         @"Air China",
+                         @"Air France",
+                         @"Air India",
+                         @"Air New Zealand",
+                         @"Alaska Airlines",
+                         @"All Nippon Airways",
+                         @"American Airlines",
+                         @"American Eagle",
+                         @"Asiana Airlines",
+                         @"Avianca El Salvador",
+                         @"British Airways",
+                         @"Cathay Pacific",
+                         @"China Airlines",
+                         @"China Eastern Airlines",
+                         @"China Southern Airlines",
+                         @"Copa Airlines",
+                         @"Delta Air Lines",
+                         @"Delta Connection",
+                         @"Delta Shuttle",
+                         @"Emirates",
+                         @"Etihad Airways",
+                         @"EVA Air",
+                         @"Fiji Airways",
+                         @"Finnair",
+                         @"Frontier Airlines",
+                         @"Hawaiian Airlines",
+                         @"Hong Kong Airlines",
+                         @"Iberia",
+                         @"Japan Airlines",
+                         @"JetBlue Airways",
+                         @"KLM",
+                         @"Korean Air",
+                         @"Lufthansa",
+                         @"Philippine Airlines",
+                         @"Qantas",
+                         @"Scandinavian Airlines",
+                         @"Singapore Airlines",
+                         @"Southwest Airlines",
+                         @"Sun Country Airlines",
+                         @"Swiss International Air Lines",
+                         @"Thomas Cook Airlines",
+                         @"Turkish Airlines",
+                         @"United Airlines",
+                         @"United Express",
+                         @"Virgin America",
+                         @"Virgin Atlantic",
+                         @"Volaris",
+                         @"WestJet",
+                         @"WOW air",
+                         @"XL Airways France"];
     self.airPortList = @[@"San Francisco Airport Terminal 1",
                          @"San Francisco Airport Terminal 2",
                          @"San Francisco Airport Terminal 3",
                          @"San Francisco Airport International Terminal",];
+    self.hotelList = @[@"Aloft San Francisco Airport",
+                       @"Argonaut Hotel San Francisco",
+                       @"Casa Luna San Francisco",
+                       @"Clift San Francisco",
+                       @"Club Donatello Owners Association San Francisco",
+                       @"Courtyard by Marriott San Francisco Fisherman's Wharf",
+                       @"Embassy Suites by Hilton San Francisco Airport Waterfront",
+                       @"Fairmont Heritage Place, Ghirardelli Square San Francisco",
+                       @"Four Seasons Hotel & Residences San Francisco",
+                       @"Grand Hyatt San Francisco",
+                       @"Hilton San Francisco Airport Bayfront",
+                       @"Hilton San Francisco Financial District",
+                       @"Hilton San Francisco Union Square",
+                       @"Holiday Inn San Francisco-Civic Center",
+                       @"Holiday Inn San Francisco-Civic Center",
+                       @"Hotel Drisco",
+                       @"Hotel Fairmont",
+                       @"Hotel Nikko San Francisco",
+                       @"Hotel Vitale",
+                       @"Hotel Zelos San Francisco",
+                       @"Hotel Zetta San Francisco",
+                       @"Huntington Hotel",
+                       @"Hyatt Centric Fisherman's Wharf San Francisco",
+                       @"Hyatt Regency San Francisco Airport",
+                       @"Hyatt Regency SFO",
+                       @"Inn On Castro",
+                       @"Inter Continental SFO",
+                       @"JW Marriott SFO Union Square",
+                       @"Kimpton Sir Francis Drake",
+                       @"Le Méridien SFO",
+                       @"Loews Regency San Francisco",
+                       @"Marriott Fisherman's Wharf",
+                       @"Omni San Francisco",
+                       @"Palace Hotel, a Luxury Collection Hotel, SFO",
+                       @"Parc 55 San Francisco",
+                       @"Park Central Hotel San Francisco",
+                       @"Payne Mansion Hotel",
+                       @"Renaissance San Francisco Stanford Court Hotel",
+                       @"San Francisco Airport Marriott Waterfront",
+                       @"San Francisco Marriott Marquis",
+                       @"San Francisco Marriott Union Square",
+                       @"San Mateo Marriott San Francisco Airport",
+                       @"Serrano Hotel San Francisco",
+                       @"Sheraton Fisherman's Wharf San Francisco",
+                       @"Staybridge Suites San Francisco Airport",
+                       @"Taj Campton Place San Francisco",
+                       @"The Donatello San Francisco",
+                       @"The Marker San Francisco",
+                       @"The Metro Hotel San Francisco",
+                       @"The Orchard Garden Hotel San Francisco",
+                       @"The Ritz-Carlton Club, San Francisco",
+                       @"The Ritz-Carlton San Francisco",
+                       @"The St. Regis San Francisco",
+                       @"The Westin San Francisco Airport",
+                       @"The Westin St. Francis San Francisco on Union Square",
+                       @"University Club of San Francisco",
+                       @"W San Francisco",
+                       ];
     
     self.dropdownMenu.dropdownShowsTopRowSeparator = NO;
     self.dropdownMenu.dropdownShowsBottomRowSeparator = NO;
@@ -71,65 +183,13 @@
     self.dropAirportMenu.disclosureIndicatorImage.accessibilityElementsHidden = true;
     self.dropAirportMenu.backgroundDimmingOpacity = 0.0;
     
-    if(self.isBookingNow){
-        [self showPopupWithStyle:CNPPopupStyleActionSheet];
-    }
-}
-
-- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
+    self.dropHotelMenu.dropdownShowsTopRowSeparator = NO;
+    self.dropHotelMenu.dropdownShowsBottomRowSeparator = NO;
+    self.dropHotelMenu.dropdownShowsBorder = YES;
+    self.dropHotelMenu.disclosureIndicatorImage.accessibilityElementsHidden = true;
+    self.dropHotelMenu.backgroundDimmingOpacity = 0.0;
     
-    NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Edward" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle}];
-    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"LuggageTeleport Truck" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12], NSForegroundColorAttributeName : [UIColor darkGrayColor], NSParagraphStyleAttributeName : paragraphStyle}];
-    
-    UILabel *customLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
-    customLabel.numberOfLines = 0;
-    customLabel.attributedText = title;
-    
-    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    [button setTitle:@"Edward" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
-    button.selectionHandler = ^(CNPPopupButton *button){
-        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        BookingDetailViewController *bookVC = [story instantiateViewControllerWithIdentifier:@"BookingDetailViewController"];
-        [self.navigationController pushViewController:bookVC animated:YES];
-        [self.popupController dismissPopupControllerAnimated:YES];
-        NSLog(@"Block for button: %@", button.titleLabel.text);
-    };
-    
-    UILabel *companyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 150, 20)];
-    companyLabel.numberOfLines = 0;
-    companyLabel.attributedText = lineOne;
-    
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 55)];
-    UIImageView *userPhoto = [[UIImageView alloc] initWithImage:IMAGE(@"user_placeholder.png")];
-    userPhoto.frame = CGRectMake(5, 7, 40, 40);
-    
-    UIView *nameView =  [[UIView alloc] initWithFrame:CGRectMake(65, 7, 150, 40)];
-  
-    UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(220, 17, 65, 25)];
-    textFied.borderStyle = UITextBorderStyleNone;
-    textFied.text = @"";
-    textFied.borderStyle = UITextBorderStyleBezel;
-
-    
-    [nameView addSubview:button];
-    [nameView addSubview:companyLabel];
-    
-    [customView addSubview:userPhoto];
-    [customView addSubview:nameView];
-    [customView addSubview:textFied];
-    
-    self.popupController = [[CNPPopupController alloc] initWithContents:@[customView]];
-    self.popupController.theme = [CNPPopupTheme defaultTheme];
-    self.popupController.theme.popupStyle = popupStyle;
-    self.popupController.delegate = self;
-    [self.popupController presentPopupControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -162,27 +222,46 @@
 - (IBAction)clicked_Back:(id)sender {
     [self.dropdownMenu closeAllComponentsAnimated:NO];
     [self.dropAirportMenu closeAllComponentsAnimated:NO];
-//    [self.navigationController popViewControllerAnimated:YES];
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
-    [self.navigationController pushViewController:mainVC animated:NO];
+    [self.dropHotelMenu closeAllComponentsAnimated:NO];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+//    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+//    [self.navigationController pushViewController:mainVC animated:NO];
 }
+
+- (IBAction)clicked_Next:(id)sender {
+    BookingAuth *booking = [BookingAuth bookingWithAirPortName:_txt_airportName.text
+                                                andAirLineName:_airlineName.text
+                                               andFlightNumber:_txt_flightNumber.text
+                                              andEstimatedTime:_txt_estimatedTime.text
+                                                  andHotelName:_hotelName.text
+                                                  andGuestName:_txt_guestName.text
+                                         andHotelConfirmNumber:_txt_hotelConfirmNumber.text
+                                                 andPickupDate:_txt_pickDate.text
+                                               andDeliveryDate:_txt_deliveryDate.text
+                                           andOvernightStorate:isYes];
+    
+//    NSLog(booking.flightNumber);
+    
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    NumberOfBagsViewController *bagsVC = [story instantiateViewControllerWithIdentifier:@"NumberOfBagsViewController"];
+    [bagsVC initBooking:booking];
+    [self.navigationController pushViewController:bagsVC animated:YES];
+}
+
 
 #pragma mark - TextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSInteger nextTag = textField.tag + 1;
     if (nextTag == 9) {
-        [self.mScrollView setContentOffset:CGPointMake(0, -20) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
     }
 
-    if (textField == self.txt_airportName) {
-        [self.txt_fightNumber becomeFirstResponder];
-    }else if(textField == self.txt_fightNumber) {
-        [self.txt_arrivalTime becomeFirstResponder];
-    }else if(textField == self.txt_arrivalTime) {
-        [self.txt_hotelName becomeFirstResponder];
-    }else if(textField == self.txt_hotelName) {
+    if(textField == self.txt_flightNumber) {
+        [self.txt_estimatedTime becomeFirstResponder];
+    }else if(textField == self.txt_estimatedTime) {
         [self.txt_guestName becomeFirstResponder];
     }else if(textField == self.txt_guestName) {
         [self.txt_hotelConfirmNumber becomeFirstResponder];
@@ -216,10 +295,10 @@
         [self.mScrollView setContentOffset:CGPointMake(0, 70) animated:true];
     }
     else if (textField.tag == 7) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 110) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 120) animated:true];
     }
     else{
-        [self.mScrollView setContentOffset:CGPointMake(0, 190) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 200) animated:true];
     }
 }
 
@@ -232,6 +311,8 @@
 - (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component {
     if(dropdownMenu.tag == 2){
         return self.airLineList.count;
+    }else if (dropdownMenu.tag == 3){
+        return self.hotelList.count;
     }else{
         return self.airPortList.count;
     }
@@ -261,6 +342,14 @@
         shapeSelectView.textLabel.text = self.airLineList[row];
         
         return shapeSelectView;
+    }else if(dropdownMenu.tag == 3){
+        AirlineSelectView *shapeSelectView = (AirlineSelectView *)view;
+        if (shapeSelectView == nil || ![shapeSelectView isKindOfClass:[AirlineSelectView class]]) {
+            shapeSelectView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AirlineSelectView class]) owner:nil options:nil] firstObject];
+        }
+        shapeSelectView.textLabel.text = self.hotelList[row];
+        
+        return shapeSelectView;
     }else{
         AirlineSelectView *shapeSelectView = (AirlineSelectView *)view;
         if (shapeSelectView == nil || ![shapeSelectView isKindOfClass:[AirlineSelectView class]]) {
@@ -283,6 +372,9 @@
     if (dropdownMenu.tag == 2) {
         self.airlineName.text = self.airLineList[row];
         [self.dropdownMenu closeAllComponentsAnimated:NO];
+    }else if (dropdownMenu.tag == 3){
+        self.hotelName.text = self.hotelList[row];
+        [self.dropHotelMenu closeAllComponentsAnimated:NO];
     }else{
         self.txt_airportName.text = self.airPortList[row];
         [self.dropAirportMenu closeAllComponentsAnimated:NO];

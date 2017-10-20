@@ -41,7 +41,6 @@
 {
     return [tableView dequeueReusableCellWithIdentifier:@"historyCell"];
 }
-
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath
 {
     return kActivityCellHeight;

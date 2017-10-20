@@ -44,36 +44,36 @@
 }
 
 - (IBAction)clicked_Signin:(UIButton *)sender {
-//    [self checkInputs];
-//    if(isEmail && isPassword){
-//        [kACCOUNT_UTILS showWorking:self.view string:@"Logging In..."];
-//        NSDictionary *params = @{@"usernameOrEmail"     : _txt_username.text,
-//                                 @"password"     : _txt_password.text,};
-//
-//        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-//
-//        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:LOGIN_URL parameters:params error:nil];
-//
-//        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//            if (error) {
-//                NSLog(@"Error: %@", error);
-//                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid account" andBlock:nil];
-//            } else {
-//                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-//                NSLog(@"%@", responseObject);
-//                NSNumber *number = [responseObject objectForKey:@"success"];
-//                if( [number intValue] == 1){
+    [self checkInputs];
+    if(isEmail && isPassword){
+        [kACCOUNT_UTILS showWorking:self.view string:@"Logging In..."];
+        NSDictionary *params = @{@"usernameOrEmail"     : _txt_username.text,
+                                 @"password"     : _txt_password.text,};
+
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+
+        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:LOGIN_URL parameters:params error:nil];
+
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error);
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid account" andBlock:nil];
+            } else {
+                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+                NSLog(@"%@", responseObject);
+                NSNumber *number = [responseObject objectForKey:@"success"];
+                if( [number intValue] == 1){
                     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
                     [self.navigationController pushViewController:mainVC animated:YES];
-//                }else{
-//                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Authenication failed. User not found" dismiss:@"OK" sender:self];
-//                }
-//            }
-//        }];
-//        [dataTask resume];
-//    }
+                }else{
+                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Authenication failed. User not found" dismiss:@"OK" sender:self];
+                }
+            }
+        }];
+        [dataTask resume];
+    }
 }
 
 - (void) checkInputs{

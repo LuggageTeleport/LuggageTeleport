@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookingAuth.h"
 
 @interface NumberOfBagsViewController : UIViewController
+
+@property BookingAuth *booking;
+
+- (void) initBooking:(BookingAuth *)booking;
 
 @end

@@ -7,8 +7,9 @@
 //
 
 #import "NumberOfBagsViewController.h"
+#import "BookingSummaryViewController.h"
 
-#define bagsOfCount = 2;
+#define bagsOfCount = 1;
 
 @interface NumberOfBagsViewController (){
     int count;
@@ -26,8 +27,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    count = 1;
     _nextButView.layer.cornerRadius = _nextButView.layer.frame.size.height/2;
     
+}
+
+- (void) initBooking:(BookingAuth *)booking{
+    self.booking = booking;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,5 +55,12 @@
         count = 1;
     }
     self.lbl_countOfbags.text = [NSString stringWithFormat:@"%i", count];
+}
+- (IBAction)clicked_next:(id)sender {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    BookingSummaryViewController *bagsVC = [story instantiateViewControllerWithIdentifier:@"BookingSummaryViewController"];
+    [bagsVC initBooking:self.booking];
+    [bagsVC set_count_bags:count];
+    [self.navigationController pushViewController:bagsVC animated:YES];
 }
 @end
