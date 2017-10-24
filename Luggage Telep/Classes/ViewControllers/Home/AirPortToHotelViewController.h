@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AirPortToHotelViewController : UIViewController
+@interface AirPortToHotelViewController : UIViewController <UIActionSheetDelegate>
 
+
+@property (nonatomic, strong) NSDate    *selectedDate;
+@property (nonatomic, strong) NSDate    *selectedTime;
 
 
 @end

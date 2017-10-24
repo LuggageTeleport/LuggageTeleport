@@ -74,11 +74,13 @@
 }
 
 - (void) calculatePrice{
-    NSInteger subTotal = kEachBugPrice;
+    NSInteger subTotal = 0;
     float totalPrice = 0;
     if(self.count_bags > 2){
+        subTotal = kEachBugPrice + (self.count_bags-2)*10;
         totalPrice = kEachBugTax * (kEachBugPrice + 10*(self.count_bags-2));
     }else{
+        subTotal = kEachBugPrice;
         totalPrice = kEachBugTax * kEachBugPrice ;
     }
     float subTaxTotal = totalPrice - subTotal;
@@ -99,7 +101,7 @@
                              @"airline" : self.booking.airlineName,
                              @"flightNumber" : self.booking.flightNumber,
                              @"estTimeArrival" : self.booking.estiamtedTime,
-                             @"listHtlNameCity" : self.booking.hotelName,
+                              @"listHtlNameCity" : self.booking.hotelName,
                              @"guestName" : self.booking.guestName,
                              @"htlConfNumber" : self.booking.hotelConfirmNumber,
                              @"pickDate" : self.booking.pickupDate,
@@ -124,7 +126,6 @@
             }
         }];
         [dataTask resume];
-
 
 }
 

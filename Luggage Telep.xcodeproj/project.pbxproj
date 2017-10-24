@@ -25,9 +25,11 @@
 		043C7AE21F8D2C940021A88E /* AirlineSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C7AE11F8D2C940021A88E /* AirlineSelectView.m */; };
 		043C7AE41F8D2CCF0021A88E /* AirlineSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */; };
 		043C7AE71F8D4C4B0021A88E /* BookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C7AE61F8D4C4B0021A88E /* BookingDetailViewController.m */; };
+		044076161F9CFCFD00A81128 /* AddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044076151F9CFCFD00A81128 /* AddCardViewController.m */; };
 		0472C5371F8B904E00B8C516 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C5361F8B904E00B8C516 /* Constant.m */; };
 		0472C53A1F8BBFE800B8C516 /* APIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C5391F8BBFE800B8C516 /* APIs.m */; };
 		0472C53E1F8BEF4200B8C516 /* AccountUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */; };
+		047E05751F9EB2E100F35BB1 /* us_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 047E05741F9EB2DD00F35BB1 /* us_flag.png */; };
 		04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA7C1F8AB0D000A76FDA /* ic_check_box.jpg */; };
 		04B8EA7F1F8AB0F400A76FDA /* ic_uncheck_box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA7D1F8AB0E000A76FDA /* ic_uncheck_box.jpg */; };
 		04B8EA831F8AB54F00A76FDA /* ic_credit_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */; };
@@ -147,12 +149,15 @@
 		043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirlineSelectView.xib; sourceTree = "<group>"; };
 		043C7AE51F8D4C4B0021A88E /* BookingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookingDetailViewController.h; sourceTree = "<group>"; };
 		043C7AE61F8D4C4B0021A88E /* BookingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingDetailViewController.m; sourceTree = "<group>"; };
+		044076141F9CFCFD00A81128 /* AddCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCardViewController.h; sourceTree = "<group>"; };
+		044076151F9CFCFD00A81128 /* AddCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCardViewController.m; sourceTree = "<group>"; };
 		0472C5351F8B904E00B8C516 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		0472C5361F8B904E00B8C516 /* Constant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
 		0472C5381F8BBFE800B8C516 /* APIs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIs.h; sourceTree = "<group>"; };
 		0472C5391F8BBFE800B8C516 /* APIs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIs.m; sourceTree = "<group>"; };
 		0472C53C1F8BEF4200B8C516 /* AccountUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountUtilities.h; sourceTree = "<group>"; };
 		0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountUtilities.m; sourceTree = "<group>"; };
+		047E05741F9EB2DD00F35BB1 /* us_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = us_flag.png; sourceTree = "<group>"; };
 		04B8EA7C1F8AB0D000A76FDA /* ic_check_box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_check_box.jpg; sourceTree = "<group>"; };
 		04B8EA7D1F8AB0E000A76FDA /* ic_uncheck_box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_uncheck_box.jpg; sourceTree = "<group>"; };
 		04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_credit_card.png; sourceTree = "<group>"; };
@@ -384,6 +389,7 @@
 		22E749C01F80C7300047B8ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				047E05741F9EB2DD00F35BB1 /* us_flag.png */,
 				041EB4631F8D76C20055AAEB /* ic_feedback_bg.png */,
 				041EB45D1F8D6A110055AAEB /* ic_star_empty.png */,
 				041EB45C1F8D69FD0055AAEB /* ic_star_full.png */,
@@ -514,6 +520,8 @@
 				041EB4611F8D73200055AAEB /* BookingIDViewController.m */,
 				041EB4651F8D76F10055AAEB /* FeedbackViewController.h */,
 				041EB4661F8D76F10055AAEB /* FeedbackViewController.m */,
+				044076141F9CFCFD00A81128 /* AddCardViewController.h */,
+				044076151F9CFCFD00A81128 /* AddCardViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -606,7 +614,7 @@
 				TargetAttributes = {
 					22E749881F807CE00047B8ED = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					22E749A01F807CE00047B8ED = {
 						CreatedOnToolsVersion = 9.0;
@@ -650,6 +658,7 @@
 				04B8EA851F8AB54F00A76FDA /* ic_paypal.png in Resources */,
 				22E749991F807CE00047B8ED /* LaunchScreen.storyboard in Resources */,
 				2266FEF41F82E2FE00897673 /* bg.png in Resources */,
+				047E05751F9EB2E100F35BB1 /* us_flag.png in Resources */,
 				041F0CBD1F8B094E0020DEC4 /* ic_signature.png in Resources */,
 				041D16E01F8ABD95007E96BC /* ic_light_bg.png in Resources */,
 				22E749BF1F80AA5F0047B8ED /* Images.xcassets in Resources */,
@@ -744,7 +753,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66200428AE41D75760AED590 /* [CP] Copy Pods Resources */ = {
@@ -770,18 +779,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Luggage Telep/Pods-Luggage Telep-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/CNPPopupController/CNPPopupController.framework",
+				"${BUILT_PRODUCTS_DIR}/EMCCountryPickerController/EMCCountryPickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/JVFloatLabeledTextField/JVFloatLabeledTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MKDropdownMenu/MKDropdownMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNPPopupController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EMCCountryPickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVFloatLabeledTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKDropdownMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -803,6 +820,7 @@
 				043C7AE21F8D2C940021A88E /* AirlineSelectView.m in Sources */,
 				223664A11F8843480017809C /* BookingSummaryViewController.m in Sources */,
 				22E749E41F81F9790047B8ED /* StartViewController.m in Sources */,
+				044076161F9CFCFD00A81128 /* AddCardViewController.m in Sources */,
 				041EB4671F8D76F10055AAEB /* FeedbackViewController.m in Sources */,
 				2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */,
 				041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */,
@@ -988,16 +1006,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Z588KYGRM5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U37JYWRQ74;
 				INFOPLIST_FILE = "Luggage Telep/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d186f88-6f01-4418-b8b2-345520c93c79";
-				PROVISIONING_PROFILE_SPECIFIER = Luggage_Pro;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1009,16 +1027,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Z588KYGRM5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U37JYWRQ74;
 				INFOPLIST_FILE = "Luggage Telep/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Darren.Luggage-Telep";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d186f88-6f01-4418-b8b2-345520c93c79";
-				PROVISIONING_PROFILE_SPECIFIER = Luggage_Pro;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

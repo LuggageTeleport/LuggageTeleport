@@ -15,11 +15,16 @@
 #import "MainViewController.h"
 #import "BookingAuth.h"
 #import "NumberOfBagsViewController.h"
+#import "ActionSheetPicker.h"
+#import "AccountUtilities.h"
 
 @interface AirPortToHotelViewController ()<UITextFieldDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate, CNPPopupControllerDelegate>{
     Boolean isYes;
     Boolean isNo;
+    
+    Boolean isAirport, isAirline, isFlightNumber, isPickupDate, isEstimateTime, isHotelName, isHotelBooking, isHotelReservation, isDropDate;
 }
+@property (nonatomic, strong) AbstractActionSheetPicker *actionSheetPicker;
 @property (nonatomic, strong) CNPPopupController *popupController;
 
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropdownMenu;
@@ -28,15 +33,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *airlineName;
 @property (weak, nonatomic) IBOutlet UILabel *txt_airportName;
 @property (weak, nonatomic) IBOutlet UILabel *hotelName;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_pickDaate;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_dropDate;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_estimatedTime;
 
 @property (weak, nonatomic) IBOutlet UIView *nextButView;
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *txt_flightNumber;
-@property (weak, nonatomic) IBOutlet UITextField *txt_estimatedTime;
 @property (weak, nonatomic) IBOutlet UITextField *txt_guestName;
 @property (weak, nonatomic) IBOutlet UITextField *txt_hotelConfirmNumber;
-@property (weak, nonatomic) IBOutlet UITextField *txt_pickDate;
-@property (weak, nonatomic) IBOutlet UITextField *txt_deliveryDate;
 @property (weak, nonatomic) IBOutlet UIImageView *image_YES;
 @property (weak, nonatomic) IBOutlet UIImageView *imageNO;
 
@@ -53,6 +58,16 @@
     
     isYes = false;
     isNo = true;
+    isAirport = false;
+    isAirline= false;
+    isFlightNumber = false;
+    isPickupDate = false;
+    isEstimateTime = false;
+    isHotelName = false;
+    isHotelBooking = false;
+    isHotelReservation = false;
+    isDropDate = false;
+    
     self.nextButView.layer.cornerRadius = self.nextButView.frame.size.height/2;
     
     self.airLineList = @[@"Aer Lingus",
@@ -189,7 +204,8 @@
     self.dropHotelMenu.disclosureIndicatorImage.accessibilityElementsHidden = true;
     self.dropHotelMenu.backgroundDimmingOpacity = 0.0;
     
-    
+    self.selectedDate = [NSDate date];
+    self.selectedTime = [NSDate date];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -225,53 +241,174 @@
     [self.dropHotelMenu closeAllComponentsAnimated:NO];
     
     [self.navigationController popViewControllerAnimated:YES];
-//    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
-//    [self.navigationController pushViewController:mainVC animated:NO];
 }
 
 - (IBAction)clicked_Next:(id)sender {
     BookingAuth *booking = [BookingAuth bookingWithAirPortName:_txt_airportName.text
                                                 andAirLineName:_airlineName.text
                                                andFlightNumber:_txt_flightNumber.text
-                                              andEstimatedTime:_txt_estimatedTime.text
+                                              andEstimatedTime:_lbl_estimatedTime.text
                                                   andHotelName:_hotelName.text
                                                   andGuestName:_txt_guestName.text
                                          andHotelConfirmNumber:_txt_hotelConfirmNumber.text
-                                                 andPickupDate:_txt_pickDate.text
-                                               andDeliveryDate:_txt_deliveryDate.text
+                                                 andPickupDate:_lbl_pickDaate.text
+                                               andDeliveryDate:_lbl_dropDate.text
                                            andOvernightStorate:isYes];
     
-//    NSLog(booking.flightNumber);
+    [self checkBookingItem];
     
-    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    NumberOfBagsViewController *bagsVC = [story instantiateViewControllerWithIdentifier:@"NumberOfBagsViewController"];
-    [bagsVC initBooking:booking];
-    [self.navigationController pushViewController:bagsVC animated:YES];
+    if(isAirport == true && isAirline == true && isFlightNumber == true && isPickupDate == true && isEstimateTime == true && isHotelName == true && isHotelBooking == true && isHotelReservation == true && isDropDate == true){
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        NumberOfBagsViewController *bagsVC = [story instantiateViewControllerWithIdentifier:@"NumberOfBagsViewController"];
+        [bagsVC initBooking:booking];
+        [self.navigationController pushViewController:bagsVC animated:YES];
+    }
 }
 
+- (void) checkBookingItem{
+    if([_txt_airportName.text isEqualToString:@"Choose Airport for Pick up"]){
+        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Airport for Pick up" dismiss:@"OK" sender:self];
+    }else{
+        isAirport = true;
+        if([_airlineName.text isEqualToString:@"Airline"]){
+            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Airline for Pick up" dismiss:@"OK" sender:self];
+        }else{
+            isAirline = true;
+            if(_txt_flightNumber.text.length == 0){
+                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input the Flight Number" dismiss:@"OK" sender:self];
+            }else{
+                isFlightNumber = true;
+                if([_lbl_pickDaate.text isEqualToString:@"Pick up Date"]){
+                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Pick up Date" dismiss:@"OK" sender:self];
+                }else{
+                    isPickupDate = true;
+                    if([_lbl_estimatedTime.text isEqualToString:@"Estimated time of Arrival"]){
+                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Estimated time of Arrival" dismiss:@"OK" sender:self];
+                    }else{
+                        isEstimateTime = true;
+                        if([_hotelName.text isEqualToString:@"Hotel for Drop off"]){
+                            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Hotel" dismiss:@"OK" sender:self];
+                        }else{
+                            isHotelName = true;
+                            if(_txt_hotelConfirmNumber.text.length == 0){
+                                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Input Hotel Booking Reference" dismiss:@"OK" sender:self];
+                            }else{
+                                isHotelBooking = true;
+                                if(_txt_guestName.text.length == 0){
+                                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Input Guest Name" dismiss:@"OK" sender:self];
+                                }else{
+                                    isHotelReservation = true;
+                                    if([_lbl_dropDate.text isEqualToString:@"Drop off Date"]){
+                                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Drop Date" dismiss:@"OK" sender:self];
+                                    }else{
+                                        isDropDate = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#pragma mark - ActionSheet Delegate
+
+- (IBAction)clicked_pickUpDate:(id)sender {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    [minimumDateComponents setYear:2000];
+    NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
+    NSDate *maxDate = [NSDate date];
+    
+    _actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                       datePickerMode:UIDatePickerModeDate
+                                                         selectedDate:self.selectedDate
+                                                               target:self
+                                                               action:@selector(dateWasSelected:element:)
+                                                               origin:sender];
+    
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
+
+    self.actionSheetPicker.hideCancel = YES;
+    [self.actionSheetPicker showActionSheetPicker];
+}
+- (IBAction)clicked_dropOffDate:(id)sender {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    [minimumDateComponents setYear:2000];
+    NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
+    NSDate *maxDate = [NSDate date];
+    
+    _actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@""
+                                                       datePickerMode:UIDatePickerModeDate
+                                                         selectedDate:self.selectedDate
+                                                               target:self
+                                                               action:@selector(dateWasSelected1:element:)
+                                                               origin:sender];
+    
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
+    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
+    
+    self.actionSheetPicker.hideCancel = YES;
+    [self.actionSheetPicker showActionSheetPicker];
+}
+
+- (IBAction)estimatedTime:(id)sender {
+    NSInteger minuteInterval = 5;
+    //clamp date
+    NSInteger referenceTimeInterval = (NSInteger)[self.selectedTime timeIntervalSinceReferenceDate];
+    NSInteger remainingSeconds = referenceTimeInterval % (minuteInterval *60);
+    NSInteger timeRoundedTo5Minutes = referenceTimeInterval - remainingSeconds;
+    if(remainingSeconds>((minuteInterval*60)/2)) {/// round up
+        timeRoundedTo5Minutes = referenceTimeInterval +((minuteInterval*60)-remainingSeconds);
+    }
+    
+    self.selectedTime = [NSDate dateWithTimeIntervalSinceReferenceDate:(NSTimeInterval)timeRoundedTo5Minutes];
+    
+    ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"Select a time" datePickerMode:UIDatePickerModeTime selectedDate:self.selectedTime target:self action:@selector(timeWasSelected:element:) origin:sender];
+    datePicker.minuteInterval = minuteInterval;
+    [datePicker showActionSheetPicker];
+}
+
+- (void)dateWasSelected:(NSDate *)selectedDate element:(id)element {
+    self.selectedDate = selectedDate;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+
+    self.lbl_pickDaate.text = [dateFormatter stringFromDate:selectedDate];
+    self.lbl_pickDaate.textColor = [UIColor blackColor];
+}
+
+- (void)dateWasSelected1:(NSDate *)selectedDate element:(id)element {
+    self.selectedDate = selectedDate;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    self.lbl_dropDate.text = [dateFormatter stringFromDate:selectedDate];
+    self.lbl_dropDate.textColor = [UIColor blackColor];
+}
+
+-(void)timeWasSelected:(NSDate *)selectedTime element:(id)element {
+    self.selectedTime = selectedTime;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"h:mm a"];
+    self.lbl_estimatedTime.text = [dateFormatter stringFromDate:selectedTime];
+    self.lbl_estimatedTime.textColor = [UIColor blackColor];
+}
 
 #pragma mark - TextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    NSInteger nextTag = textField.tag + 1;
-    if (nextTag == 9) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
-    }
+    [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
 
-    if(textField == self.txt_flightNumber) {
-        [self.txt_estimatedTime becomeFirstResponder];
-    }else if(textField == self.txt_estimatedTime) {
-        [self.txt_guestName becomeFirstResponder];
-    }else if(textField == self.txt_guestName) {
-        [self.txt_hotelConfirmNumber becomeFirstResponder];
-    }else if(textField == self.txt_hotelConfirmNumber) {
-        [self.txt_pickDate becomeFirstResponder];
-    }else if(textField == self.txt_pickDate) {
-        [self.txt_deliveryDate becomeFirstResponder];
-    }else {
-        [textField resignFirstResponder];
-    }
+    [textField resignFirstResponder];
+
     return NO;
 }
 
@@ -283,22 +420,10 @@
         [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
     }
     else if (textField.tag == 3) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
-    }
-    else if (textField.tag == 4) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
-    }
-    else if (textField.tag == 5) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 20) animated:true];
-    }
-    else if (textField.tag == 6) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 70) animated:true];
-    }
-    else if (textField.tag == 7) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 120) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 60) animated:true];
     }
     else{
-        [self.mScrollView setContentOffset:CGPointMake(0, 200) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 110) animated:true];
     }
 }
 

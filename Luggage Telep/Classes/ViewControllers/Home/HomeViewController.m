@@ -72,6 +72,7 @@
     UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(220, 17, 65, 25)];
     textFied.borderStyle = UITextBorderStyleNone;
     textFied.text = @"";
+    textFied.enabled = false;
     textFied.borderStyle = UITextBorderStyleBezel;
     
     

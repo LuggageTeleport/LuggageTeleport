@@ -26,9 +26,11 @@
 #define PASSWORD                [LoginManager sharedInstance].password
 
 //URL
-#define REGISTER_URL        @"https://infinite-garden-74421.herokuapp.com/user/signup"
-#define LOGIN_URL           @"https://infinite-garden-74421.herokuapp.com/user/signIN"
-#define BOOKING_URL         @"https://infinite-garden-74421.herokuapp.com/api/sendmail"
+#define REGISTER_URL            @"https://infinite-garden-74421.herokuapp.com/user/signup"
+#define LOGIN_URL               @"https://infinite-garden-74421.herokuapp.com/user/signIN"
+#define BOOKING_URL             @"https://infinite-garden-74421.herokuapp.com/api/sendmail"
+#define DOWNLOAD_PROFILE_URL    @"https://infinite-garden-74421.herokuapp.com/user/getProfile"
+#define UPDATE_PROFILE_URL      @"https://infinite-garden-74421.herokuapp.com/user/update"
 
 @interface Constant : NSObject
 

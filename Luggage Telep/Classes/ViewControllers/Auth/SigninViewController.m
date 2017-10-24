@@ -64,6 +64,10 @@
                 NSLog(@"%@", responseObject);
                 NSNumber *number = [responseObject objectForKey:@"success"];
                 if( [number intValue] == 1){
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setValue:[responseObject objectForKey:@"token"] forKey:@"TOKEN"];
+                    [defaults synchronize];
+                    
                     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
                     [self.navigationController pushViewController:mainVC animated:YES];
@@ -81,12 +85,11 @@
         [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your email" dismiss:@"OK" sender:self];
     }else{
         isEmail = true;
-    }
-    
-    if(_txt_password.text.length == 0){
-        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your password" dismiss:@"OK" sender:self];
-    }else{
-        isPassword = true;
+        if(_txt_password.text.length == 0){
+            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your password" dismiss:@"OK" sender:self];
+        }else{
+            isPassword = true;
+        }
     }
 }
 

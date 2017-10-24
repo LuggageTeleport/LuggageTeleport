@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1501160704E958B84B34C562AFEDA470"
+               BlueprintIdentifier = "96082456BB26D4157B50AC33603ECF0F"
                BuildableName = "Pods_Luggage_Telep.framework"
                BlueprintName = "Pods-Luggage Telep"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1501160704E958B84B34C562AFEDA470"
+            BlueprintIdentifier = "96082456BB26D4157B50AC33603ECF0F"
             BuildableName = "Pods_Luggage_Telep.framework"
             BlueprintName = "Pods-Luggage Telep"
             ReferencedContainer = "container:Pods.xcodeproj">

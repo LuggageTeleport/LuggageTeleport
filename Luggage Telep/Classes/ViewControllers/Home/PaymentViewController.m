@@ -81,7 +81,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField.tag == 1) {
-        [self.mScrollView setContentOffset:CGPointMake(0, 200) animated:true];
+        [self.mScrollView setContentOffset:CGPointMake(0, 240) animated:true];
     }
 }
 

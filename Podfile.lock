@@ -16,26 +16,37 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - CNPPopupController (0.3.3)
+  - EMCCountryPickerController (1.3.3)
+  - JVFloatLabeledTextField (1.2.1)
   - LGSideMenuController (2.1.1)
   - MBProgressHUD (1.0.0)
   - MKDropdownMenu (1.4)
+  - SDWebImage (4.1.2):
+    - SDWebImage/Core (= 4.1.2)
+  - SDWebImage/Core (4.1.2)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - AFNetworking (~> 3.0)
   - CNPPopupController
+  - EMCCountryPickerController (~> 1.0)
+  - JVFloatLabeledTextField
   - LGSideMenuController
   - MBProgressHUD (~> 1.0.0)
   - MKDropdownMenu
+  - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
+  EMCCountryPickerController: ff6836b71d605ba8cfe5f087d2ceec51d89f3e46
+  JVFloatLabeledTextField: cfc44e3c4d493b2ed92ede8035e8e89c2912ba64
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
+  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
 
-PODFILE CHECKSUM: 4f3fbcc23f42f72562ec78e57fc3bc6590dccacd
+PODFILE CHECKSUM: 65a4bdbb58118a96a26481b661ac5af358e571c1
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

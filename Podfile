@@ -11,5 +11,8 @@ target 'Luggage Telep' do
   pod 'MKDropdownMenu'
   pod 'CNPPopupController'
   pod 'ActionSheetPicker-3.0'
-
+  pod 'JVFloatLabeledTextField'
+  pod 'EMCCountryPickerController', ‘~> 1.0'
+  pod 'SDWebImage', '~> 4.0'
 end
+
