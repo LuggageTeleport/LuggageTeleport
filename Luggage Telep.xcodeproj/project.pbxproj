@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041BC48B1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 041BC4891FA6AD1B00B32639 /* PaymentHeaderTableViewCell.m */; };
+		041BC48C1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041BC48A1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.xib */; };
+		041BC4901FA6CFC300B32639 /* PaymentVisaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 041BC48E1FA6CFC300B32639 /* PaymentVisaTableViewCell.m */; };
+		041BC4911FA6CFC300B32639 /* PaymentVisaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041BC48F1FA6CFC300B32639 /* PaymentVisaTableViewCell.xib */; };
 		041D16D91F8AB87E007E96BC /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D16D81F8AB87E007E96BC /* PaymentViewController.m */; };
 		041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041D16DB1F8AB952007E96BC /* AddPaymentViewController.m */; };
 		041D16DE1F8ABB0B007E96BC /* ic_visa_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 041D16DD1F8ABB08007E96BC /* ic_visa_card.png */; };
@@ -22,6 +26,8 @@
 		041F0CBE1F8B094E0020DEC4 /* ic_trait_status_bar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CBC1F8B094A0020DEC4 /* ic_trait_status_bar1.png */; };
 		041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */; };
 		041F0CC31F8B2F890020DEC4 /* ic_red_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */; };
+		04288B281FA638AE000276AF /* PaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04288B261FA638AE000276AF /* PaymentTableViewCell.m */; };
+		04288B291FA638AE000276AF /* PaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04288B271FA638AE000276AF /* PaymentTableViewCell.xib */; };
 		043C7AE21F8D2C940021A88E /* AirlineSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C7AE11F8D2C940021A88E /* AirlineSelectView.m */; };
 		043C7AE41F8D2CCF0021A88E /* AirlineSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */; };
 		043C7AE71F8D4C4B0021A88E /* BookingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C7AE61F8D4C4B0021A88E /* BookingDetailViewController.m */; };
@@ -124,6 +130,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041BC4881FA6AD1B00B32639 /* PaymentHeaderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentHeaderTableViewCell.h; sourceTree = "<group>"; };
+		041BC4891FA6AD1B00B32639 /* PaymentHeaderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentHeaderTableViewCell.m; sourceTree = "<group>"; };
+		041BC48A1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		041BC48D1FA6CFC300B32639 /* PaymentVisaTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentVisaTableViewCell.h; sourceTree = "<group>"; };
+		041BC48E1FA6CFC300B32639 /* PaymentVisaTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentVisaTableViewCell.m; sourceTree = "<group>"; };
+		041BC48F1FA6CFC300B32639 /* PaymentVisaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentVisaTableViewCell.xib; sourceTree = "<group>"; };
 		041D16D71F8AB87E007E96BC /* PaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		041D16D81F8AB87E007E96BC /* PaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		041D16DA1F8AB952007E96BC /* AddPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPaymentViewController.h; sourceTree = "<group>"; };
@@ -144,6 +156,9 @@
 		041F0CBF1F8B12AA0020DEC4 /* MyOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyOrderViewController.h; sourceTree = "<group>"; };
 		041F0CC01F8B12AA0020DEC4 /* MyOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyOrderViewController.m; sourceTree = "<group>"; };
 		041F0CC21F8B2F6C0020DEC4 /* ic_red_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_red_bubble.png; sourceTree = "<group>"; };
+		04288B251FA638AE000276AF /* PaymentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentTableViewCell.h; sourceTree = "<group>"; };
+		04288B261FA638AE000276AF /* PaymentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentTableViewCell.m; sourceTree = "<group>"; };
+		04288B271FA638AE000276AF /* PaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentTableViewCell.xib; sourceTree = "<group>"; };
 		043C7AE01F8D2C940021A88E /* AirlineSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirlineSelectView.h; sourceTree = "<group>"; };
 		043C7AE11F8D2C940021A88E /* AirlineSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirlineSelectView.m; sourceTree = "<group>"; };
 		043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirlineSelectView.xib; sourceTree = "<group>"; };
@@ -325,6 +340,15 @@
 				043C7AE01F8D2C940021A88E /* AirlineSelectView.h */,
 				043C7AE11F8D2C940021A88E /* AirlineSelectView.m */,
 				043C7AE31F8D2CCF0021A88E /* AirlineSelectView.xib */,
+				04288B251FA638AE000276AF /* PaymentTableViewCell.h */,
+				04288B261FA638AE000276AF /* PaymentTableViewCell.m */,
+				04288B271FA638AE000276AF /* PaymentTableViewCell.xib */,
+				041BC4881FA6AD1B00B32639 /* PaymentHeaderTableViewCell.h */,
+				041BC4891FA6AD1B00B32639 /* PaymentHeaderTableViewCell.m */,
+				041BC48A1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.xib */,
+				041BC48D1FA6CFC300B32639 /* PaymentVisaTableViewCell.h */,
+				041BC48E1FA6CFC300B32639 /* PaymentVisaTableViewCell.m */,
+				041BC48F1FA6CFC300B32639 /* PaymentVisaTableViewCell.xib */,
 			);
 			path = HistoryTableViewCell;
 			sourceTree = "<group>";
@@ -666,6 +690,7 @@
 				22D3304D1F87A21E009EE8EE /* ic_phone_blue.png in Resources */,
 				04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */,
 				22E749CF1F80C7300047B8ED /* air-hotel.png in Resources */,
+				041BC4911FA6CFC300B32639 /* PaymentVisaTableViewCell.xib in Resources */,
 				04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */,
 				041EB45B1F8D50880055AAEB /* user_placeholder.png in Resources */,
 				22E749D91F80C7300047B8ED /* ic_support.png in Resources */,
@@ -695,6 +720,7 @@
 				22E74A031F8286840047B8ED /* ic_phone.png in Resources */,
 				22269B991F88266100D9D21C /* ic_airport.png in Resources */,
 				22E749DE1F80FCF90047B8ED /* back.png in Resources */,
+				04288B291FA638AE000276AF /* PaymentTableViewCell.xib in Resources */,
 				22E749D71F80C7300047B8ED /* ic_payment.png in Resources */,
 				22E749941F807CE00047B8ED /* Main.storyboard in Resources */,
 				22E749D21F80C7300047B8ED /* hotel-airport.png in Resources */,
@@ -710,6 +736,7 @@
 				041F0CC31F8B2F890020DEC4 /* ic_red_bubble.png in Resources */,
 				2236649A1F8839710017809C /* ic_bagsimage_bg.png in Resources */,
 				22E74A021F8286840047B8ED /* ic_email.png in Resources */,
+				041BC48C1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.xib in Resources */,
 				22E749D51F80C7300047B8ED /* ic_logout.png in Resources */,
 				22269B9D1F88266100D9D21C /* ic_dropdownBox.png in Resources */,
 				22E74A041F8286840047B8ED /* ic_userphoto.png in Resources */,
@@ -821,11 +848,13 @@
 				223664A11F8843480017809C /* BookingSummaryViewController.m in Sources */,
 				22E749E41F81F9790047B8ED /* StartViewController.m in Sources */,
 				044076161F9CFCFD00A81128 /* AddCardViewController.m in Sources */,
+				041BC4901FA6CFC300B32639 /* PaymentVisaTableViewCell.m in Sources */,
 				041EB4671F8D76F10055AAEB /* FeedbackViewController.m in Sources */,
 				2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */,
 				041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */,
 				041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */,
 				2266FEEB1F82B35500897673 /* HistoryViewController.m in Sources */,
+				041BC48B1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.m in Sources */,
 				22E7499C1F807CE00047B8ED /* main.m in Sources */,
 				0472C53E1F8BEF4200B8C516 /* AccountUtilities.m in Sources */,
 				04F8608A1F93D5A400325170 /* BookingAuth.m in Sources */,
@@ -838,6 +867,7 @@
 				22D330531F87A9D2009EE8EE /* RegisterViewController.m in Sources */,
 				22E7498E1F807CE00047B8ED /* AppDelegate.m in Sources */,
 				2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */,
+				04288B281FA638AE000276AF /* PaymentTableViewCell.m in Sources */,
 				041EB4621F8D73200055AAEB /* BookingIDViewController.m in Sources */,
 				043C7AE71F8D4C4B0021A88E /* BookingDetailViewController.m in Sources */,
 				22E749EE1F8247930047B8ED /* HomeViewController.m in Sources */,

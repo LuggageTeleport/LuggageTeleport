@@ -8,10 +8,15 @@
 
 #import "BookingDetailViewController.h"
 #import "CNPPopupController.h"
+#import "Constant.h"
 
 @interface BookingDetailViewController () <CNPPopupControllerDelegate>
 
 @property (nonatomic, strong) CNPPopupController *popupController;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_airportName;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_arrivalTime;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_limitArrivalTime;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_cost;
 
 @end
 
@@ -20,11 +25,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.lbl_airportName.text = self.booking.airPortName;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"h:mm a"];
+    self.lbl_arrivalTime.text = [NSString stringWithFormat:@"%@ Arrival", [dateFormatter stringFromDate:self.booking.estiamtedTime]];
+    self.lbl_cost.text = [NSString stringWithFormat:@"US$ %.1f", self.priceTotal];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"h:mm a"];
+    NSDate *delayDate = [self.booking.estiamtedTime dateByAddingTimeInterval:45*60];
+    self.lbl_limitArrivalTime.text = [NSString stringWithFormat:@"No Later than %@", [df stringFromDate:delayDate]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) initBooking:(BookingAuth *)booking{
+    self.booking = booking;
+}
+
+- (void) initTotalPrice:(float) cost{
+    self.priceTotal = cost;
 }
 
 - (IBAction)clicked_Back:(id)sender {
@@ -34,8 +58,8 @@
 - (IBAction)clicked_contact:(id)sender {
     [self showPopupWithStyle:CNPPopupStyleActionSheet];
 }
+
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
-    
     NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
@@ -71,8 +95,6 @@
     UILabel *lineOneLabel = [[UILabel alloc] init];
     lineOneLabel.numberOfLines = 0;
     lineOneLabel.attributedText = lineOne;
-    
-    
     
     UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 55)];
 //    customView.backgroundColor = [UIColor lightGrayColor];

@@ -14,5 +14,6 @@ target 'Luggage Telep' do
   pod 'JVFloatLabeledTextField'
   pod 'EMCCountryPickerController', ‘~> 1.0'
   pod 'SDWebImage', '~> 4.0'
+  pod 'Stripe'
 end
 

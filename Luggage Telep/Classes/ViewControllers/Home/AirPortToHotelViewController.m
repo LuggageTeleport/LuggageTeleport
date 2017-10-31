@@ -21,7 +21,6 @@
 @interface AirPortToHotelViewController ()<UITextFieldDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate, CNPPopupControllerDelegate>{
     Boolean isYes;
     Boolean isNo;
-    
     Boolean isAirport, isAirline, isFlightNumber, isPickupDate, isEstimateTime, isHotelName, isHotelBooking, isHotelReservation, isDropDate;
 }
 @property (nonatomic, strong) AbstractActionSheetPicker *actionSheetPicker;
@@ -247,7 +246,7 @@
     BookingAuth *booking = [BookingAuth bookingWithAirPortName:_txt_airportName.text
                                                 andAirLineName:_airlineName.text
                                                andFlightNumber:_txt_flightNumber.text
-                                              andEstimatedTime:_lbl_estimatedTime.text
+                                              andEstimatedTime:self.selectedTime
                                                   andHotelName:_hotelName.text
                                                   andGuestName:_txt_guestName.text
                                          andHotelConfirmNumber:_txt_hotelConfirmNumber.text
@@ -318,7 +317,7 @@
 - (IBAction)clicked_pickUpDate:(id)sender {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
-    [minimumDateComponents setYear:2000];
+    [minimumDateComponents setYear:1970];
     NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
     NSDate *maxDate = [NSDate date];
     
@@ -330,7 +329,7 @@
                                                                origin:sender];
     
     [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
-    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
+//    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
 
     self.actionSheetPicker.hideCancel = YES;
     [self.actionSheetPicker showActionSheetPicker];
@@ -338,7 +337,7 @@
 - (IBAction)clicked_dropOffDate:(id)sender {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
-    [minimumDateComponents setYear:2000];
+    [minimumDateComponents setYear:1970];
     NSDate *minDate = [calendar dateFromComponents:minimumDateComponents];
     NSDate *maxDate = [NSDate date];
     
@@ -350,7 +349,6 @@
                                                                origin:sender];
     
     [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
-    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
     
     self.actionSheetPicker.hideCancel = YES;
     [self.actionSheetPicker showActionSheetPicker];

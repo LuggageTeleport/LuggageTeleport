@@ -60,17 +60,40 @@
                 NSLog(@"Error: %@", error);
                 [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid account" andBlock:nil];
             } else {
-                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-                NSLog(@"%@", responseObject);
                 NSNumber *number = [responseObject objectForKey:@"success"];
                 if( [number intValue] == 1){
+
                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    [defaults setValue:[responseObject objectForKey:@"token"] forKey:@"TOKEN"];
+                    [defaults setValue:[responseObject objectForKey:@"token"] forKey:KEY_TOKEN];
+                    [defaults setValue:_txt_password.text forKey:KEY_PASSWORD];
                     [defaults synchronize];
-                    
-                    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
-                    [self.navigationController pushViewController:mainVC animated:YES];
+                    NSString *token = [responseObject objectForKey:@"token"];
+
+                    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+                    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+                    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+                    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+                    NSDictionary *dict = @{@"":@""};
+                    [manager POST:DOWNLOAD_PROFILE_URL parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                        NSLog(@"success!");
+                        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+
+                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                        [defaults setValue:nil forKey:KEY_CARDNUMBER];
+                        NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
+                        if(array.count > 0){
+                            NSDictionary *dictionary = [array objectAtIndex:0];
+                            NSString *cardNumber = [dictionary objectForKey:@"cardNumber"];
+                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                            [defaults setValue:cardNumber forKey:KEY_CARDNUMBER];
+                        }
+                        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                        MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+                        [self.navigationController pushViewController:mainVC animated:YES];
+                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        NSLog(@"error: %@", error);
+                    }];
+
                 }else{
                     [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Authenication failed. User not found" dismiss:@"OK" sender:self];
                 }
@@ -117,7 +140,6 @@
         [self.mScrollView setContentOffset:CGPointMake(0, 50) animated:true];
     }
 }
-
 
 #pragma mark - Utility Handler -
 - (BOOL)validateEmailWithString:(NSString*)email {

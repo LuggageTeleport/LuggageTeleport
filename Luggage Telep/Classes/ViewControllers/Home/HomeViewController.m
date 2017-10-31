@@ -33,6 +33,14 @@
 //    [self.mScrollView setContentOffset:CGPointMake(0, 20) animated:true];
 }
 
+- (void) initBooking:(BookingAuth *)booking{
+    self.booking = booking;
+}
+
+- (void) initTotalPrice:(float) cost{
+    self.priceTotal = cost;
+}
+
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
     
     NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
@@ -54,6 +62,8 @@
     button.selectionHandler = ^(CNPPopupButton *button){
         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         BookingDetailViewController *bookVC = [story instantiateViewControllerWithIdentifier:@"BookingDetailViewController"];
+        [bookVC initBooking:self.booking];
+        [bookVC initTotalPrice:self.priceTotal];
         [self.navigationController pushViewController:bookVC animated:YES];
         [self.popupController dismissPopupControllerAnimated:YES];
         NSLog(@"Block for button: %@", button.titleLabel.text);
@@ -86,6 +96,7 @@
     self.popupController = [[CNPPopupController alloc] initWithContents:@[customView]];
     self.popupController.theme = [CNPPopupTheme defaultTheme];
     self.popupController.theme.popupStyle = popupStyle;
+    self.popupController.theme.shouldDismissOnBackgroundTouch = false;
     self.popupController.delegate = self;
     [self.mScrollView setContentOffset:CGPointMake(0, 95) animated:true];
     [self.popupController presentPopupControllerAnimated:YES];

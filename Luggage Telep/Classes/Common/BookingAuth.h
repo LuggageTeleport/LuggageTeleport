@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString     *airPortName;
 @property (nonatomic, strong) NSString     *airlineName;
 @property (nonatomic, strong) NSString     *flightNumber;
-@property (nonatomic, strong) NSString     *estiamtedTime;
+@property (nonatomic, strong) NSDate       *estiamtedTime;
 @property (nonatomic, strong) NSString     *hotelName;
 @property (nonatomic, strong) NSString     *guestName;
 @property (nonatomic, strong) NSString     *hotelConfirmNumber;
@@ -23,8 +23,8 @@
 @property (nonatomic, strong) NSString     *deliveryDate;
 @property  (assign) BOOL        overnightStorage;
 
-- (id) initWithAirPortName:(NSString *)airportName  andAirLineName:(NSString *)airlineName andFlightNumber:(NSString *)flightNumber andEstimatedTime:(NSString *)estimatedTime andHotelName:(NSString *)hotelName andGuestName:(NSString *)guestName andHotelConfirmNumber:(NSString *)hotelConfirm andPickupDate:(NSString *)pickedDate andDeliveryDate:(NSString *)deliveryDate andOvernightStorate:(BOOL)overnightStorate;
+- (id) initWithAirPortName:(NSString *)airportName  andAirLineName:(NSString *)airlineName andFlightNumber:(NSString *)flightNumber andEstimatedTime:(NSDate *)estimatedTime andHotelName:(NSString *)hotelName andGuestName:(NSString *)guestName andHotelConfirmNumber:(NSString *)hotelConfirm andPickupDate:(NSString *)pickedDate andDeliveryDate:(NSString *)deliveryDate andOvernightStorate:(BOOL)overnightStorate;
 
-+ (instancetype) bookingWithAirPortName:(NSString *)airportName  andAirLineName:(NSString *)airlineName andFlightNumber:(NSString *)flightNumber andEstimatedTime:(NSString *)estimatedTime andHotelName:(NSString *)hotelName andGuestName:(NSString *)guestName andHotelConfirmNumber:(NSString *)hotelConfirm andPickupDate:(NSString *)pickedDate andDeliveryDate:(NSString *)deliveryDate andOvernightStorate:(BOOL)overnightStorate;
++ (instancetype) bookingWithAirPortName:(NSString *)airportName  andAirLineName:(NSString *)airlineName andFlightNumber:(NSString *)flightNumber andEstimatedTime:(NSDate *)estimatedTime andHotelName:(NSString *)hotelName andGuestName:(NSString *)guestName andHotelConfirmNumber:(NSString *)hotelConfirm andPickupDate:(NSString *)pickedDate andDeliveryDate:(NSString *)deliveryDate andOvernightStorate:(BOOL)overnightStorate;
 
 @end

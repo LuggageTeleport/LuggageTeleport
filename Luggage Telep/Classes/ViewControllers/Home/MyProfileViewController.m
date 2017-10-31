@@ -16,13 +16,13 @@
 @interface MyProfileViewController ()<UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>{
     UIImagePickerController *_imagePicker;
     UIActionSheet *_actionSheet; //show Photo Menu
-    UIImage *_image;
+    UIImage     *_image;
     NSString    *filePath;
     NSString    *token;
     NSString    *userName;
     NSString    *userImagePath;
     NSData      *userImageData;
-    
+    NSString    *userPassword;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *txt_firstName;
@@ -46,6 +46,7 @@
     _editBtn.layer.cornerRadius = _editBtn.layer.frame.size.height/2;
     _saveBtn.layer.cornerRadius = _saveBtn.layer.frame.size.height/2;
     _img_userProfile.layer.cornerRadius = _img_userProfile.frame.size.height/2;
+    
 }
 
 
@@ -59,8 +60,9 @@
     [kACCOUNT_UTILS showWorking:self.view string:@"Downloading Profile.."];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *token = [defaults stringForKey:@"TOKEN"];
-    
+    NSString *token = [defaults stringForKey:KEY_TOKEN];
+    userPassword = [defaults stringForKey:KEY_PASSWORD];
+
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -73,6 +75,7 @@
         _txt_firstName.text = [[responseObject objectForKey:@"profile"] objectForKey:@"firstname"];
         _txt_lastName.text = [[responseObject objectForKey:@"profile"] objectForKey:@"lastname"];
         _txt_phone.text = [[responseObject objectForKey:@"profile"] objectForKey:@"phoneNumber"];
+        _txt_password.text = userPassword;
         userName = [[responseObject objectForKey:@"profile"] objectForKey:@"username"];
         userImagePath = [NSString stringWithFormat:@"https://infinite-garden-74421.herokuapp.com/%@", [[responseObject objectForKey:@"profile"] objectForKey:@"avatar"]];
         [_img_userProfile sd_setImageWithURL:[NSURL URLWithString:userImagePath]
@@ -82,7 +85,6 @@
         NSLog(@"error: %@", error);
         [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
     }];
-    
 }
 
 - (IBAction)clicked_Back:(id)sender {
@@ -153,9 +155,9 @@
 - (IBAction)clicked_saveProfile:(id)sender {
     [kACCOUNT_UTILS showWorking:self.view string:@"Updating Profile.."];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    token = [defaults stringForKey:@"TOKEN"];
-    
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    token = [defaults stringForKey:KEY_TOKEN];
+//    
 //    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
 //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
 //    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -187,7 +189,9 @@
 - (void) uploadImage{
     
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:UPDATE_PROFILE_URL parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:userImageData name:@"avatar" fileName:@"123" mimeType:@"image/jpeg"];
+        if(userImageData){
+            [formData appendPartWithFileData:userImageData name:@"avatar" fileName:@"123" mimeType:@"image/jpeg"];
+        }
         [formData appendPartWithFormData:[_txt_password.text dataUsingEncoding:NSUTF8StringEncoding] name:@"password"];
         [formData appendPartWithFormData:[_txt_email.text dataUsingEncoding:NSUTF8StringEncoding] name:@"email"];
         [formData appendPartWithFormData:[userName dataUsingEncoding:NSUTF8StringEncoding] name:@"username"];
@@ -195,7 +199,9 @@
         [formData appendPartWithFormData:[_txt_firstName.text dataUsingEncoding:NSUTF8StringEncoding] name:@"firstname"];
         [formData appendPartWithFormData:[_txt_lastName.text dataUsingEncoding:NSUTF8StringEncoding] name:@"lastname"];
     } error:nil];
-
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults stringForKey:KEY_TOKEN];
     [request setValue:token forHTTPHeaderField:@"Authorization"];
 
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -206,8 +212,6 @@
                   uploadTaskWithStreamedRequest:request
                   progress:^(NSProgress * _Nonnull uploadProgress) {
                       dispatch_async(dispatch_get_main_queue(), ^{
-                          //Update the progress view
-//                          [progressView setProgress:uploadProgress.fractionCompleted];
                           NSLog(@"*****====");
                       });
                   }

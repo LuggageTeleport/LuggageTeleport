@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookingAuth.h"
 
 @interface HomeViewController : UIViewController
 
 @property (nonatomic, assign) BOOL isBookingNow;
+
+@property BookingAuth   *booking;
+@property float         priceTotal;
+
+- (void) initBooking:(BookingAuth *)booking;
+- (void) initTotalPrice:(float) cost;
 
 @end

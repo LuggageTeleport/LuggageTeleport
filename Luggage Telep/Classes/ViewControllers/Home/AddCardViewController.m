@@ -11,12 +11,16 @@
 #import "EMCCountryPickerController.h"
 #import "UIImage+UIImage_EMCImageResize.h"
 #import "EMCCountryManager.h"
+#import "AccountUtilities.h"
+#import "MainViewController.h"
+#import <AFNetworking/AFNetworking.h>
 
-
-#define DATE_MAXLENGTH  4
+#define DATE_MAXLENGTH  5
 #define CVV_MAXLENGTH   3
 #define ZIPCODE_MAXLENGTH   10
-@interface AddCardViewController ()<UITextFieldDelegate>
+@interface AddCardViewController ()<UITextFieldDelegate>{
+    BOOL isCardNumber, isExpDate, isCVV, isCountry, isZipCode;
+}
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *txt_cardNumber;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *txt_expDate;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *txt_cvv;
@@ -36,6 +40,22 @@
     _txt_expDate.floatingLabelFont = [UIFont systemFontOfSize:12.f];
     _txt_cvv.floatingLabelFont = [UIFont systemFontOfSize:12.f];
     _txt_zipCode.floatingLabelFont = [UIFont systemFontOfSize:12.f];
+    
+    UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
+    [keyboardToolbar sizeToFit];
+    UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                      target:nil action:nil];
+    UIBarButtonItem *doneBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                      target:self action:@selector(yourTextViewDoneButtonPressed)];
+    keyboardToolbar.items = @[flexBarButton, doneBarButton];
+    self.txt_zipCode.inputAccessoryView = keyboardToolbar;
+}
+
+-(void)yourTextViewDoneButtonPressed
+{
+    [self.txt_zipCode resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,16 +65,12 @@
 
 - (IBAction)clicked_Back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-//    if (self)
-//    {
-//        [self loadDefaults];
-//    }
     
     return self;
 }
@@ -85,11 +101,6 @@
 
         countryPicker.flagSize = 50;
 
-        
-//        if (![self.allCountriesSwitch isOn])
-//        {
-//            countryPicker.availableCountryCodes = [NSSet setWithObjects:@"IT", @"ES", @"US", @"FR", nil];
-//        }
     }
 }
 
@@ -110,13 +121,114 @@
     BOOL returnKey = [string rangeOfString:@"\n"].location != NSNotFound;
     
     if(textField.tag == 1){
+        if(newLength == 3){
+            if ([string isEqualToString:@""]) {
+                NSLog(@"Backspace");
+            }else{
+                NSMutableString *mu = [NSMutableString stringWithString:textField.text];
+                [mu insertString:@"/" atIndex:2];
+                textField.text = mu;
+            }
+        }
         return newLength <= DATE_MAXLENGTH || returnKey;
     }else if(textField.tag == 2){
         return newLength <= CVV_MAXLENGTH || returnKey;
-    }else{
+    }else if(textField.tag == 3){
         return newLength <= ZIPCODE_MAXLENGTH || returnKey;
+    }else{
+        return newLength <= 16 || returnKey;
     }
-    
+}
+
+#pragma mark - SaveButton Delegate
+
+- (IBAction)clicked_save:(id)sender {
+    [self checkInput];
+    if(isCardNumber && isExpDate && isCVV && isCountry && isZipCode){
+        [kACCOUNT_UTILS showWorking:self.view string:@"Creating Credit Card"];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *token = [defaults stringForKey:KEY_TOKEN];
+        
+        AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+        
+        NSDictionary *params = @{@"cardInfo": @{
+                                         @"cardNumber": _txt_cardNumber.text,
+                                         @"expDate": _txt_expDate.text,
+                                         @"cvv": _txt_cvv.text,
+                                         @"country": _countryLabel.text,
+                                         @"zipCode": _txt_zipCode.text
+                                         }};
+        
+        [manager POST:ADD_CARD_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"success!");
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *token = [defaults stringForKey:KEY_TOKEN];
+            
+            AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+            NSDictionary *dict = @{@"":@""};
+            [manager POST:DOWNLOAD_PROFILE_URL parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                NSLog(@"success!");
+                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Success Create Credit Card" dismiss:@"OK" sender:self];
+                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setValue:nil forKey:KEY_CARDNUMBER];
+                NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
+                if(array.count > 0){
+                    NSDictionary *dictionary = [array objectAtIndex:0];
+                    NSString *cardNumber = [dictionary objectForKey:@"cardNumber"];
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setValue:cardNumber forKey:KEY_CARDNUMBER];
+                }
+                UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+                [self.navigationController pushViewController:mainVC animated:YES];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"error: %@", error);
+            }];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error: %@", error);
+            [kACCOUNT_UTILS showFailure:self.view withString:@"Failed Creadit Card" andBlock:nil];
+            [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+        }];
+    }
+}
+
+- (void) checkInput{
+    if(_txt_cardNumber.text.length == 0){
+        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your Card Number" dismiss:@"OK" sender:self];
+    }else{
+        isCardNumber = true;
+        if(_txt_expDate.text.length == 0){
+            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your card expiration date" dismiss:@"OK" sender:self];
+        }else{
+            isExpDate = true;
+            if(_txt_cvv.text.length == 0){
+                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your card CVV" dismiss:@"OK" sender:self];
+            }else{
+                isCVV = true;
+                if(_countryLabel.text.length == 0){
+                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your country" dismiss:@"OK" sender:self];
+                }else{
+                    isCountry = true;
+                    if(_txt_zipCode.text.length == 0){
+                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your country zip code" dismiss:@"OK" sender:self];
+                    }else{
+                        isZipCode = true;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
