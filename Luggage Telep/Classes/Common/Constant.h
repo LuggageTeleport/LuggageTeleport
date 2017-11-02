@@ -32,6 +32,7 @@
 #define DOWNLOAD_PROFILE_URL    @"https://infinite-garden-74421.herokuapp.com/user/getProfile"
 #define UPDATE_PROFILE_URL      @"https://infinite-garden-74421.herokuapp.com/user/update"
 #define ADD_CARD_URL            @"https://infinite-garden-74421.herokuapp.com/user/addCard"
+#define TRANSFER_MONEY_URL      @"https://infinite-garden-74421.herokuapp.com/payment/chargeCreditCard"
 
 #define KEY_TOKEN               @"key_token"
 #define KEY_PASSWORD            @"key_password"
@@ -43,6 +44,9 @@
 #define KEY_LASTNAME            @"key_lastname"
 #define KEY_PHONENUMBER         @"key_phonenumber"
 #define KEY_CARDNUMBER          @"key_cardnumber"
+#define KEY_EXPDATE             @"key_expirationDate"
+#define KEY_CVV                 @"key_cvv"
+#define KEY_TOTALMONEY          @"key_totalmoney"
 
 @interface Constant : NSObject
 

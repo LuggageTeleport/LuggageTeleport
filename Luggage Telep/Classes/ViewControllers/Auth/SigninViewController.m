@@ -80,12 +80,16 @@
 
                         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                         [defaults setValue:nil forKey:KEY_CARDNUMBER];
+                        [defaults setValue:nil forKey:KEY_CVV];
+                        [defaults setValue:nil forKey:KEY_EXPDATE];
                         NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
                         if(array.count > 0){
                             NSDictionary *dictionary = [array objectAtIndex:0];
                             NSString *cardNumber = [dictionary objectForKey:@"cardNumber"];
                             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                             [defaults setValue:cardNumber forKey:KEY_CARDNUMBER];
+                            [defaults setValue:[dictionary objectForKey:@"cvv"] forKey:KEY_CVV];
+                            [defaults setValue:[dictionary objectForKey:@"expDate"] forKey:KEY_EXPDATE];
                         }
                         UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                         MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];

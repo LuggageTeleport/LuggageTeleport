@@ -16,8 +16,13 @@
 #import "AirlineSelectView.h"
 #import "AddCardViewController.h"
 
+
 #define kEachBugPrice    30
-#define kEachBugTax     1.09
+#define kEachBugTax     1.0875
+
+#define kClientName         @"44RuqL5sT3"
+#define kTransactionKey     @"2qJR5f5rN77NeA2C"
+#define kClientKey          @"3f8SLz3X26Ccr4fEsqw45c3LhhRBS29TC83ebR4BXYUzK5u4yMr5ht6xTb3L3Fp6"
 
 @interface BookingSummaryViewController ()<UIScrollViewDelegate, UITextFieldDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate>{
     NSString    *visa_cardNumber;
@@ -55,6 +60,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *number = [defaults objectForKey:KEY_CARDNUMBER];
     if(number){
+        visa_cardNumber = number;
         NSString *cardName = [NSString stringWithFormat:@"%@", [number substringWithRange:NSMakeRange(number.length-4, 4)]];
         self.visaList = @[[NSString stringWithFormat:@"Visa XXXX-XXXX-XXXX-%@", cardName], @"Add Payment"];
     }else{
@@ -125,35 +131,27 @@
 }
 
 - (IBAction)clicked_bookNow:(id)sender {
+
     if([_lbl_visaCode.text isEqualToString:@"Payment Number"]){
        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please select the Payment Number" dismiss:@"OK" sender:self];
     }else{
         [kACCOUNT_UTILS showWorking:self.view string:@"Booking..."];
-        NSDictionary *params = @{@"listAirNameTml" : self.booking.airPortName,
-                                 @"airline" : self.booking.airlineName,
-                                 @"flightNumber" : self.booking.flightNumber,
-                                 @"estTimeArrival" : self.booking.estiamtedTime,
-                                 @"listHtlNameCity" : self.booking.hotelName,
-                                 @"guestName" : self.booking.guestName,
-                                 @"htlConfNumber" : self.booking.hotelConfirmNumber,
-                                 @"pickDate" : self.booking.pickupDate,
-                                 @"overngtStorage" : self.booking.overnightStorage?@true:@false,
-                                 @"deliveryDate" : self.booking.deliveryDate,
-                                 };
+        
         
         if([_lbl_visaCode.text isEqualToString:@"Add Payment"]){
             [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please add the credit card" dismiss:@"OK" sender:self];
         }else{
             NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
             AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-            
+            NSDictionary *params = @{@"":@""};
             NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:BOOKING_URL parameters:params error:nil];
-            
+
             NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"Error: %@", error);
                     [kACCOUNT_UTILS showFailure:self.view withString:@"Failed to send mail" andBlock:nil];
                 } else{
+                    [self sendTransaction];
                     UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     HomeViewController *homeVC = [story instantiateViewControllerWithIdentifier:@"HomeViewController"];
                     homeVC.isBookingNow = YES;
@@ -165,6 +163,33 @@
             [dataTask resume];
         }
     }
+}
+
+- (void) sendTransaction {
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *params = @{@"amount": [NSString stringWithFormat:@"%.01f", totalPrice],
+                             @"cardNumber": visa_cardNumber,
+                             @"expDate":  [defaults objectForKey:KEY_EXPDATE],
+                             @"cardCode": [defaults objectForKey:KEY_CVV]
+                             };
+
+    [manager POST:TRANSFER_MONEY_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"success!");
+        
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        NSString *token = [defaults stringForKey:KEY_TOKEN];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [kACCOUNT_UTILS showFailure:self.view withString:@"Failed Creadit Card" andBlock:nil];
+        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+    }];
+
+
 }
 
 #pragma mark - MKDropdownMenuDataSource

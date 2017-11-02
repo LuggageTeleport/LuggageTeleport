@@ -21,9 +21,10 @@ PODS:
   - LGSideMenuController (2.1.1)
   - MBProgressHUD (1.0.0)
   - MKDropdownMenu (1.4)
-  - SDWebImage (4.1.2):
-    - SDWebImage/Core (= 4.1.2)
-  - SDWebImage/Core (4.1.2)
+  - SDWebImage (4.2.1):
+    - SDWebImage/Core (= 4.2.1)
+  - SDWebImage/Core (4.2.1)
+  - Stripe (11.4.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.0.0)
   - MKDropdownMenu
   - SDWebImage (~> 4.0)
+  - Stripe
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
@@ -45,8 +47,9 @@ SPEC CHECKSUMS:
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
-  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
+  SDWebImage: 1fa4c9edf525b744f002db89f3f5a38b3cd4c541
+  Stripe: dc8396620ab86a36221fc8df72ba9f5d317d174c
 
-PODFILE CHECKSUM: 65a4bdbb58118a96a26481b661ac5af358e571c1
+PODFILE CHECKSUM: 4ead94a4b19ca64ad4769d1bd4e17ae7c6c72f3e
 
 COCOAPODS: 1.2.1

@@ -3,7 +3,7 @@
 
 target 'Luggage Telep' do
   
-  platform :ios, ‘8.0’
+  platform :ios, ‘9.0’
   use_frameworks!
   pod ‘LGSideMenuController’
   pod 'AFNetworking', '~> 3.0'
@@ -15,5 +15,6 @@ target 'Luggage Telep' do
   pod 'EMCCountryPickerController', ‘~> 1.0'
   pod 'SDWebImage', '~> 4.0'
   pod 'Stripe'
+  
 end
 
