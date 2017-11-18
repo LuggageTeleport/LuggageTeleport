@@ -23,6 +23,7 @@
     NSString    *userImagePath;
     NSData      *userImageData;
     NSString    *userPassword;
+    NSString    *userPhoneNumber;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *txt_firstName;
@@ -56,12 +57,12 @@
 }
 
 - (void) downLoadProfileInfo {
-    
     [kACCOUNT_UTILS showWorking:self.view string:@"Downloading Profile.."];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *token = [defaults stringForKey:KEY_TOKEN];
     userPassword = [defaults stringForKey:KEY_PASSWORD];
+    userPhoneNumber = [defaults stringForKey:KEY_PHONENUMBER];
 
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -76,6 +77,7 @@
         _txt_lastName.text = [[responseObject objectForKey:@"profile"] objectForKey:@"lastname"];
         _txt_phone.text = [[responseObject objectForKey:@"profile"] objectForKey:@"phoneNumber"];
         _txt_password.text = userPassword;
+        _txt_phone.text = userPhoneNumber;
         userName = [[responseObject objectForKey:@"profile"] objectForKey:@"username"];
         userImagePath = [NSString stringWithFormat:@"https://infinite-garden-74421.herokuapp.com/%@", [[responseObject objectForKey:@"profile"] objectForKey:@"avatar"]];
         [_img_userProfile sd_setImageWithURL:[NSURL URLWithString:userImagePath]
@@ -183,6 +185,13 @@
 //        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
 //    }];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:_txt_firstName.text forKey:KEY_FIRSTNAME];
+    [defaults setValue:_txt_lastName.text forKey:KEY_LASTNAME];
+    [defaults setValue:_txt_phone.text forKey:KEY_PHONENUMBER];
+    [defaults setValue:_txt_email.text forKey:KEY_EMAIL];
+    [defaults synchronize];
+    
     [self uploadImage];
 }
 
@@ -222,13 +231,12 @@
                           [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Profile Updating Failed" dismiss:@"OK" sender:self];
                       } else {
                           NSLog(@"%@ %@", response, responseObject);
-                          [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Profile Updating Success" dismiss:@"OK" sender:self];
+                          [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Your profile has been updated." dismiss:@"OK" sender:self];
                       }
                   }];
     
     [uploadTask resume];
-    
-    
+
 }
 
 #pragma mark - TextFieldDelegate

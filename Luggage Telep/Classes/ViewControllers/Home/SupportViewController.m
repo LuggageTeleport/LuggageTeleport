@@ -7,8 +7,13 @@
 //
 
 #import "SupportViewController.h"
+#import <AFNetworking/AFNetworking.h>
+#import "Constant.h"
+#import "AccountUtilities.h"
 
-@interface SupportViewController ()<UITextFieldDelegate, UITextViewDelegate>
+@interface SupportViewController ()<UITextFieldDelegate, UITextViewDelegate>{
+    BOOL isName, isEmail, isMessage;
+}
 @property (weak, nonatomic) IBOutlet UIView *nameView;
 @property (weak, nonatomic) IBOutlet UIView *emailView;
 @property (weak, nonatomic) IBOutlet UIView *messageView;
@@ -53,6 +58,10 @@
     _txt_message.text = @"Message *";
     _txt_message.textColor =[UIColor lightGrayColor];
     
+    isName = false;
+    isEmail =false;
+    isMessage = false;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +71,53 @@
 
 - (IBAction)clicked_Back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)clicked_submit:(id)sender {
+    [self setInput];
+    if(isEmail && isName && isMessage){
+        [kACCOUNT_UTILS showWorking:self.view string:@""];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        NSDictionary *params = [NSDictionary alloc];
+        
+        params = @{@"username" : self.txt_name.text,
+                   @"email" : self.txt_email.text,
+                   @"message" : self.txt_message.text,
+                   };
+        
+        NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:SUPPORT_URL parameters:params error:nil];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"Error: %@", error);
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Failed to send mail" andBlock:nil];
+                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+            } else{
+                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+            }
+        }];
+        [dataTask resume];
+    }
+    
+}
+
+- (void) setInput {
+    if(_txt_name.text.length == 0){
+        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your username" dismiss:@"OK" sender:self];
+    }else{
+        isName = true;
+        if(_txt_email.text.length == 0){
+            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input your email" dismiss:@"OK" sender:self];
+        }else{
+            isEmail = true;
+            if([_txt_message.text isEqualToString:@"Message *"]){
+                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please write message" dismiss:@"OK" sender:self];
+            }else{
+                isMessage = true;
+            }
+        }
+    }
 }
 
 #pragma mark - TextFieldDelegate

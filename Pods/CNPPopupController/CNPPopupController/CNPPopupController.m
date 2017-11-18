@@ -41,6 +41,7 @@ static inline UIViewAnimationOptions UIViewAnimationCurveToAnimationOptions(UIVi
         self.popupView.clipsToBounds = YES;
         
         self.maskView = [[UIView alloc] initWithFrame:self.applicationWindow.bounds];
+
         self.maskView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.7];
         self.backgroundTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTapGesture:)];
         self.backgroundTapRecognizer.delegate = self;

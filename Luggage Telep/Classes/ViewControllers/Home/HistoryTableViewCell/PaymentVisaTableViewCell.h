@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PaymentVisaTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *lbl_visaNumber;
+@property (weak, nonatomic) IBOutlet UILabel  *lbl_visaNumber;
+@property (weak, nonatomic) IBOutlet UIImageView *img_card;
 
 @end

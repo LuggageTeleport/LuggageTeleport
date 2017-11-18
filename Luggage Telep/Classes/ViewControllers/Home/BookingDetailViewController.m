@@ -8,15 +8,18 @@
 
 #import "BookingDetailViewController.h"
 #import "CNPPopupController.h"
+#import "HomeViewController.h"
+#import "MainViewController.h"
 #import "Constant.h"
 
-@interface BookingDetailViewController () <CNPPopupControllerDelegate>
+@interface BookingDetailViewController () <CNPPopupControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) CNPPopupController *popupController;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_airportName;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_arrivalTime;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_limitArrivalTime;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_cost;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_dropofflocation;
 
 @end
 
@@ -27,6 +30,7 @@
     // Do any additional setup after loading the view.
     
     self.lbl_airportName.text = self.booking.airPortName;
+    self.lbl_dropofflocation.text = self.booking.airlineName;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"h:mm a"];
     self.lbl_arrivalTime.text = [NSString stringWithFormat:@"%@ Arrival", [dateFormatter stringFromDate:self.booking.estiamtedTime]];
@@ -54,6 +58,27 @@
 - (IBAction)clicked_Back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)clicked_cancel:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Luggage Teleport"
+                                                    message:@"Confirm to Cancel Booking?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:@"Cancel", nil];
+    [alert show];
+}
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 0){
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        HomeViewController *homeVC = [story instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        homeVC.isBookingNow = NO;
+        [self.navigationController pushViewController:homeVC animated:NO];
+        
+    }else{
+        NSLog(@"cancel");
+    }
+}
+
 
 - (IBAction)clicked_contact:(id)sender {
     [self showPopupWithStyle:CNPPopupStyleActionSheet];

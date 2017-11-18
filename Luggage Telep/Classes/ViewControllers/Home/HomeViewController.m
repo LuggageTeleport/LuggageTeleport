@@ -12,25 +12,102 @@
 #import "MKDropdownMenu.h"
 #import "BookingDetailViewController.h"
 #import "Constant.h"
+#import "AccountUtilities.h"
 
-@interface HomeViewController ()<MKDropdownMenuDelegate, CNPPopupControllerDelegate>
+@interface HomeViewController ()<MKDropdownMenuDelegate, CNPPopupControllerDelegate>{
+    NSTimer     *timer;
+    NSInteger   dialog_count;
+}
 
 @property (nonatomic, strong) CNPPopupController *popupController;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
+@property (weak, nonatomic) IBOutlet UIView *black_bg;
+@property (weak, nonatomic) IBOutlet UIView *popUpView;
+@property (weak, nonatomic) IBOutlet UIImageView *ic_usericon;
 
 @end
 
 @implementation HomeViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    self.black_bg.hidden = YES;
+    self.popUpView.hidden = YES;
+    if(self.isBookingNow){
+        
+        if(dialog_count == 0){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Luggage Teleport"
+                                                            message:@"Your order has been processed and we look forward to picking your bags up."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil, nil];
+            [alert setTag:0];
+            [alert show];
+        }else{
+            [self showPopUpView];
+        }
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                         target:self
+                                       selector:@selector(methodTime:)
+                                       userInfo:nil repeats:YES];
+        dialog_count = 1;
+    }else{
+        self.popUpView.hidden = YES;
+        self.black_bg.hidden = YES;
+        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
+    }
+}
+
+- (void)methodTime:(NSTimer *)timer{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSDate date] forKey:@"TimeEnterBackground"];
+    [defaults synchronize];
+    
+    NSDate *enterBackground = [defaults objectForKey:@"TimeEnterBackground"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [dateFormatter setDateFormat:@"hh:mm:ss a"];
+    NSString *a = [NSString stringWithFormat:@"%@ %@", self.booking.pickupDate, [dateFormatter stringFromDate:self.booking.estiamtedTime]] ;
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [df setDateFormat:@"yyyy-MM-dd hh:mm:ss a"];
+    NSDate *myDate = [df dateFromString: a];
+    NSInteger dayBackground = [myDate timeIntervalSince1970] - [enterBackground timeIntervalSince1970];
+
+    if(dayBackground <= -900){
+        [timer invalidate];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Luggage Teleport"
+                                                        message:@"Thank you for your order."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert setTag:1];
+        [alert show];
+        self.isBookingNow = false;
+        self.popUpView.hidden = YES;
+        self.black_bg.hidden = YES;
+        [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
+    }else{
+        NSLog([NSString stringWithFormat:@"%i", dayBackground]);
+    }
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    if(timer){
+        [timer invalidate];
+        timer = nil;
+    }
+    [super viewWillDisappear:animated];
+}
+
 - (void)viewDidLoad {
+    dialog_count = 0;
+    _ic_usericon.layer.cornerRadius = _ic_usericon.layer.frame.size.height/2;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    if(self.isBookingNow){
-        [self showPopupWithStyle:CNPPopupStyleActionSheet];
-    }
-//    [self.mScrollView setContentOffset:CGPointMake(0, 20) animated:true];
 }
 
 - (void) initBooking:(BookingAuth *)booking{
@@ -41,65 +118,31 @@
     self.priceTotal = cost;
 }
 
-- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
+- (void) showPopUpView{
+    self.black_bg.hidden = NO;
+    self.popUpView.hidden = NO;
     
-    NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
-    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.alignment = NSTextAlignmentLeft;
-    
-    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Edward" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSParagraphStyleAttributeName : paragraphStyle}];
-    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"LuggageTeleport Truck" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:12], NSForegroundColorAttributeName : [UIColor darkGrayColor], NSParagraphStyleAttributeName : paragraphStyle}];
-    
-    UILabel *customLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
-    customLabel.numberOfLines = 0;
-    customLabel.attributedText = title;
-    
-    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    [button setTitle:@"Edward" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
-    button.selectionHandler = ^(CNPPopupButton *button){
-        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        BookingDetailViewController *bookVC = [story instantiateViewControllerWithIdentifier:@"BookingDetailViewController"];
-        [bookVC initBooking:self.booking];
-        [bookVC initTotalPrice:self.priceTotal];
-        [self.navigationController pushViewController:bookVC animated:YES];
-        [self.popupController dismissPopupControllerAnimated:YES];
-        NSLog(@"Block for button: %@", button.titleLabel.text);
-    };
-    
-    UILabel *companyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 150, 20)];
-    companyLabel.numberOfLines = 0;
-    companyLabel.attributedText = lineOne;
-    
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 55)];
-    UIImageView *userPhoto = [[UIImageView alloc] initWithImage:IMAGE(@"user_placeholder.png")];
-    userPhoto.frame = CGRectMake(5, 7, 40, 40);
-    
-    UIView *nameView =  [[UIView alloc] initWithFrame:CGRectMake(65, 7, 150, 40)];
-    
-    UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(220, 17, 65, 25)];
-    textFied.borderStyle = UITextBorderStyleNone;
-    textFied.text = @"";
-    textFied.enabled = false;
-    textFied.borderStyle = UITextBorderStyleBezel;
-    
-    
-    [nameView addSubview:button];
-    [nameView addSubview:companyLabel];
-    
-    [customView addSubview:userPhoto];
-    [customView addSubview:nameView];
-    [customView addSubview:textFied];
-    
-    self.popupController = [[CNPPopupController alloc] initWithContents:@[customView]];
-    self.popupController.theme = [CNPPopupTheme defaultTheme];
-    self.popupController.theme.popupStyle = popupStyle;
-    self.popupController.theme.shouldDismissOnBackgroundTouch = false;
-    self.popupController.delegate = self;
-    [self.mScrollView setContentOffset:CGPointMake(0, 95) animated:true];
-    [self.popupController presentPopupControllerAnimated:YES];
+    [self.mScrollView setContentOffset:CGPointMake(0, 75) animated:true];
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 0){
+        if(alertView.tag == 0){
+            [self showPopUpView];
+        }
+        
+    }else{
+        NSLog(@"cancel");
+    }
+}
+
+- (IBAction)clicked_viewTracker:(id)sender {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    BookingDetailViewController *bookVC = [story instantiateViewControllerWithIdentifier:@"BookingDetailViewController"];
+    [bookVC initBooking:self.booking];
+    [bookVC initTotalPrice:self.priceTotal];
+    [self.navigationController pushViewController:bookVC animated:YES];
+    [self.popupController dismissPopupControllerAnimated:YES];
 }
 
 #pragma mark - CNPPopupController Delegate

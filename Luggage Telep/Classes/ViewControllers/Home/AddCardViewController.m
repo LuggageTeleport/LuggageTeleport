@@ -15,11 +15,20 @@
 #import "MainViewController.h"
 #import <AFNetworking/AFNetworking.h>
 
-#define DATE_MAXLENGTH  5
-#define CVV_MAXLENGTH   3
-#define ZIPCODE_MAXLENGTH   10
+#define DATE_MAXLENGTH              5
+#define CVV_MAXLENGTH               3
+#define AMEXCVV_MAXLEGNTH           4
+#define ZIPCODE_MAXLENGTH           10
+#define CARDNUMBER_MAXLENGTH        22
+#define AMEXCARDNUMBER_MAXLENGTH    17
+#define MASTERCARDNUMBER_MAXLENGTH  19
+
 @interface AddCardViewController ()<UITextFieldDelegate>{
     BOOL isCardNumber, isExpDate, isCVV, isCountry, isZipCode;
+    NSString        *previousTextFieldContent;
+    UITextRange     *previousSelection;
+    BOOL isAmex;
+    BOOL isMaster;
 }
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *txt_cardNumber;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *txt_expDate;
@@ -27,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *txt_zipCode;
 @property (weak, nonatomic) IBOutlet UILabel *countryLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *countryFlag;
+@property (weak, nonatomic) IBOutlet UIImageView *img_card;
 
 @end
 
@@ -51,6 +61,12 @@
                                       target:self action:@selector(yourTextViewDoneButtonPressed)];
     keyboardToolbar.items = @[flexBarButton, doneBarButton];
     self.txt_zipCode.inputAccessoryView = keyboardToolbar;
+    
+    isAmex = false;
+    isMaster = false;
+    [_txt_cardNumber addTarget:self
+                      action:@selector(reformatAsCardNumber:)
+            forControlEvents:UIControlEventEditingChanged];
 }
 
 -(void)yourTextViewDoneButtonPressed
@@ -111,6 +127,36 @@
     return NO;
 }
 
+-(void)reformatAsCardNumber:(UITextField *)textField
+{
+    NSUInteger targetCursorPosition =
+    [textField offsetFromPosition:textField.beginningOfDocument
+                       toPosition:textField.selectedTextRange.start];
+    
+    NSString *cardNumberWithoutSpaces =
+    [self removeNonDigits:textField.text andPreserveCursorPosition:&targetCursorPosition];
+    
+    if ([cardNumberWithoutSpaces length] > 19) {
+        [textField setText:previousTextFieldContent];
+        textField.selectedTextRange = previousSelection;
+        return;
+    }
+    
+    NSString *cardNumberWithSpaces =
+    [self insertSpacesEveryFourDigitsIntoString:cardNumberWithoutSpaces
+                      andPreserveCursorPosition:&targetCursorPosition];
+    
+    textField.text = cardNumberWithSpaces;
+    UITextPosition *targetPosition =
+    [textField positionFromPosition:[textField beginningOfDocument]
+                             offset:targetCursorPosition];
+    
+    [textField setSelectedTextRange:
+     [textField textRangeFromPosition:targetPosition
+                           toPosition:targetPosition]
+     ];
+}
+
 - (BOOL)textField:(UITextField *) textField shouldChangeCharactersInRange:(NSRange)range replacementString:(nonnull NSString *)string{
     NSUInteger oldLength = [textField.text length];
     NSUInteger replacementLength = [string length];
@@ -120,7 +166,43 @@
     
     BOOL returnKey = [string rangeOfString:@"\n"].location != NSNotFound;
     
-    if(textField.tag == 1){
+    if(textField.tag == 0){
+        previousTextFieldContent = textField.text;
+        previousSelection = textField.selectedTextRange;
+        
+        if(previousTextFieldContent.length < 2) {
+            isAmex = false;
+            isMaster = false;
+            _img_card.image = [UIImage imageNamed:@"ic_credit_card.png"];
+        }
+        
+        if([previousTextFieldContent isEqualToString:@"4"]){
+            isAmex = false;
+            isMaster = false;
+            _img_card.image = [UIImage imageNamed:@"ic_visa_card.png"];
+        }
+        else if ([previousTextFieldContent isEqualToString:@"34"] || [previousTextFieldContent isEqualToString:@"37"]){
+            isAmex = true;
+            isMaster = false;
+            _img_card.image = [UIImage imageNamed:@"amlex.png"];
+        }
+        else if ([previousTextFieldContent isEqualToString:@"50"] || [previousTextFieldContent isEqualToString:@"51"] || [previousTextFieldContent isEqualToString:@"52"] || [previousTextFieldContent isEqualToString:@"53"] || [previousTextFieldContent isEqualToString:@"54"] || [previousTextFieldContent isEqualToString:@"55"]){
+            isAmex = false;
+            isMaster = true;
+            _img_card.image = [UIImage imageNamed:@"mastercard.png"];
+        }
+        if(isAmex){
+            return newLength <= AMEXCARDNUMBER_MAXLENGTH || returnKey;
+        }else{
+            if(isMaster){
+                return newLength <= MASTERCARDNUMBER_MAXLENGTH || returnKey;
+            }
+            else{
+                return newLength <= CARDNUMBER_MAXLENGTH || returnKey;
+            }
+        }
+    }
+    else if(textField.tag == 1){
         if(newLength == 3){
             if ([string isEqualToString:@""]) {
                 NSLog(@"Backspace");
@@ -132,12 +214,82 @@
         }
         return newLength <= DATE_MAXLENGTH || returnKey;
     }else if(textField.tag == 2){
-        return newLength <= CVV_MAXLENGTH || returnKey;
-    }else if(textField.tag == 3){
-        return newLength <= ZIPCODE_MAXLENGTH || returnKey;
+        if(isAmex){
+            return newLength <= AMEXCVV_MAXLEGNTH || returnKey;
+        }else{
+            return newLength <= CVV_MAXLENGTH || returnKey;
+        }
+        
     }else{
-        return newLength <= 16 || returnKey;
+        return newLength <= ZIPCODE_MAXLENGTH || returnKey;
     }
+    
+}
+
+- (NSString *)removeNonDigits:(NSString *)string
+    andPreserveCursorPosition:(NSUInteger *)cursorPosition
+{
+    NSUInteger originalCursorPosition = *cursorPosition;
+    NSMutableString *digitsOnlyString = [NSMutableString new];
+    for (NSUInteger i=0; i<[string length]; i++) {
+        unichar characterToAdd = [string characterAtIndex:i];
+        if (isdigit(characterToAdd)) {
+            NSString *stringToAdd =
+            [NSString stringWithCharacters:&characterToAdd
+                                    length:1];
+            
+            [digitsOnlyString appendString:stringToAdd];
+        }
+        else {
+            if (i < originalCursorPosition) {
+                (*cursorPosition)--;
+            }
+        }
+    }
+    
+    return digitsOnlyString;
+}
+
+- (NSString *)insertSpacesEveryFourDigitsIntoString:(NSString *)string
+                          andPreserveCursorPosition:(NSUInteger *)cursorPosition
+{
+    NSMutableString *stringWithAddedSpaces = [NSMutableString new];
+    NSUInteger cursorPositionInSpacelessString = *cursorPosition;
+    for (NSUInteger i=0; i<[string length]; i++) {
+        if(isAmex){
+            if(i < 18){
+                if ((i>0) && ((i % 4) == 0) && (i < 6)) {
+                    [stringWithAddedSpaces appendString:@" "];
+                    if (i < cursorPositionInSpacelessString) {
+                        (*cursorPosition)++;
+                    }
+                }
+                else if ((i > 5 && ((i % 11) == 0))){
+                    [stringWithAddedSpaces appendString:@" "];
+                    if (i < cursorPositionInSpacelessString) {
+                        (*cursorPosition)++;
+                    }
+                }
+            }
+        }else{
+            if(i < 16){
+                if ((i>0) && ((i % 4) == 0)) {
+                    [stringWithAddedSpaces appendString:@" "];
+                    if (i < cursorPositionInSpacelessString) {
+                        (*cursorPosition)++;
+                    }
+                }
+            }
+        }
+        
+        unichar characterToAdd = [string characterAtIndex:i];
+        NSString *stringToAdd =
+        [NSString stringWithCharacters:&characterToAdd length:1];
+        
+        [stringWithAddedSpaces appendString:stringToAdd];
+    }
+    
+    return stringWithAddedSpaces;
 }
 
 #pragma mark - SaveButton Delegate
@@ -192,9 +344,10 @@
                     [defaults setValue:[dictionary objectForKey:@"cvv"] forKey:KEY_CVV];
                     [defaults setValue:[dictionary objectForKey:@"expDate"] forKey:KEY_EXPDATE];
                 }
-                UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
-                [self.navigationController pushViewController:mainVC animated:YES];
+//                UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+//                [self.navigationController pushViewController:mainVC animated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 NSLog(@"error: %@", error);
             }];

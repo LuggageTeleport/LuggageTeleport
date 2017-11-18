@@ -82,6 +82,7 @@
                         [defaults setValue:nil forKey:KEY_CARDNUMBER];
                         [defaults setValue:nil forKey:KEY_CVV];
                         [defaults setValue:nil forKey:KEY_EXPDATE];
+                        [defaults synchronize];
                         NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
                         if(array.count > 0){
                             NSDictionary *dictionary = [array objectAtIndex:0];
@@ -100,6 +101,7 @@
 
                 }else{
                     [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Authenication failed. User not found" dismiss:@"OK" sender:self];
+                    [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
                 }
             }
         }];

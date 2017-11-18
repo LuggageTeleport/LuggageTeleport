@@ -9,6 +9,7 @@
 #import "TermsViewController.h"
 
 @interface TermsViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSURL *targetURL = [[NSBundle mainBundle] URLForResource:@"Terms Of Service" withExtension:@"pdf"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
+    [_webView loadRequest:request];
+    
 }
 
 - (void)didReceiveMemoryWarning {

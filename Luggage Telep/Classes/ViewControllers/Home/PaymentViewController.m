@@ -13,11 +13,16 @@
 #import "PaymentHeaderTableViewCell.h"
 #import "AddPaymentViewController.h"
 #import "PaymentVisaTableViewCell.h"
+#import "EditCardViewController.h"
+#import "AccountUtilities.h"
+#import "MainViewController.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface PaymentViewController ()<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>{
     Boolean             isGiftView;
     NSMutableArray      *paymentList,  *promoList;
     NSString            *cardName;
+    NSString            *promoID;
 }
 @property (weak, nonatomic) IBOutlet UIButton *btn_cancel;
 @property (weak, nonatomic) IBOutlet UIButton *btn_add;
@@ -40,7 +45,7 @@
     if(number){
         cardName = [NSString stringWithFormat:@"****%@", [number substringWithRange:NSMakeRange(number.length-4, 4)]];
         paymentList = [[NSMutableArray alloc] init];
-        [paymentList addObject:cardName];
+        [paymentList addObject:number];
     }
     
     [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
@@ -53,8 +58,8 @@
     
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-//    promoList = [[NSMutableArray alloc] initWithObjects:@"Add Payment Method", @"Add Promo/Git Code",  nil];
-//    promoList = [@[@"Promotions"] mutableCopy];
+    [self downloadPromocode];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,17 +67,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) downloadPromocode {
+    [kACCOUNT_UTILS showWorking:self.view string:@""];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults stringForKey:KEY_TOKEN];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    
+    NSDictionary *params = @{@"promoID": _txt_promo.text};
+    
+    [manager POST:PROMO_GET_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"success!");
+        
+        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+        [self.mTableView reloadData];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *token = [defaults stringForKey:KEY_TOKEN];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+        [kACCOUNT_UTILS showFailure:self.view withString:@"Failed Creadit Card" andBlock:nil];
+        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+    }];
+}
 #pragma mark - UIButton Delegate
 
 - (IBAction)clicked_Back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)clicked_add_promo:(id)sender {
-    isGiftView = true;
-    _giftView.hidden = NO;
-    _lightBG.hidden = NO;
-}
 - (IBAction)clicked_canel:(id)sender {
     [self.txt_promo resignFirstResponder];
     [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
@@ -82,6 +110,10 @@
 }
 
 - (IBAction)clicked_add:(id)sender {
+    promoList = [[NSMutableArray alloc] initWithObjects:_txt_promo.text, nil];
+    [self.mTableView reloadData];
+    [self addPromo];
+    
     [self.txt_promo resignFirstResponder];
     [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
     isGiftView = false;
@@ -152,7 +184,7 @@
         paymentCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return paymentCell;
     }
-    else if(indexPath.row == (3 + paymentList.count)){
+    else if(indexPath.row == (3 + paymentList.count + promoList.count)){
         PaymentTableViewCell *paymentCell = [tableView dequeueReusableCellWithIdentifier:@"PaymentTableViewCell"];
         if(!paymentCell)
         {
@@ -163,6 +195,18 @@
         paymentCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return paymentCell;
     }
+    else if(indexPath.row == (2 + paymentList.count + promoList.count)){
+        PaymentTableViewCell *paymentCell = [tableView dequeueReusableCellWithIdentifier:@"PaymentTableViewCell"];
+        if(!paymentCell)
+        {
+            NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"PaymentTableViewCell" owner:self options:nil];
+            paymentCell = [nib objectAtIndex:0];
+        }
+        paymentCell.payment_list_header.text = [promoList objectAtIndex:0];
+        paymentCell.payment_list_header.textColor = [UIColor blackColor];
+        paymentCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return paymentCell;
+    }
     else{
         PaymentVisaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PaymentVisaTableViewCell"];
         if(!cell)
@@ -170,7 +214,21 @@
             NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"PaymentVisaTableViewCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
-        cell.lbl_visaNumber.text = [paymentList objectAtIndex:0];
+        NSString *str_card = [paymentList objectAtIndex:0];
+        cell.lbl_visaNumber.text = [NSString stringWithFormat:@"****%@", [str_card substringWithRange:NSMakeRange(str_card.length-4, 4)]];
+        NSString *str_header = [str_card substringWithRange:NSMakeRange(0,2)];
+        NSString *str_header1 = [str_card substringWithRange:NSMakeRange(0,1)];
+        
+        if([str_header1 isEqualToString:@"4"]){
+            cell.img_card.image = [UIImage imageNamed:@"ic_visa_card.png"];
+        }
+        if ([str_header isEqualToString:@"34"] || [str_header isEqualToString:@"37"]){
+            cell.img_card.image = [UIImage imageNamed:@"amlex.png"];
+        }
+        else if ([str_header isEqualToString:@"50"] || [str_header isEqualToString:@"51"] || [str_header isEqualToString:@"52"] || [str_header isEqualToString:@"53"] || [str_header isEqualToString:@"54"] || [str_header isEqualToString:@"55"]){
+            cell.img_card.image = [UIImage imageNamed:@"mastercard.png"];
+        }
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -182,13 +240,48 @@
         AddPaymentViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"AddPaymentViewController"];
         [self.navigationController pushViewController:mainVC animated:YES];
     }
-    else if(indexPath.row == (3 + paymentList.count)){
+    else if(indexPath.row > 0 && indexPath.row < (1 + paymentList.count)){
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        EditCardViewController *editCardVC = [story instantiateViewControllerWithIdentifier:@"EditCardViewController"];
+        [self.navigationController pushViewController:editCardVC animated:YES];
+    }
+    else if(indexPath.row == (3 + paymentList.count + promoList.count)){
+        
         isGiftView = true;
         _giftView.hidden = NO;
         _lightBG.hidden = NO;
+        _txt_promo.text = @"";
+        [_txt_promo resignFirstResponder];
     }
-    
 }
 
+- (void) addPromo {
+    [kACCOUNT_UTILS showWorking:self.view string:@"Creating Promo Code"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *token = [defaults stringForKey:KEY_TOKEN];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    
+    NSDictionary *params = @{@"promoCode": _txt_promo.text};
+    
+    [manager POST:PROMO_ADD_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"success!");
+        if([[responseObject objectForKey:@"success"] intValue] == 1){
+            promoID = [[responseObject objectForKey:@"promoCode"] objectForKey:@"_id"];
+            [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+            [self.mTableView reloadData];
+        }else{
+            [kACCOUNT_UTILS showFailure:self.view withString:@"Failed Promo Code" andBlock:nil];
+            [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+        }
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+    }];
+}
 
 @end

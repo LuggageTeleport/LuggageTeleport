@@ -284,27 +284,44 @@
                     if([_lbl_estimatedTime.text isEqualToString:@"Estimated time of Arrival"]){
                         [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Estimated time of Arrival" dismiss:@"OK" sender:self];
                     }else{
-                        isEstimateTime = true;
-                        if([_hotelName.text isEqualToString:@"Hotel for Drop off"]){
-                            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Hotel" dismiss:@"OK" sender:self];
-                        }else{
-                            isHotelName = true;
-                            if(_txt_hotelConfirmNumber.text.length == 0){
-                                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Input Hotel Booking Reference" dismiss:@"OK" sender:self];
+
+//                        NSDate *enterBackground = [NSDate date];
+//
+//                        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//                        [dateFormatter setDateFormat:@"HH:mm:ss a"];
+//                        NSString *a = [NSString stringWithFormat:@"%@ %@", _lbl_pickDaate.text, [dateFormatter stringFromDate:self.selectedTime]] ;
+//
+//                        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//                        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss a"];
+//                        NSDate *myDate = [df dateFromString: a];
+//                        NSInteger dayBackground = [myDate timeIntervalSince1970] - [enterBackground timeIntervalSince1970];
+//
+//
+//                        if(dayBackground < 0){
+//                            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Delivery estimate time must be behind now." dismiss:@"OK" sender:self];
+//                        }else{
+                            isEstimateTime = true;
+                            if([_hotelName.text isEqualToString:@"Hotel for Drop off"]){
+                                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Hotel" dismiss:@"OK" sender:self];
                             }else{
-                                isHotelBooking = true;
-                                if(_txt_guestName.text.length == 0){
-                                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Input Guest Name" dismiss:@"OK" sender:self];
+                                isHotelName = true;
+                                if(_txt_hotelConfirmNumber.text.length == 0){
+                                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Input Hotel Booking Reference" dismiss:@"OK" sender:self];
                                 }else{
-                                    isHotelReservation = true;
-                                    if([_lbl_dropDate.text isEqualToString:@"Drop off Date"]){
-                                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Drop Date" dismiss:@"OK" sender:self];
+                                    isHotelBooking = true;
+                                    if(_txt_guestName.text.length == 0){
+                                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Input Guest Name" dismiss:@"OK" sender:self];
                                     }else{
-                                        isDropDate = true;
+                                        isHotelReservation = true;
+                                        if([_lbl_dropDate.text isEqualToString:@"Drop off Date"]){
+                                            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Choose Drop Date" dismiss:@"OK" sender:self];
+                                        }else{
+                                            isDropDate = true;
+                                        }
                                     }
                                 }
                             }
-                        }
+//                        }
                     }
                 }
             }

@@ -36,11 +36,19 @@
 		0472C53A1F8BBFE800B8C516 /* APIs.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C5391F8BBFE800B8C516 /* APIs.m */; };
 		0472C53E1F8BEF4200B8C516 /* AccountUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */; };
 		047E05751F9EB2E100F35BB1 /* us_flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 047E05741F9EB2DD00F35BB1 /* us_flag.png */; };
+		0482732C1FC05F010078DAEE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0482732B1FC05EED0078DAEE /* CoreTelephony.framework */; };
+		0498E1A51FADC55300131B0B /* EditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0498E1A41FADC55200131B0B /* EditCardViewController.m */; };
 		04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA7C1F8AB0D000A76FDA /* ic_check_box.jpg */; };
 		04B8EA7F1F8AB0F400A76FDA /* ic_uncheck_box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA7D1F8AB0E000A76FDA /* ic_uncheck_box.jpg */; };
 		04B8EA831F8AB54F00A76FDA /* ic_credit_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */; };
 		04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA811F8AB4FC00A76FDA /* ic_next.png */; };
 		04B8EA851F8AB54F00A76FDA /* ic_paypal.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B8EA821F8AB52400A76FDA /* ic_paypal.png */; };
+		04DE34EC1FB4C3B90003D254 /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE34E91FB4C3AF0003D254 /* mastercard.png */; };
+		04DE34ED1FB4C3B90003D254 /* visa-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE34EA1FB4C3B20003D254 /* visa-logo.png */; };
+		04DE34EE1FB4C3B90003D254 /* american-express.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE34EB1FB4C3B60003D254 /* american-express.png */; };
+		04DE34F01FB4CBEA0003D254 /* amlex.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE34EF1FB4CBE60003D254 /* amlex.png */; };
+		04F517DE1FB746AE00DBA6C9 /* terms1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F517DD1FB746AE00DBA6C9 /* terms1.png */; };
+		04F517E01FB74DED00DBA6C9 /* Terms Of Service.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 04F517DF1FB74DED00DBA6C9 /* Terms Of Service.pdf */; };
 		04F8608A1F93D5A400325170 /* BookingAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F860891F93D5A400325170 /* BookingAuth.m */; };
 		22269B8E1F880E0000D9D21C /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22269B8D1F880E0000D9D21C /* TermsViewController.m */; };
 		22269B981F88266100D9D21C /* ic_plane.png in Resources */ = {isa = PBXBuildFile; fileRef = 22269B8F1F88265200D9D21C /* ic_plane.png */; };
@@ -66,6 +74,7 @@
 		2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2266FEEE1F82B5A900897673 /* HistoryTableViewCell.m */; };
 		2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2266FEF11F82E1DE00897673 /* SupportViewController.m */; };
 		2266FEF41F82E2FE00897673 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEF31F82E2FD00897673 /* bg.png */; };
+		22950B631FC0C59A0002C152 /* ic_tabUserPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 22950B621FC0C5990002C152 /* ic_tabUserPhoto.png */; };
 		22D3304D1F87A21E009EE8EE /* ic_phone_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D330491F87A212009EE8EE /* ic_phone_blue.png */; };
 		22D3304E1F87A21E009EE8EE /* ic_user_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D3304A1F87A214009EE8EE /* ic_user_blue.png */; };
 		22D3304F1F87A21E009EE8EE /* ic_lock_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D3304B1F87A217009EE8EE /* ic_lock_blue.png */; };
@@ -175,11 +184,20 @@
 		0472C53C1F8BEF4200B8C516 /* AccountUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountUtilities.h; sourceTree = "<group>"; };
 		0472C53D1F8BEF4200B8C516 /* AccountUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountUtilities.m; sourceTree = "<group>"; };
 		047E05741F9EB2DD00F35BB1 /* us_flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = us_flag.png; sourceTree = "<group>"; };
+		0482732B1FC05EED0078DAEE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0498E1A31FADC55200131B0B /* EditCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditCardViewController.h; sourceTree = "<group>"; };
+		0498E1A41FADC55200131B0B /* EditCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditCardViewController.m; sourceTree = "<group>"; };
 		04B8EA7C1F8AB0D000A76FDA /* ic_check_box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_check_box.jpg; sourceTree = "<group>"; };
 		04B8EA7D1F8AB0E000A76FDA /* ic_uncheck_box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_uncheck_box.jpg; sourceTree = "<group>"; };
 		04B8EA801F8AB4D600A76FDA /* ic_credit_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_credit_card.png; sourceTree = "<group>"; };
 		04B8EA811F8AB4FC00A76FDA /* ic_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_next.png; sourceTree = "<group>"; };
 		04B8EA821F8AB52400A76FDA /* ic_paypal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_paypal.png; sourceTree = "<group>"; };
+		04DE34E91FB4C3AF0003D254 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		04DE34EA1FB4C3B20003D254 /* visa-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa-logo.png"; sourceTree = "<group>"; };
+		04DE34EB1FB4C3B60003D254 /* american-express.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "american-express.png"; sourceTree = "<group>"; };
+		04DE34EF1FB4CBE60003D254 /* amlex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amlex.png; sourceTree = "<group>"; };
+		04F517DD1FB746AE00DBA6C9 /* terms1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terms1.png; sourceTree = "<group>"; };
+		04F517DF1FB74DED00DBA6C9 /* Terms Of Service.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Terms Of Service.pdf"; sourceTree = "<group>"; };
 		04F860881F93D5A400325170 /* BookingAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookingAuth.h; sourceTree = "<group>"; };
 		04F860891F93D5A400325170 /* BookingAuth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingAuth.m; sourceTree = "<group>"; };
 		05F8D2F9BC6D200ABE1C4BEC /* Pods-Luggage Telep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luggage Telep.release.xcconfig"; path = "Pods/Target Support Files/Pods-Luggage Telep/Pods-Luggage Telep.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +232,7 @@
 		2266FEF01F82E1DE00897673 /* SupportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SupportViewController.h; sourceTree = "<group>"; };
 		2266FEF11F82E1DE00897673 /* SupportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SupportViewController.m; sourceTree = "<group>"; };
 		2266FEF31F82E2FD00897673 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		22950B621FC0C5990002C152 /* ic_tabUserPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_tabUserPhoto.png; sourceTree = "<group>"; };
 		22D330491F87A212009EE8EE /* ic_phone_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_phone_blue.png; sourceTree = "<group>"; };
 		22D3304A1F87A214009EE8EE /* ic_user_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_user_blue.png; sourceTree = "<group>"; };
 		22D3304B1F87A217009EE8EE /* ic_lock_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_lock_blue.png; sourceTree = "<group>"; };
@@ -281,6 +300,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0482732C1FC05F010078DAEE /* CoreTelephony.framework in Frameworks */,
 				318CB93E59862152FA3D8263 /* Pods_Luggage_Telep.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +347,7 @@
 		0502CF1A81B4AFC69E4E0512 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0482732B1FC05EED0078DAEE /* CoreTelephony.framework */,
 				8773E349F5D3F1C01C032180 /* Pods_Luggage_Telep.framework */,
 			);
 			name = Frameworks;
@@ -417,6 +438,13 @@
 		22E749C01F80C7300047B8ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				22950B621FC0C5990002C152 /* ic_tabUserPhoto.png */,
+				04F517DF1FB74DED00DBA6C9 /* Terms Of Service.pdf */,
+				04F517DD1FB746AE00DBA6C9 /* terms1.png */,
+				04DE34EF1FB4CBE60003D254 /* amlex.png */,
+				04DE34EB1FB4C3B60003D254 /* american-express.png */,
+				04DE34E91FB4C3AF0003D254 /* mastercard.png */,
+				04DE34EA1FB4C3B20003D254 /* visa-logo.png */,
 				047E05741F9EB2DD00F35BB1 /* us_flag.png */,
 				041EB4631F8D76C20055AAEB /* ic_feedback_bg.png */,
 				041EB45D1F8D6A110055AAEB /* ic_star_empty.png */,
@@ -550,6 +578,8 @@
 				041EB4661F8D76F10055AAEB /* FeedbackViewController.m */,
 				044076141F9CFCFD00A81128 /* AddCardViewController.h */,
 				044076151F9CFCFD00A81128 /* AddCardViewController.m */,
+				0498E1A31FADC55200131B0B /* EditCardViewController.h */,
+				0498E1A41FADC55200131B0B /* EditCardViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -690,20 +720,25 @@
 				2266FEE61F82B17300897673 /* two_dots.png in Resources */,
 				04B8EA851F8AB54F00A76FDA /* ic_paypal.png in Resources */,
 				22E749991F807CE00047B8ED /* LaunchScreen.storyboard in Resources */,
+				04DE34EE1FB4C3B90003D254 /* american-express.png in Resources */,
 				2266FEF41F82E2FE00897673 /* bg.png in Resources */,
+				22950B631FC0C59A0002C152 /* ic_tabUserPhoto.png in Resources */,
 				047E05751F9EB2E100F35BB1 /* us_flag.png in Resources */,
 				041F0CBD1F8B094E0020DEC4 /* ic_signature.png in Resources */,
 				041D16E01F8ABD95007E96BC /* ic_light_bg.png in Resources */,
 				22E749BF1F80AA5F0047B8ED /* Images.xcassets in Resources */,
 				22E749D31F80C7300047B8ED /* hotel-hotel.png in Resources */,
+				04DE34F01FB4CBEA0003D254 /* amlex.png in Resources */,
 				22D3304D1F87A21E009EE8EE /* ic_phone_blue.png in Resources */,
 				04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */,
+				04DE34EC1FB4C3B90003D254 /* mastercard.png in Resources */,
 				22E749CF1F80C7300047B8ED /* air-hotel.png in Resources */,
 				041BC4911FA6CFC300B32639 /* PaymentVisaTableViewCell.xib in Resources */,
 				04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */,
 				041EB45B1F8D50880055AAEB /* user_placeholder.png in Resources */,
 				22E749D91F80C7300047B8ED /* ic_support.png in Resources */,
 				22D3304E1F87A21E009EE8EE /* ic_user_blue.png in Resources */,
+				04F517DE1FB746AE00DBA6C9 /* terms1.png in Resources */,
 				22E749DB1F80C7300047B8ED /* logo.png in Resources */,
 				22E749DA1F80C7300047B8ED /* ic_terms.png in Resources */,
 				2266FEE51F82B17300897673 /* ic_star.png in Resources */,
@@ -722,6 +757,7 @@
 				041EB45E1F8D6A260055AAEB /* ic_star_full.png in Resources */,
 				041EB45A1F8D50880055AAEB /* theX@2x.png in Resources */,
 				22269B9F1F88266100D9D21C /* ic_downarrow.png in Resources */,
+				04DE34ED1FB4C3B90003D254 /* visa-logo.png in Resources */,
 				22E749D61F80C7300047B8ED /* ic_myorder.png in Resources */,
 				22E749961F807CE00047B8ED /* Assets.xcassets in Resources */,
 				22E74A011F8286840047B8ED /* ic_password.png in Resources */,
@@ -736,6 +772,7 @@
 				22269B9B1F88266100D9D21C /* ic_hotel.png in Resources */,
 				223664A41F8A747A0017809C /* ic_user_blue1.jpg in Resources */,
 				2266FEE71F82B17300897673 /* ic_blue_bubble.png in Resources */,
+				04F517E01FB74DED00DBA6C9 /* Terms Of Service.pdf in Resources */,
 				22E749D11F80C7300047B8ED /* home_top_bar.png in Resources */,
 				22269B9A1F88266100D9D21C /* booking_bg.png in Resources */,
 				041D16DE1F8ABB0B007E96BC /* ic_visa_card.png in Resources */,
@@ -789,7 +826,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		66200428AE41D75760AED590 /* [CP] Copy Pods Resources */ = {
@@ -816,7 +853,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Luggage Telep/Pods-Luggage Telep-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
-				"${PODS_ROOT}/AuthorizeNetAccept/AcceptSDK-Framework/AcceptSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/CNPPopupController/CNPPopupController.framework",
 				"${BUILT_PRODUCTS_DIR}/EMCCountryPickerController/EMCCountryPickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/JVFloatLabeledTextField/JVFloatLabeledTextField.framework",
@@ -830,7 +866,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AcceptSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNPPopupController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EMCCountryPickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVFloatLabeledTextField.framework",
@@ -878,6 +913,7 @@
 				22E749F51F824FB10047B8ED /* NavigationController.m in Sources */,
 				0472C5371F8B904E00B8C516 /* Constant.m in Sources */,
 				22D330531F87A9D2009EE8EE /* RegisterViewController.m in Sources */,
+				0498E1A51FADC55300131B0B /* EditCardViewController.m in Sources */,
 				22E7498E1F807CE00047B8ED /* AppDelegate.m in Sources */,
 				2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */,
 				04288B281FA638AE000276AF /* PaymentTableViewCell.m in Sources */,
@@ -1049,7 +1085,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Z588KYGRM5;
 				FRAMEWORK_SEARCH_PATHS = (

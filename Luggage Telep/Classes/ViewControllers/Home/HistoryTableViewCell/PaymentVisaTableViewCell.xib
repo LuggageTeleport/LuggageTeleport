@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,26 +16,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_visa_card.png" translatesAutoresizingMaskIntoConstraints="NO" id="kkS-1z-UJw">
-                        <rect key="frame" x="18" y="12" width="35" height="23"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_credit_card.png" translatesAutoresizingMaskIntoConstraints="NO" id="kkS-1z-UJw">
+                        <rect key="frame" x="18" y="11" width="35" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="img-Xj-2Cb">
-                        <rect key="frame" x="69" y="13" width="186" height="22"/>
+                        <rect key="frame" x="69" y="12" width="186" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_next.png" translatesAutoresizingMaskIntoConstraints="NO" id="DbM-hU-dBv">
-                        <rect key="frame" x="286" y="16" width="16" height="16"/>
+                        <rect key="frame" x="286" y="15" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ot-fs-0CV">
-                        <rect key="frame" x="0.0" y="48" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="47" width="320" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.023529411760000001" green="0.43529411759999997" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -43,12 +43,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="img_card" destination="kkS-1z-UJw" id="Kc3-9a-mxT"/>
                 <outlet property="lbl_visaNumber" destination="img-Xj-2Cb" id="wtS-KX-Gfk"/>
             </connections>
+            <point key="canvasLocation" x="-226" y="-61"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="ic_credit_card.png" width="43" height="27"/>
         <image name="ic_next.png" width="12" height="20"/>
-        <image name="ic_visa_card.png" width="43" height="28"/>
     </resources>
 </document>
