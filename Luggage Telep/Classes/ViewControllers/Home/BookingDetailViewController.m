@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_limitArrivalTime;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_cost;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_dropofflocation;
+@property (weak, nonatomic) IBOutlet UIImageView *img_userPhoto;
 
 @end
 
@@ -40,6 +41,7 @@
     [df setDateFormat:@"h:mm a"];
     NSDate *delayDate = [self.booking.estiamtedTime dateByAddingTimeInterval:45*60];
     self.lbl_limitArrivalTime.text = [NSString stringWithFormat:@"No Later than %@", [df stringFromDate:delayDate]];
+    _img_userPhoto.layer.cornerRadius = _img_userPhoto.layer.frame.size.height/2;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +63,7 @@
 
 - (IBAction)clicked_cancel:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Luggage Teleport"
-                                                    message:@"Confirm to Cancel Booking?"
+                                                    message:@"Confirm to Cancel ooking?"
                                                    delegate:self
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:@"Cancel", nil];
@@ -89,29 +91,29 @@
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Contact Edward" attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSParagraphStyleAttributeName : paragraphStyle}];
-    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"If you're using a new number, tap Edit" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13], NSForegroundColorAttributeName : [UIColor darkGrayColor], NSParagraphStyleAttributeName : paragraphStyle}];
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Contact Luggage Teleport" attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18], NSParagraphStyleAttributeName : paragraphStyle}];
+    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"We are here to assist with questions regarding your order." attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13], NSForegroundColorAttributeName : [UIColor darkGrayColor], NSParagraphStyleAttributeName : paragraphStyle}];
     
-    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    [button setTitle:@"CHAT" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor colorWithRed:240.f/255 green:216.f/255 blue:6.f/255 alpha:1.0];
-    button.layer.cornerRadius = 8;
-    button.selectionHandler = ^(CNPPopupButton *button){
-        [self.popupController dismissPopupControllerAnimated:YES];
-        NSLog(@"Block for button: %@", button.titleLabel.text);
-    };
-    CNPPopupButton *button1 = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
-    [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button1.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    [button1 setTitle:@"CALL" forState:UIControlStateNormal];
-    button1.backgroundColor = [UIColor colorWithRed:240.f/255 green:216.f/255 blue:6.f/255 alpha:1.0];
-    button1.layer.cornerRadius = 8;
-    button1.selectionHandler = ^(CNPPopupButton *button){
-        [self.popupController dismissPopupControllerAnimated:YES];
-        NSLog(@"Block for button: %@", button.titleLabel.text);
-    };
+//    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
+//    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+//    [button setTitle:@"CHAT" forState:UIControlStateNormal];
+//    button.backgroundColor = [UIColor colorWithRed:240.f/255 green:216.f/255 blue:6.f/255 alpha:1.0];
+//    button.layer.cornerRadius = 8;
+//    button.selectionHandler = ^(CNPPopupButton *button){
+//        [self.popupController dismissPopupControllerAnimated:YES];
+//        NSLog(@"Block for button: %@", button.titleLabel.text);
+//    };
+//    CNPPopupButton *button1 = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
+//    [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    button1.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+//    [button1 setTitle:@"CALL" forState:UIControlStateNormal];
+//    button1.backgroundColor = [UIColor colorWithRed:240.f/255 green:216.f/255 blue:6.f/255 alpha:1.0];
+//    button1.layer.cornerRadius = 8;
+//    button1.selectionHandler = ^(CNPPopupButton *button){
+//        [self.popupController dismissPopupControllerAnimated:YES];
+//        NSLog(@"Block for button: %@", button.titleLabel.text);
+//    };
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.numberOfLines = 0;
@@ -122,22 +124,14 @@
     lineOneLabel.attributedText = lineOne;
     
     UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 55)];
-//    customView.backgroundColor = [UIColor lightGrayColor];
-//    CNPPopupButton *button1 = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 200, 60)];
-//    [button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    button1.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-//    [button1 setTitle:@"Edit" forState:UIControlStateNormal];
-//    button1.backgroundColor = [UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0];
-//    button1.layer.cornerRadius = 4;
     
     UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 180, 35)];
     textFied.borderStyle = UITextBorderStyleRoundedRect;
-    textFied.text = @"+1 405 2223-2234";
+    textFied.text = @"+1 415-996-6182";
     textFied.borderStyle = UITextBorderStyleNone;
     [customView addSubview:textFied];
-//    [customView addSubview:button1];
     
-    self.popupController = [[CNPPopupController alloc] initWithContents:@[titleLabel, lineOneLabel, customView, button, button1]];
+    self.popupController = [[CNPPopupController alloc] initWithContents:@[titleLabel, lineOneLabel, customView,]];
     self.popupController.theme = [CNPPopupTheme defaultTheme];
     self.popupController.theme.popupStyle = popupStyle;
     self.popupController.delegate = self;

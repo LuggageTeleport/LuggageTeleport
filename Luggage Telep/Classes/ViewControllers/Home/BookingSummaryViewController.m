@@ -132,7 +132,8 @@
     if(self.count_bags > 2){
         subTotal = kEachBugPrice + (self.count_bags-2)*10;
         totalPrice = kEachBugTax * (kEachBugPrice + 10*(self.count_bags-2));
-    }else{
+    }
+    else{
         subTotal = kEachBugPrice;
         totalPrice = kEachBugTax * kEachBugPrice ;
     }
@@ -141,6 +142,15 @@
     self.lbl_subTotal.text = [NSString stringWithFormat:@"$ %ld", subTotal];
     self.lbl_totalTax.text = [NSString stringWithFormat:@"$ %.01f", subTaxTotal];
     self.lbl_taxTotalPrice.text = [NSString stringWithFormat:@"$ %.1f", totalPrice];
+    
+    if (self.count_bags == 0){
+        subTotal = 0.01;
+        totalPrice = 0.01;
+        self.lbl_subTotal.text = @"$ 0.01";
+        self.lbl_totalTax.text =@"$ 0.0";
+        self.lbl_taxTotalPrice.text = @"$ 0.01";
+    }
+    
 }
 
 - (IBAction)clicked_Back:(id)sender {
@@ -308,7 +318,7 @@
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *params = @{@"amount": [NSString stringWithFormat:@"%.01f", totalPrice],
+    NSDictionary *params = @{@"amount": [NSString stringWithFormat:@"%0.2f", totalPrice],
                              @"cardNumber": visa_cardNumber,
                              @"expDate":  [defaults objectForKey:KEY_EXPDATE],
                              @"cardCode": [defaults objectForKey:KEY_CVV]

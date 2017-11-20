@@ -51,8 +51,8 @@
 }
 - (IBAction)clicked_minue:(id)sender {
     count --;
-    if(count < 1){
-        count = 1;
+    if(count < 0){
+        count = 0;
     }
     self.lbl_countOfbags.text = [NSString stringWithFormat:@"%i", count];
 }
