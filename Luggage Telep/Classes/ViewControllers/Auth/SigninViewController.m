@@ -15,11 +15,15 @@
 @interface SigninViewController () <UITextFieldDelegate>{
     Boolean isEmail;
     Boolean isPassword;
+    Boolean isCheck;
 }
 @property (weak, nonatomic) IBOutlet UITextField *txt_username;
 @property (weak, nonatomic) IBOutlet UITextField *txt_password;
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *signinBtn;
+@property (weak, nonatomic) IBOutlet UIView *emailView;
+@property (weak, nonatomic) IBOutlet UIView *passwordView;
+@property (weak, nonatomic) IBOutlet UIImageView *checkImg;
 
 @end
 
@@ -32,6 +36,18 @@
     isEmail = false;
     isPassword = false;
     self.signinBtn.layer.cornerRadius = self.signinBtn.layer.frame.size.height/2;
+    self.emailView.layer.cornerRadius = self.emailView.layer.frame.size.height/2;
+    self.passwordView.layer.cornerRadius = self.passwordView.layer.frame.size.height/2;
+    
+//    isCheck = false;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *str = [defaults objectForKey:KEY_PASSWORDREMEMBER];
+    
+    if([str isEqualToString:@"true"]){
+        _txt_username.text = [defaults objectForKey:KEY_USERNAME];
+        _txt_password.text = [defaults objectForKey:KEY_PASSWORD];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +82,8 @@
                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                     [defaults setValue:[responseObject objectForKey:@"token"] forKey:KEY_TOKEN];
                     [defaults setValue:_txt_password.text forKey:KEY_PASSWORD];
+                    [defaults setValue:_txt_username.text forKey:KEY_USERNAME];
+                    [defaults setValue:[NSString stringWithFormat:@"%s", isCheck ? "true" : "false"] forKey:KEY_PASSWORDREMEMBER];
                     [defaults synchronize];
                     NSString *token = [responseObject objectForKey:@"token"];
 
@@ -106,6 +124,16 @@
             }
         }];
         [dataTask resume];
+    }
+}
+
+- (IBAction)clicked_savePassword:(id)sender {
+    if(isCheck){
+        isCheck = false;
+        _checkImg.image = IMAGE(@"uncheck.png");
+    }else{
+        isCheck = true;
+        _checkImg.image = IMAGE(@"checkbox.png");
     }
 }
 

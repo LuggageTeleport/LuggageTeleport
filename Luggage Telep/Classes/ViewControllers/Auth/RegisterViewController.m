@@ -8,13 +8,14 @@
 
 #import "RegisterViewController.h"
 #import "MainViewController.h"
+#import "SigninViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Constant.h"
 #import "AccountUtilities.h"
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
-@interface RegisterViewController ()<UITextFieldDelegate>{
+@interface RegisterViewController ()<UITextFieldDelegate, UIAlertViewDelegate>{
     Boolean isuserName;
     Boolean isEmail;
     Boolean isPassword;
@@ -154,73 +155,85 @@
         NSDictionary *params = @{@"username"    : _txt_name.text,
                                  @"email"       : _txt_email.text,
                                  @"password"    : _txt_password.text,
-                                 @"phoneNumber" : [NSString stringWithFormat:@"(%@) %@", _txt_country.text, _txt_phone.text]
+                                 @"phoneNumber" : [NSString stringWithFormat:@"%@", _txt_phone.text],
+                                 @"countryCode"     : _txt_country.text,
                                  };
 
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-
         NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:REGISTER_URL parameters:params error:nil];
-
         NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"Error: %@", error);
-                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid Create" andBlock:nil];
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Failed" andBlock:nil];
             } else {
                 NSNumber *number = [responseObject objectForKey:@"success"];
                 if( [number intValue] == 1){
                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    [defaults setValue:[responseObject objectForKey:@"token"] forKey:KEY_TOKEN];
-                    [defaults setValue:_txt_password.text forKey:KEY_PASSWORD];
                     [defaults setValue:_txt_phone.text forKey:KEY_PHONENUMBER];
-                    [defaults synchronize];
-                    NSString *token = [responseObject objectForKey:@"token"];
-                    
-                    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-                    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-                    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-                    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
-                    NSDictionary *dict = @{@"":@""};
-                    [manager POST:DOWNLOAD_PROFILE_URL parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                        NSLog(@"success!");
-                        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-                        
-                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                        [defaults setValue:nil forKey:KEY_CARDNUMBER];
-                        [defaults setValue:nil forKey:KEY_CVV];
-                        [defaults setValue:nil forKey:KEY_EXPDATE];
-                        NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
-                        if(array.count > 0){
-                            NSDictionary *dictionary = [array objectAtIndex:0];
-                            NSString *cardNumber = [dictionary objectForKey:@"cardNumber"];
-                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                            [defaults setValue:cardNumber forKey:KEY_CARDNUMBER];
-                            [defaults setValue:[dictionary objectForKey:@"cvv"] forKey:KEY_CVV];
-                            [defaults setValue:[dictionary objectForKey:@"expDate"] forKey:KEY_EXPDATE];
-                        }
-                        [defaults setValue:_txt_name.text forKey:KEY_USERNAME];
-                        [defaults setValue:_txt_email.text forKey:KEY_EMAIL];
-                        [defaults synchronize];
-                        
-                        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                        MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
-                        [self.navigationController pushViewController:mainVC animated:YES];
-                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                        NSLog(@"error: %@", error);
-                    }];
-                }else{
-                    NSString *str = [responseObject objectForKey:@"type"];
-                    if([str isEqualToString:@"duplicated"]){
-                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Same User already exists" dismiss:@"OK" sender:self];
-                    }else{
-                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Internet or Wi-fi issue." dismiss:@"OK" sender:self];
-                    }
                     [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:[responseObject objectForKey:@"msg"] dismiss:@"OK" sender:self];
+                    
+//                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                    [defaults setValue:[responseObject objectForKey:@"token"] forKey:KEY_TOKEN];
+//                    [defaults setValue:_txt_password.text forKey:KEY_PASSWORD];
+//                    [defaults setValue:_txt_phone.text forKey:KEY_PHONENUMBER];
+//                    [defaults synchronize];
+//                    NSString *token = [responseObject objectForKey:@"token"];
+//
+//                    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//                    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//                    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//                    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+//                    NSDictionary *dict = @{@"":@""};
+//                    [manager POST:DOWNLOAD_PROFILE_URL parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//                        NSLog(@"success!");
+//                        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+//
+//                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                        [defaults setValue:nil forKey:KEY_CARDNUMBER];
+//                        [defaults setValue:nil forKey:KEY_CVV];
+//                        [defaults setValue:nil forKey:KEY_EXPDATE];
+//                        NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
+//                        if(array.count > 0){
+//                            NSDictionary *dictionary = [array objectAtIndex:0];
+//                            NSString *cardNumber = [dictionary objectForKey:@"cardNumber"];
+//                            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                            [defaults setValue:cardNumber forKey:KEY_CARDNUMBER];
+//                            [defaults setValue:[dictionary objectForKey:@"cvv"] forKey:KEY_CVV];
+//                            [defaults setValue:[dictionary objectForKey:@"expDate"] forKey:KEY_EXPDATE];
+//                        }
+//                        [defaults setValue:_txt_name.text forKey:KEY_USERNAME];
+//                        [defaults setValue:_txt_email.text forKey:KEY_EMAIL];
+//                        [defaults synchronize];
+//
+//                        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                        MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+//                        [self.navigationController pushViewController:mainVC animated:YES];
+//                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//                        NSLog(@"error: %@", error);
+//                    }];
+                }else{
+//                    NSString *str = [responseObject objectForKey:@"type"];
+//                    if([str isEqualToString:@"duplicated"]){
+//                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Same User already exists" dismiss:@"OK" sender:self];
+//                    }else{
+//                        [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Internet or Wi-fi issue." dismiss:@"OK" sender:self];
+//                    }
+                    [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+                    [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:[responseObject objectForKey:@"msg"] dismiss:@"OK" sender:self];
+                    
                 }
             }
         }];
         [dataTask resume];
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+     SigninViewController *signVC = [story instantiateViewControllerWithIdentifier:@"SigninViewController"];
+    [self.navigationController pushViewController:signVC animated:YES];
 }
 
 - (void) checkInputs{
@@ -295,12 +308,6 @@
             }
         }
     }
-    
-
-    
-    
-    
-    
     
 }
 

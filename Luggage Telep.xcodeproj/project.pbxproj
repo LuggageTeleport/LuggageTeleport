@@ -67,6 +67,8 @@
 		223664A11F8843480017809C /* BookingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223664A01F8843480017809C /* BookingSummaryViewController.m */; };
 		223664A41F8A747A0017809C /* ic_user_blue1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 223664A21F8A74030017809C /* ic_user_blue1.jpg */; };
 		223664A51F8A747A0017809C /* ic_hotel_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 223664A31F8A743B0017809C /* ic_hotel_blue.jpg */; };
+		223E47FD1FE8232600E3FC47 /* uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223E47FB1FE8232600E3FC47 /* uncheck@2x.png */; };
+		223E47FE1FE8232600E3FC47 /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223E47FC1FE8232600E3FC47 /* checkbox@2x.png */; };
 		2266FEE51F82B17300897673 /* ic_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE11F82B16F00897673 /* ic_star.png */; };
 		2266FEE61F82B17300897673 /* two_dots.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE21F82B17000897673 /* two_dots.png */; };
 		2266FEE71F82B17300897673 /* ic_blue_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE31F82B17100897673 /* ic_blue_bubble.png */; };
@@ -75,6 +77,8 @@
 		2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2266FEF11F82E1DE00897673 /* SupportViewController.m */; };
 		2266FEF41F82E2FE00897673 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEF31F82E2FD00897673 /* bg.png */; };
 		22950B631FC0C59A0002C152 /* ic_tabUserPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 22950B621FC0C5990002C152 /* ic_tabUserPhoto.png */; };
+		22A5DE911FE082A300639173 /* ResetPasswordViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DE901FE082A300639173 /* ResetPasswordViewController1.m */; };
+		22A5DE941FE082B300639173 /* ResetPasswordViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A5DE931FE082B300639173 /* ResetPasswordViewController2.m */; };
 		22D3304D1F87A21E009EE8EE /* ic_phone_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D330491F87A212009EE8EE /* ic_phone_blue.png */; };
 		22D3304E1F87A21E009EE8EE /* ic_user_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D3304A1F87A214009EE8EE /* ic_user_blue.png */; };
 		22D3304F1F87A21E009EE8EE /* ic_lock_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D3304B1F87A217009EE8EE /* ic_lock_blue.png */; };
@@ -222,6 +226,8 @@
 		223664A01F8843480017809C /* BookingSummaryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookingSummaryViewController.m; sourceTree = "<group>"; };
 		223664A21F8A74030017809C /* ic_user_blue1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_user_blue1.jpg; sourceTree = "<group>"; };
 		223664A31F8A743B0017809C /* ic_hotel_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_hotel_blue.jpg; sourceTree = "<group>"; };
+		223E47FB1FE8232600E3FC47 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
+		223E47FC1FE8232600E3FC47 /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
 		2266FEE11F82B16F00897673 /* ic_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star.png; sourceTree = "<group>"; };
 		2266FEE21F82B17000897673 /* two_dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = two_dots.png; sourceTree = "<group>"; };
 		2266FEE31F82B17100897673 /* ic_blue_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_blue_bubble.png; sourceTree = "<group>"; };
@@ -233,6 +239,10 @@
 		2266FEF11F82E1DE00897673 /* SupportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SupportViewController.m; sourceTree = "<group>"; };
 		2266FEF31F82E2FD00897673 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		22950B621FC0C5990002C152 /* ic_tabUserPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_tabUserPhoto.png; sourceTree = "<group>"; };
+		22A5DE8F1FE082A300639173 /* ResetPasswordViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController1.h; sourceTree = "<group>"; };
+		22A5DE901FE082A300639173 /* ResetPasswordViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController1.m; sourceTree = "<group>"; };
+		22A5DE921FE082B300639173 /* ResetPasswordViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController2.h; sourceTree = "<group>"; };
+		22A5DE931FE082B300639173 /* ResetPasswordViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController2.m; sourceTree = "<group>"; };
 		22D330491F87A212009EE8EE /* ic_phone_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_phone_blue.png; sourceTree = "<group>"; };
 		22D3304A1F87A214009EE8EE /* ic_user_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_user_blue.png; sourceTree = "<group>"; };
 		22D3304B1F87A217009EE8EE /* ic_lock_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_lock_blue.png; sourceTree = "<group>"; };
@@ -438,6 +448,8 @@
 		22E749C01F80C7300047B8ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				223E47FC1FE8232600E3FC47 /* checkbox@2x.png */,
+				223E47FB1FE8232600E3FC47 /* uncheck@2x.png */,
 				22950B621FC0C5990002C152 /* ic_tabUserPhoto.png */,
 				04F517DF1FB74DED00DBA6C9 /* Terms Of Service.pdf */,
 				04F517DD1FB746AE00DBA6C9 /* terms1.png */,
@@ -580,6 +592,10 @@
 				044076151F9CFCFD00A81128 /* AddCardViewController.m */,
 				0498E1A31FADC55200131B0B /* EditCardViewController.h */,
 				0498E1A41FADC55200131B0B /* EditCardViewController.m */,
+				22A5DE8F1FE082A300639173 /* ResetPasswordViewController1.h */,
+				22A5DE901FE082A300639173 /* ResetPasswordViewController1.m */,
+				22A5DE921FE082B300639173 /* ResetPasswordViewController2.h */,
+				22A5DE931FE082B300639173 /* ResetPasswordViewController2.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -736,6 +752,7 @@
 				041BC4911FA6CFC300B32639 /* PaymentVisaTableViewCell.xib in Resources */,
 				04B8EA7E1F8AB0F400A76FDA /* ic_check_box.jpg in Resources */,
 				041EB45B1F8D50880055AAEB /* user_placeholder.png in Resources */,
+				223E47FE1FE8232600E3FC47 /* checkbox@2x.png in Resources */,
 				22E749D91F80C7300047B8ED /* ic_support.png in Resources */,
 				22D3304E1F87A21E009EE8EE /* ic_user_blue.png in Resources */,
 				04F517DE1FB746AE00DBA6C9 /* terms1.png in Resources */,
@@ -776,6 +793,7 @@
 				22E749D11F80C7300047B8ED /* home_top_bar.png in Resources */,
 				22269B9A1F88266100D9D21C /* booking_bg.png in Resources */,
 				041D16DE1F8ABB0B007E96BC /* ic_visa_card.png in Resources */,
+				223E47FD1FE8232600E3FC47 /* uncheck@2x.png in Resources */,
 				22D330501F87A21E009EE8EE /* ic_address_blue.png in Resources */,
 				22E749DC1F80C7300047B8ED /* menu-lines.png in Resources */,
 				22269B9E1F88266100D9D21C /* ic_clock.png in Resources */,
@@ -898,6 +916,7 @@
 				044076161F9CFCFD00A81128 /* AddCardViewController.m in Sources */,
 				041BC4901FA6CFC300B32639 /* PaymentVisaTableViewCell.m in Sources */,
 				041EB4671F8D76F10055AAEB /* FeedbackViewController.m in Sources */,
+				22A5DE941FE082B300639173 /* ResetPasswordViewController2.m in Sources */,
 				2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */,
 				041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */,
 				041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */,
@@ -910,6 +929,7 @@
 				22E749EB1F81FA1F0047B8ED /* MainViewController.m in Sources */,
 				22E749F21F8248910047B8ED /* LeftViewController.m in Sources */,
 				22269BA31F88305000D9D21C /* AirPortToHotelViewController.m in Sources */,
+				22A5DE911FE082A300639173 /* ResetPasswordViewController1.m in Sources */,
 				22E749F51F824FB10047B8ED /* NavigationController.m in Sources */,
 				0472C5371F8B904E00B8C516 /* Constant.m in Sources */,
 				22D330531F87A9D2009EE8EE /* RegisterViewController.m in Sources */,
