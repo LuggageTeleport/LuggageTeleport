@@ -401,6 +401,7 @@
 }
 
 - (UIView *)dropdownMenu:(MKDropdownMenu *)dropdownMenu viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    [self.txt_promoCode resignFirstResponder];
     AirlineSelectView *shapeSelectView = (AirlineSelectView *)view;
     if (shapeSelectView == nil || ![shapeSelectView isKindOfClass:[AirlineSelectView class]]) {
         shapeSelectView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AirlineSelectView class]) owner:nil options:nil] firstObject];
@@ -436,6 +437,7 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.dropdownVisaCode closeAllComponentsAnimated:NO];
     if (textField.tag == 1) {
         [self.mScrollView setContentOffset:CGPointMake(0, 35) animated:true];
     }

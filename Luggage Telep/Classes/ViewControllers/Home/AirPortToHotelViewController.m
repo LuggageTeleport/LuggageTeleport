@@ -332,6 +332,10 @@
 #pragma mark - ActionSheet Delegate
 
 - (IBAction)clicked_pickUpDate:(id)sender {
+    [self.txt_flightNumber resignFirstResponder];
+    [self.txt_hotelConfirmNumber resignFirstResponder];
+    [self.txt_guestName resignFirstResponder];
+    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     [minimumDateComponents setYear:1970];
@@ -352,6 +356,10 @@
     [self.actionSheetPicker showActionSheetPicker];
 }
 - (IBAction)clicked_dropOffDate:(id)sender {
+    [self.txt_flightNumber resignFirstResponder];
+    [self.txt_hotelConfirmNumber resignFirstResponder];
+    [self.txt_guestName resignFirstResponder];
+    
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *minimumDateComponents = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
     [minimumDateComponents setYear:1970];
@@ -372,6 +380,10 @@
 }
 
 - (IBAction)estimatedTime:(id)sender {
+    [self.txt_flightNumber resignFirstResponder];
+    [self.txt_hotelConfirmNumber resignFirstResponder];
+    [self.txt_guestName resignFirstResponder];
+    
     NSInteger minuteInterval = 5;
     //clamp date
     NSInteger referenceTimeInterval = (NSInteger)[self.selectedTime timeIntervalSinceReferenceDate];
@@ -428,6 +440,10 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.dropdownMenu closeAllComponentsAnimated:NO];
+    [self.dropAirportMenu closeAllComponentsAnimated:NO];
+    [self.dropHotelMenu closeAllComponentsAnimated:NO];
+    
     if (textField.tag == 1) {
         [self.mScrollView setContentOffset:CGPointMake(0, 0) animated:true];
     }
@@ -474,6 +490,10 @@
 }
 
 - (UIView *)dropdownMenu:(MKDropdownMenu *)dropdownMenu viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    [self.txt_flightNumber resignFirstResponder];
+    [self.txt_hotelConfirmNumber resignFirstResponder];
+    [self.txt_guestName resignFirstResponder];
+    
     if(dropdownMenu.tag == 2){
         AirlineSelectView *shapeSelectView = (AirlineSelectView *)view;
         if (shapeSelectView == nil || ![shapeSelectView isKindOfClass:[AirlineSelectView class]]) {
@@ -509,6 +529,10 @@
 }
 
 - (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    [self.txt_flightNumber resignFirstResponder];
+    [self.txt_hotelConfirmNumber resignFirstResponder];
+    [self.txt_guestName resignFirstResponder];
+    
     if (dropdownMenu.tag == 2) {
         self.airlineName.text = self.airLineList[row];
         [self.dropdownMenu closeAllComponentsAnimated:NO];

@@ -4266,7 +4266,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
                                                 <real key="value" value="-8"/>
@@ -5152,6 +5152,6 @@
         <image name="user_placeholder.png" width="70" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H8y-Wn-xf5"/>
+        <segue reference="h1b-Iv-3BT"/>
     </inferredMetricsTieBreakers>
 </document>
