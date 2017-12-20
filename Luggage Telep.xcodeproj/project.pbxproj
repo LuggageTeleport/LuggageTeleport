@@ -69,6 +69,10 @@
 		223664A51F8A747A0017809C /* ic_hotel_blue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 223664A31F8A743B0017809C /* ic_hotel_blue.jpg */; };
 		223E47FD1FE8232600E3FC47 /* uncheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223E47FB1FE8232600E3FC47 /* uncheck@2x.png */; };
 		223E47FE1FE8232600E3FC47 /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 223E47FC1FE8232600E3FC47 /* checkbox@2x.png */; };
+		223E48021FE8AEE600E3FC47 /* HotelToHotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223E48011FE8AEE600E3FC47 /* HotelToHotelViewController.m */; };
+		223E48051FE8CA6200E3FC47 /* AirportToAirportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223E48041FE8CA6200E3FC47 /* AirportToAirportViewController.m */; };
+		223E48081FE8E02400E3FC47 /* HotelToAirportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223E48071FE8E02400E3FC47 /* HotelToAirportViewController.m */; };
+		223E480A1FE8F94F00E3FC47 /* booking_bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = 223E48091FE8F94B00E3FC47 /* booking_bg1.png */; };
 		2266FEE51F82B17300897673 /* ic_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE11F82B16F00897673 /* ic_star.png */; };
 		2266FEE61F82B17300897673 /* two_dots.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE21F82B17000897673 /* two_dots.png */; };
 		2266FEE71F82B17300897673 /* ic_blue_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266FEE31F82B17100897673 /* ic_blue_bubble.png */; };
@@ -228,6 +232,13 @@
 		223664A31F8A743B0017809C /* ic_hotel_blue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ic_hotel_blue.jpg; sourceTree = "<group>"; };
 		223E47FB1FE8232600E3FC47 /* uncheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uncheck@2x.png"; sourceTree = "<group>"; };
 		223E47FC1FE8232600E3FC47 /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
+		223E48001FE8AEE600E3FC47 /* HotelToHotelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelToHotelViewController.h; sourceTree = "<group>"; };
+		223E48011FE8AEE600E3FC47 /* HotelToHotelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelToHotelViewController.m; sourceTree = "<group>"; };
+		223E48031FE8CA6200E3FC47 /* AirportToAirportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirportToAirportViewController.h; sourceTree = "<group>"; };
+		223E48041FE8CA6200E3FC47 /* AirportToAirportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirportToAirportViewController.m; sourceTree = "<group>"; };
+		223E48061FE8E02400E3FC47 /* HotelToAirportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotelToAirportViewController.h; sourceTree = "<group>"; };
+		223E48071FE8E02400E3FC47 /* HotelToAirportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelToAirportViewController.m; sourceTree = "<group>"; };
+		223E48091FE8F94B00E3FC47 /* booking_bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = booking_bg1.png; sourceTree = "<group>"; };
 		2266FEE11F82B16F00897673 /* ic_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_star.png; sourceTree = "<group>"; };
 		2266FEE21F82B17000897673 /* two_dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = two_dots.png; sourceTree = "<group>"; };
 		2266FEE31F82B17100897673 /* ic_blue_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_blue_bubble.png; sourceTree = "<group>"; };
@@ -448,6 +459,7 @@
 		22E749C01F80C7300047B8ED /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				223E48091FE8F94B00E3FC47 /* booking_bg1.png */,
 				223E47FC1FE8232600E3FC47 /* checkbox@2x.png */,
 				223E47FB1FE8232600E3FC47 /* uncheck@2x.png */,
 				22950B621FC0C5990002C152 /* ic_tabUserPhoto.png */,
@@ -596,6 +608,12 @@
 				22A5DE901FE082A300639173 /* ResetPasswordViewController1.m */,
 				22A5DE921FE082B300639173 /* ResetPasswordViewController2.h */,
 				22A5DE931FE082B300639173 /* ResetPasswordViewController2.m */,
+				223E48001FE8AEE600E3FC47 /* HotelToHotelViewController.h */,
+				223E48011FE8AEE600E3FC47 /* HotelToHotelViewController.m */,
+				223E48031FE8CA6200E3FC47 /* AirportToAirportViewController.h */,
+				223E48041FE8CA6200E3FC47 /* AirportToAirportViewController.m */,
+				223E48061FE8E02400E3FC47 /* HotelToAirportViewController.h */,
+				223E48071FE8E02400E3FC47 /* HotelToAirportViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -746,6 +764,7 @@
 				22E749D31F80C7300047B8ED /* hotel-hotel.png in Resources */,
 				04DE34F01FB4CBEA0003D254 /* amlex.png in Resources */,
 				22D3304D1F87A21E009EE8EE /* ic_phone_blue.png in Resources */,
+				223E480A1FE8F94F00E3FC47 /* booking_bg1.png in Resources */,
 				04B8EA841F8AB54F00A76FDA /* ic_next.png in Resources */,
 				04DE34EC1FB4C3B90003D254 /* mastercard.png in Resources */,
 				22E749CF1F80C7300047B8ED /* air-hotel.png in Resources */,
@@ -910,6 +929,7 @@
 				22E749E71F81F98D0047B8ED /* SigninViewController.m in Sources */,
 				22E749F81F8281ED0047B8ED /* MyProfileViewController.m in Sources */,
 				0472C53A1F8BBFE800B8C516 /* APIs.m in Sources */,
+				223E48021FE8AEE600E3FC47 /* HotelToHotelViewController.m in Sources */,
 				043C7AE21F8D2C940021A88E /* AirlineSelectView.m in Sources */,
 				223664A11F8843480017809C /* BookingSummaryViewController.m in Sources */,
 				22E749E41F81F9790047B8ED /* StartViewController.m in Sources */,
@@ -920,6 +940,7 @@
 				2266FEEF1F82B5A900897673 /* HistoryTableViewCell.m in Sources */,
 				041F0CC11F8B12AA0020DEC4 /* MyOrderViewController.m in Sources */,
 				041D16DC1F8AB952007E96BC /* AddPaymentViewController.m in Sources */,
+				223E48051FE8CA6200E3FC47 /* AirportToAirportViewController.m in Sources */,
 				2266FEEB1F82B35500897673 /* HistoryViewController.m in Sources */,
 				041BC48B1FA6AD1B00B32639 /* PaymentHeaderTableViewCell.m in Sources */,
 				22E7499C1F807CE00047B8ED /* main.m in Sources */,
@@ -933,6 +954,7 @@
 				22E749F51F824FB10047B8ED /* NavigationController.m in Sources */,
 				0472C5371F8B904E00B8C516 /* Constant.m in Sources */,
 				22D330531F87A9D2009EE8EE /* RegisterViewController.m in Sources */,
+				223E48081FE8E02400E3FC47 /* HotelToAirportViewController.m in Sources */,
 				0498E1A51FADC55300131B0B /* EditCardViewController.m in Sources */,
 				22E7498E1F807CE00047B8ED /* AppDelegate.m in Sources */,
 				2266FEF21F82E1DE00897673 /* SupportViewController.m in Sources */,

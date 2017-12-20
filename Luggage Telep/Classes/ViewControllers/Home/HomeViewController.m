@@ -8,6 +8,9 @@
 
 #import "HomeViewController.h"
 #import "AirPortToHotelViewController.h"
+#import "AirportToAirportViewController.h"
+#import "HotelToAirportViewController.h"
+#import "HotelToHotelViewController.h"
 #import "CNPPopupController.h"
 #import "MKDropdownMenu.h"
 #import "BookingDetailViewController.h"
@@ -171,5 +174,20 @@
     [self.navigationController pushViewController:airportVC animated:YES];
 }
 
+- (IBAction)clicked_airport_airport:(id)sender {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    AirportToAirportViewController *airportVC = [story instantiateViewControllerWithIdentifier:@"AirportToAirportViewController"];
+    [self.navigationController pushViewController:airportVC animated:YES];
+}
+- (IBAction)clicked_hotel_airport:(id)sender {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HotelToAirportViewController *airportVC = [story instantiateViewControllerWithIdentifier:@"HotelToAirportViewController"];
+    [self.navigationController pushViewController:airportVC animated:YES];
+}
+- (IBAction)clicked_hotel_hotel:(id)sender {
+    UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    HotelToHotelViewController *airportVC = [story instantiateViewControllerWithIdentifier:@"HotelToHotelViewController"];
+    [self.navigationController pushViewController:airportVC animated:YES];
+}
 
 @end

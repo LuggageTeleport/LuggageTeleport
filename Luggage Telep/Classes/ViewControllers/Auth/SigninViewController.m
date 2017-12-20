@@ -44,8 +44,10 @@
     NSString *str = [defaults objectForKey:KEY_PASSWORDREMEMBER];
     
     if([str isEqualToString:@"true"]){
+        isCheck = true;
         _txt_username.text = [defaults objectForKey:KEY_USERNAME];
         _txt_password.text = [defaults objectForKey:KEY_PASSWORD];
+        _checkImg.image = IMAGE(@"checkbox.png");        
     }
     
 }
