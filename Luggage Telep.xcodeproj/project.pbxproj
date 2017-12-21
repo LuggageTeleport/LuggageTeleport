@@ -706,7 +706,7 @@
 				TargetAttributes = {
 					22E749881F807CE00047B8ED = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
 								enabled = 0;
@@ -1128,8 +1128,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Z588KYGRM5;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 24J4R36H29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/AuthorizeNetAccept/AcceptSDK-Framework",
@@ -1139,8 +1139,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Darren.LuggPort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9ea5c475-944a-45bc-a29f-3baa8f631b0e";
-				PROVISIONING_PROFILE_SPECIFIER = LuggPort_Dev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1153,8 +1153,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Luggage Teleport Inc (Z588KYGRM5)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Z588KYGRM5;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 24J4R36H29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/AuthorizeNetAccept/AcceptSDK-Framework",
@@ -1164,8 +1164,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Darren.LuggPort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9ea5c475-944a-45bc-a29f-3baa8f631b0e";
-				PROVISIONING_PROFILE_SPECIFIER = LuggPort_Dev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

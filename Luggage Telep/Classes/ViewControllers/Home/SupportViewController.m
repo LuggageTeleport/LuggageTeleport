@@ -95,6 +95,7 @@
                 [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
             } else{
                 [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+                [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Your message has been received and we will get back to you in 48 hours." dismiss:@"OK" sender:self];
             }
         }];
         [dataTask resume];

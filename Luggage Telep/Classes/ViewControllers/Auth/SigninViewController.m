@@ -76,7 +76,7 @@
         NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"Error: %@", error);
-                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid account" andBlock:nil];
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Network Error" andBlock:nil];
             } else {
                 NSNumber *number = [responseObject objectForKey:@"success"];
                 if( [number intValue] == 1){

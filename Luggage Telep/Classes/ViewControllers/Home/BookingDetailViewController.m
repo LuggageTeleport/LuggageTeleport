@@ -112,6 +112,7 @@
     button1.layer.cornerRadius = 8;
     button1.selectionHandler = ^(CNPPopupButton *button){
         [self.popupController dismissPopupControllerAnimated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:14159966182"]];
         NSLog(@"Block for button: %@", button.titleLabel.text);
     };
     
