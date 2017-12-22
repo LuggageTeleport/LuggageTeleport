@@ -28,7 +28,7 @@
 //URL
 #define REGISTER_URL            @"https://infinite-garden-74421.herokuapp.com/user/signup"
 #define LOGIN_URL               @"https://infinite-garden-74421.herokuapp.com/user/signIN"
-#define BOOKING_URL             @"https://infinite-garden-74421.herokuapp.com/api/sendmail"
+#define BOOKING_CLIENT_URL      @"https://infinite-garden-74421.herokuapp.com/api/sendClientMail"
 #define SUPPORT_URL             @"https://infinite-garden-74421.herokuapp.com/api/sendSupportMail"
 #define DOWNLOAD_PROFILE_URL    @"https://infinite-garden-74421.herokuapp.com/user/getProfile"
 #define UPDATE_PROFILE_URL      @"https://infinite-garden-74421.herokuapp.com/user/update"
@@ -41,7 +41,12 @@
 #define PROMO_UPDATE_URL        @"https://infinite-garden-74421.herokuapp.com/payment/updatePromoCode"
 #define PROMO_GET_URL           @"https://infinite-garden-74421.herokuapp.com/payment/getPromoCode"
 #define PROMO_DELETE_URL        @"https://infinite-garden-74421.herokuapp.com/payment/deletePromoCode"
+#define SENDCODETOMAIL_URL      @"https://infinite-garden-74421.herokuapp.com/api/sendCodeToMail"
+#define VERIFY_EMAILCODE_URL    @"https://infinite-garden-74421.herokuapp.com/api/verifyEmailCode"
+#define SENDCODETOMOBILE_URL    @"https://infinite-garden-74421.herokuapp.com/api/sendCodeToMobile"
+#define VERIFY_MOBILECODE_URL    @"https://infinite-garden-74421.herokuapp.com/api/verifyMobileCode"
 
+#define KEY_PASSWORDREMEMBER    @"key_passwordremember"
 #define KEY_TOKEN               @"key_token"
 #define KEY_PASSWORD            @"key_password"
 #define KEY_FIRSTNAME           @"key_firstname"

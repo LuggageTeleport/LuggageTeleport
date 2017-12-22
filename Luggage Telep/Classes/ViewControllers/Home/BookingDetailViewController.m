@@ -104,16 +104,17 @@
 //        [self.popupController dismissPopupControllerAnimated:YES];
 //        NSLog(@"Block for button: %@", button.titleLabel.text);
 //    };
-//    CNPPopupButton *button1 = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
-//    [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    button1.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-//    [button1 setTitle:@"CALL" forState:UIControlStateNormal];
-//    button1.backgroundColor = [UIColor colorWithRed:240.f/255 green:216.f/255 blue:6.f/255 alpha:1.0];
-//    button1.layer.cornerRadius = 8;
-//    button1.selectionHandler = ^(CNPPopupButton *button){
-//        [self.popupController dismissPopupControllerAnimated:YES];
-//        NSLog(@"Block for button: %@", button.titleLabel.text);
-//    };
+    CNPPopupButton *button1 = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
+    [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    button1.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [button1 setTitle:@"CALL" forState:UIControlStateNormal];
+    button1.backgroundColor = [UIColor colorWithRed:240.f/255 green:216.f/255 blue:6.f/255 alpha:1.0];
+    button1.layer.cornerRadius = 8;
+    button1.selectionHandler = ^(CNPPopupButton *button){
+        [self.popupController dismissPopupControllerAnimated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:14159966182"]];
+        NSLog(@"Block for button: %@", button.titleLabel.text);
+    };
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.numberOfLines = 0;
@@ -131,7 +132,7 @@
     textFied.borderStyle = UITextBorderStyleNone;
     [customView addSubview:textFied];
     
-    self.popupController = [[CNPPopupController alloc] initWithContents:@[titleLabel, lineOneLabel, customView,]];
+    self.popupController = [[CNPPopupController alloc] initWithContents:@[titleLabel, lineOneLabel, customView, button1]];
     self.popupController.theme = [CNPPopupTheme defaultTheme];
     self.popupController.theme.popupStyle = popupStyle;
     self.popupController.delegate = self;

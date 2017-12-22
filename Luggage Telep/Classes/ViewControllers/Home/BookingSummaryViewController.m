@@ -192,56 +192,74 @@
 - (void) sendmail{
     if(_txt_promoCode.text.length > 0 ){
         if(_lbl_visaCode.text.length > 15){
-            NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-            AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
             NSDictionary *params = [NSDictionary alloc];
             if(firstname){
                 params = @{@"listAirNameTml" : self.booking.airPortName,
-                             @"airline" : self.booking.airlineName,
-                             @"flightNumber" : self.booking.flightNumber,
-                             @"estTimeArrival" : arrivetime,
-                             @"listHtlNameCity" : self.booking.hotelName,
-                             @"guestName" : self.booking.guestName,
-                             @"htlConfNumber" : self.booking.hotelConfirmNumber,
-                             @"pickDate" : self.booking.pickupDate,
-                             @"overngtStorage" : self.booking.overnightStorage? @true: @false,
-                             @"deliveryDate" : self.booking.deliveryDate,
-                             @"firstName" : firstname,
-                             @"lastName" : lastname,
-                             @"userName" : username,
-                             @"email" : email,
-                             @"phone" : phone,
-                             @"numOfBags": _lbl_bags.text
+                           @"airline" : self.booking.airlineName,
+                           @"flightNumber" : self.booking.flightNumber,
+                           @"estTimeArrival" : arrivetime,
+                           @"listHtlNameCity" : self.booking.hotelName,
+                           @"guestName" : self.booking.guestName,
+                           @"htlConfNumber" : self.booking.hotelConfirmNumber,
+                           @"pickDate" : self.booking.pickupDate,
+                           @"overngtStorage" : self.booking.overnightStorage? @true: @false,
+                           @"deliveryDate" : self.booking.deliveryDate,
+                           @"firstName" : firstname,
+                           @"lastName" : lastname,
+                           @"userName" : username,
+                           @"email" : email,
+                           @"phone" : phone,
+                           @"numOfBags": _lbl_bags.text,
+                           @"budget" : [[NSNumber numberWithFloat:totalPrice] stringValue],
+                           @"transDirection": @"AH",
                          };
             }else{
                 params = @{@"listAirNameTml" : self.booking.airPortName,
-                             @"airline" : self.booking.airlineName,
-                             @"flightNumber" : self.booking.flightNumber,
-                             @"estTimeArrival" : arrivetime,
-                             @"listHtlNameCity" : self.booking.hotelName,
-                             @"guestName" : self.booking.guestName,
-                             @"htlConfNumber" : self.booking.hotelConfirmNumber,
-                             @"pickDate" : self.booking.pickupDate,
-                             @"overngtStorage" : self.booking.overnightStorage? @true: @false,
-                             @"deliveryDate" : self.booking.deliveryDate,
-                             @"userName" : username,
-                             @"email" : email,
-                             @"numOfBags": _lbl_bags.text
+                           @"airline" : self.booking.airlineName,
+                           @"flightNumber" : self.booking.flightNumber,
+                           @"estTimeArrival" : arrivetime,
+                           @"listHtlNameCity" : self.booking.hotelName,
+                           @"guestName" : self.booking.guestName,
+                           @"htlConfNumber" : self.booking.hotelConfirmNumber,
+                           @"pickDate" : self.booking.pickupDate,
+                           @"overngtStorage" : self.booking.overnightStorage? @true: @false,
+                           @"deliveryDate" : self.booking.deliveryDate,
+                           @"userName" : username,
+                           @"email" : email,
+                           @"numOfBags": _lbl_bags.text,
+                           @"budget" : [[NSNumber numberWithFloat:totalPrice] stringValue],
+                           @"transDirection": @"AH",
                          };
             }
             
-            NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:BOOKING_URL parameters:params error:nil];
+//            NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:BOOKING_AH_URL parameters:params error:nil];
+//
+//            NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//                if (error) {
+//                    NSLog(@"Error: %@", error);
+//                    [kACCOUNT_UTILS showFailure:self.view withString:@"Failed to send mail" andBlock:nil];
+//                    [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+//                } else{
+//                    [self sendPromoCode];
+//                }
+//            }];
+//            [dataTask resume];
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *token = [defaults stringForKey:KEY_TOKEN];
+            AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+            manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
 
-            NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                if (error) {
-                    NSLog(@"Error: %@", error);
-                    [kACCOUNT_UTILS showFailure:self.view withString:@"Failed to send mail" andBlock:nil];
-                    [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-                } else{
+            [manager POST:BOOKING_CLIENT_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     [self sendPromoCode];
-                }
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"Error: %@", error);
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Failed to send mail" andBlock:nil];
+                [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
             }];
-            [dataTask resume];
+            
         }
         else{
             [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please input Payment Number" dismiss:@"OK" sender:self];
@@ -256,8 +274,6 @@
             if([_lbl_visaCode.text isEqualToString:@"Add Payment"]){
                 [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Please add the credit card" dismiss:@"OK" sender:self];
             }else{
-                NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-                AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
                 NSDictionary *params = [NSDictionary alloc];
                 if(firstname){
                     params = @{@"listAirNameTml" : self.booking.airPortName,
@@ -275,7 +291,9 @@
                                @"userName" : username,
                                @"email" : email,
                                @"phone" : phone,
-                               @"numOfBags": _lbl_bags.text
+                               @"numOfBags": _lbl_bags.text,
+                               @"budget" : [[NSNumber numberWithFloat:totalPrice] stringValue],
+                               @"transDirection": @"AH",
                                };
                 }else{
                     params = @{@"listAirNameTml" : self.booking.airPortName,
@@ -290,23 +308,27 @@
                                @"deliveryDate" : self.booking.deliveryDate,
                                @"userName" : username,
                                @"email" : email,
-                               @"numOfBags": _lbl_bags.text
+                               @"numOfBags": _lbl_bags.text,
+                               @"budget" : [[NSNumber numberWithFloat:totalPrice] stringValue],
+                               @"transDirection": @"AH",
                                };
                 }
-
-                NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:BOOKING_URL parameters:params error:nil];
-
-                NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-                    if (error) {
-                        NSLog(@"Error: %@", error);
-                        [kACCOUNT_UTILS showFailure:self.view withString:@"Failed to send mail" andBlock:nil];
-                        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
-                    } else{
-                        [self sendTransaction];
-
-                    }
+                
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSString *token = [defaults stringForKey:KEY_TOKEN];
+                AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+                manager.requestSerializer = [AFJSONRequestSerializer serializer];
+                [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+                [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+                
+                [manager POST:BOOKING_CLIENT_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    [self sendTransaction];
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    NSLog(@"Error: %@", error);
+                    [kACCOUNT_UTILS showFailure:self.view withString:@"Failed to send mail" andBlock:nil];
+                    [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
                 }];
-                [dataTask resume];
+                
             }
         }
     }
@@ -366,7 +388,7 @@
             [homeVC initTotalPrice:totalPrice];
             [self.navigationController pushViewController:homeVC animated:NO];
         }else{
-            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Your booking has been received, but payment was not processed. Please pay by cash when you meet our staff, or use the Support Form to cancel your order." dismiss:@"OK" sender:self];
+            [kACCOUNT_UTILS showStandardAlertWithTitle:@"Luggage Teleport" body:@"Your promo code is invalid." dismiss:@"OK" sender:self];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -401,6 +423,7 @@
 }
 
 - (UIView *)dropdownMenu:(MKDropdownMenu *)dropdownMenu viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    [self.txt_promoCode resignFirstResponder];
     AirlineSelectView *shapeSelectView = (AirlineSelectView *)view;
     if (shapeSelectView == nil || ![shapeSelectView isKindOfClass:[AirlineSelectView class]]) {
         shapeSelectView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AirlineSelectView class]) owner:nil options:nil] firstObject];
@@ -436,6 +459,7 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.dropdownVisaCode closeAllComponentsAnimated:NO];
     if (textField.tag == 1) {
         [self.mScrollView setContentOffset:CGPointMake(0, 35) animated:true];
     }
@@ -443,5 +467,8 @@
         [self.mScrollView setContentOffset:CGPointMake(0, 70) animated:true];
     }
 }
+
+
+
 
 @end

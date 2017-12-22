@@ -15,11 +15,15 @@
 @interface SigninViewController () <UITextFieldDelegate>{
     Boolean isEmail;
     Boolean isPassword;
+    Boolean isCheck;
 }
 @property (weak, nonatomic) IBOutlet UITextField *txt_username;
 @property (weak, nonatomic) IBOutlet UITextField *txt_password;
 @property (weak, nonatomic) IBOutlet UIScrollView *mScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *signinBtn;
+@property (weak, nonatomic) IBOutlet UIView *emailView;
+@property (weak, nonatomic) IBOutlet UIView *passwordView;
+@property (weak, nonatomic) IBOutlet UIImageView *checkImg;
 
 @end
 
@@ -32,6 +36,20 @@
     isEmail = false;
     isPassword = false;
     self.signinBtn.layer.cornerRadius = self.signinBtn.layer.frame.size.height/2;
+    self.emailView.layer.cornerRadius = self.emailView.layer.frame.size.height/2;
+    self.passwordView.layer.cornerRadius = self.passwordView.layer.frame.size.height/2;
+    
+//    isCheck = false;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *str = [defaults objectForKey:KEY_PASSWORDREMEMBER];
+    
+    if([str isEqualToString:@"true"]){
+        isCheck = true;
+        _txt_username.text = [defaults objectForKey:KEY_USERNAME];
+        _txt_password.text = [defaults objectForKey:KEY_PASSWORD];
+        _checkImg.image = IMAGE(@"checkbox.png");        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +58,42 @@
 }
 
 - (IBAction)clicked_Back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSDictionary *dict = @{@"":@""};
+    [manager POST:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.753498,-122.439881&radius=500&types=food&name=cruise&key=AIzaSyCdHuDnUVPAdquSC2ZFI6jOgfgXQCH8V4A" parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"success!");
+        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:nil forKey:KEY_CARDNUMBER];
+        [defaults setValue:nil forKey:KEY_CVV];
+        [defaults setValue:nil forKey:KEY_EXPDATE];
+        [defaults synchronize];
+        NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
+        if(array.count > 0){
+            NSDictionary *dictionary = [array objectAtIndex:0];
+            NSString *cardNumber = [dictionary objectForKey:@"cardNumber"];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setValue:cardNumber forKey:KEY_CARDNUMBER];
+            [defaults setValue:[dictionary objectForKey:@"cvv"] forKey:KEY_CVV];
+            [defaults setValue:[dictionary objectForKey:@"expDate"] forKey:KEY_EXPDATE];
+        }
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+        [self.navigationController pushViewController:mainVC animated:YES];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+    }];
+    
+    
+    
+    
+    
 }
 
 - (IBAction)clicked_Signin:(UIButton *)sender {
@@ -58,7 +111,7 @@
         NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:(request) completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"Error: %@", error);
-                [kACCOUNT_UTILS showFailure:self.view withString:@"Invalid account" andBlock:nil];
+                [kACCOUNT_UTILS showFailure:self.view withString:@"Network Error" andBlock:nil];
             } else {
                 NSNumber *number = [responseObject objectForKey:@"success"];
                 if( [number intValue] == 1){
@@ -66,6 +119,8 @@
                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                     [defaults setValue:[responseObject objectForKey:@"token"] forKey:KEY_TOKEN];
                     [defaults setValue:_txt_password.text forKey:KEY_PASSWORD];
+                    [defaults setValue:_txt_username.text forKey:KEY_USERNAME];
+                    [defaults setValue:[NSString stringWithFormat:@"%s", isCheck ? "true" : "false"] forKey:KEY_PASSWORDREMEMBER];
                     [defaults synchronize];
                     NSString *token = [responseObject objectForKey:@"token"];
 
@@ -106,6 +161,16 @@
             }
         }];
         [dataTask resume];
+    }
+}
+
+- (IBAction)clicked_savePassword:(id)sender {
+    if(isCheck){
+        isCheck = false;
+        _checkImg.image = IMAGE(@"uncheck.png");
+    }else{
+        isCheck = true;
+        _checkImg.image = IMAGE(@"checkbox.png");
     }
 }
 
