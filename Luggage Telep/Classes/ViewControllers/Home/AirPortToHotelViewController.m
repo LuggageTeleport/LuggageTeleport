@@ -350,7 +350,6 @@
                                                                origin:sender];
     
     [(ActionSheetDatePicker *) self.actionSheetPicker setMinimumDate:minDate];
-//    [(ActionSheetDatePicker *) self.actionSheetPicker setMaximumDate:maxDate];
 
     self.actionSheetPicker.hideCancel = YES;
     [self.actionSheetPicker showActionSheetPicker];
@@ -472,7 +471,6 @@
     }else{
         return self.airPortList.count;
     }
-    
 }
 
 #pragma mark - MKDropdownMenuDelegate
@@ -519,8 +517,6 @@
         
         return shapeSelectView;
     }
-    
-
 }
 
 - (UIColor *)dropdownMenu:(MKDropdownMenu *)dropdownMenu backgroundColorForRow:(NSInteger)row forComponent:(NSInteger)component {
@@ -545,8 +541,6 @@
     }
     
     [dropdownMenu reloadComponent:component];
-    
-
 }
 
 @end

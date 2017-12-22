@@ -73,13 +73,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Luggage Telep/Classes/ViewControllers/Auth/SigninViewController.m"
-            timestampString = "535516734.236708"
+            filePath = "Luggage Telep/Classes/ViewControllers/Home/BookingSummaryViewController.m"
+            timestampString = "535614562.540757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-clicked_Signin:"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "-sendPromoCode"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Luggage Telep/Classes/ViewControllers/Home/BookingSummaryViewController.m"
+            timestampString = "535614562.540863"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "-sendPromoCode"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

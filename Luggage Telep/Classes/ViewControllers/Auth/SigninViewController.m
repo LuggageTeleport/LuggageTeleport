@@ -58,7 +58,42 @@
 }
 
 - (IBAction)clicked_Back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSDictionary *dict = @{@"":@""};
+    [manager POST:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=37.753498,-122.439881&radius=500&types=food&name=cruise&key=AIzaSyCdHuDnUVPAdquSC2ZFI6jOgfgXQCH8V4A" parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"success!");
+        [kACCOUNT_UTILS hideAllProgressIndicatorsFromView:self.view];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:nil forKey:KEY_CARDNUMBER];
+        [defaults setValue:nil forKey:KEY_CVV];
+        [defaults setValue:nil forKey:KEY_EXPDATE];
+        [defaults synchronize];
+        NSArray *array = [[responseObject objectForKey:@"profile"] objectForKey:@"cards"];
+        if(array.count > 0){
+            NSDictionary *dictionary = [array objectAtIndex:0];
+            NSString *cardNumber = [dictionary objectForKey:@"cardNumber"];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setValue:cardNumber forKey:KEY_CARDNUMBER];
+            [defaults setValue:[dictionary objectForKey:@"cvv"] forKey:KEY_CVV];
+            [defaults setValue:[dictionary objectForKey:@"expDate"] forKey:KEY_EXPDATE];
+        }
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        MainViewController *mainVC = [story instantiateViewControllerWithIdentifier:@"MainViewController"];
+        [self.navigationController pushViewController:mainVC animated:YES];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error: %@", error);
+    }];
+    
+    
+    
+    
+    
 }
 
 - (IBAction)clicked_Signin:(UIButton *)sender {

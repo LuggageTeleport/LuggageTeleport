@@ -28,7 +28,7 @@
 //URL
 #define REGISTER_URL            @"https://infinite-garden-74421.herokuapp.com/user/signup"
 #define LOGIN_URL               @"https://infinite-garden-74421.herokuapp.com/user/signIN"
-#define BOOKING_URL             @"https://infinite-garden-74421.herokuapp.com/api/sendmail"
+#define BOOKING_CLIENT_URL      @"https://infinite-garden-74421.herokuapp.com/api/sendClientMail"
 #define SUPPORT_URL             @"https://infinite-garden-74421.herokuapp.com/api/sendSupportMail"
 #define DOWNLOAD_PROFILE_URL    @"https://infinite-garden-74421.herokuapp.com/user/getProfile"
 #define UPDATE_PROFILE_URL      @"https://infinite-garden-74421.herokuapp.com/user/update"
